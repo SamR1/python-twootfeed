@@ -16,17 +16,17 @@ Note : I'm new to Python and Django :smile:
   
 ## **Prerequisites :**
 - Python 3.4
-- Django 1.8  
+- Django (tested on 1.7 and 1.8)
 Django tutorial : https://www.djangoproject.com/start/
 - Tweepy : https://github.com/tweepy/tweepy
-- pytz
+- pytz : https://pypi.python.org/pypi/pytz/
 - API keys from https://dev.twitter.com/  
 Create a new app and copy/paste the key values in **feed/views.py**.
 
 ## **Steps :**
-- install tweepy and pytz packages :
+- install django, tweepy and pytz packages :
 ```
-$ pip install tweepy pytz
+$ pip install django tweepy pytz
 ```
 
 - create a projet :
@@ -43,17 +43,35 @@ $ django-admin startapp feed
 
 - upload **twittfeed/urls.py**, **feed/views.py** and **feed/urls.py**
 
+- add 'feed' application in **twittfeed/settings.py**  
+```
+# Application definition
+
+INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'feed'
+)
+```
+
 - after starting server, the RSS feed is available on this url :  
 http://localhost:8000/feed/rssfeed/keywords
 
 Example : motogp honda lang:fr   
+Search on Twitter :  
 ![Twitter search](https://raw.githubusercontent.com/SamR1/django-twittfeed/master/images/twitter.png)  
 
+Results in RSS Feed :  
 ![RSS Feed](https://raw.githubusercontent.com/SamR1/django-twittfeed/master/images/RSSFeed.png)  
   
-Display on FreshRSS :  
+Display on FreshRSS, a great free self-hosted aggregator (https://github.com/FreshRSS/FreshRSS):    
 ![FreshRSS](https://raw.githubusercontent.com/SamR1/django-twittfeed/master/images/FreshRSS.png)  
-
+  
 
 ## **Todo :**
-- handle tweeperror "Rate limit exceeded"
+- externalize the Twitter API keys
+- handle the tweeperror "Rate limit exceeded"

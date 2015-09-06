@@ -1,7 +1,7 @@
 # django-twittfeed
 **Python scripts using django to generate a rss feed from parsed twitter search.**  
   
-The RSS feed displays :
+The RSS feed displays obly the original tweets (not the retweets) and :
 - links to :  
 -- the original tweet on Twitter  
 -- hashtags  
@@ -10,7 +10,6 @@ The RSS feed displays :
 - images
 - numbers of retweets and favorites  
 (see example below).  
-Only the originals tweets are displayed.
 
 Note : I'm new to Python and Django :smile:  
   
@@ -20,7 +19,7 @@ Note : I'm new to Python and Django :smile:
 - Django 1.8  
 Django tutorial : https://www.djangoproject.com/start/
 - Tweepy : https://github.com/tweepy/tweepy
--  API keys from https://dev.twitter.com/.  
+- API keys from https://dev.twitter.com/  
 Create a new app and copy/paste the key values in **feed/views.py**.
 
 ## **Steps :**

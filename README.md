@@ -16,7 +16,7 @@ Note : I'm new to Python and Django :smile:
   
 ## **Prerequisites :**
 - Python 3.4
-- Django (tested on 1.7 and 1.8)
+- Django (tested on 1.7 and 1.8)  
 Django tutorial : https://www.djangoproject.com/start/
 - Tweepy : https://github.com/tweepy/tweepy
 - pytz : https://pypi.python.org/pypi/pytz/
@@ -39,9 +39,9 @@ $ django-admin startproject twittfeed
 $ django-admin startapp feed
 ```
 
-- modify **feed/views.py** to indicate the application keys
+- modify **[feed/views.py](https://github.com/SamR1/django-twittfeed/blob/master/feed/views.py)** to indicate the application keys
 
-- upload **twittfeed/urls.py**, **feed/views.py** and **feed/urls.py**
+- upload **[twittfeed/urls.py](https://github.com/SamR1/django-twittfeed/blob/master/twittfeed/urls.py)**, **[feed/views.py](https://github.com/SamR1/django-twittfeed/blob/master/feed/views.py)** and **[feed/urls.py](https://github.com/SamR1/django-twittfeed/blob/master/feed/urls.py)**
 
 - add 'feed' application in **twittfeed/settings.py**  
 ```
@@ -61,7 +61,7 @@ INSTALLED_APPS = (
 - after starting server, the RSS feed is available on this url :  
 http://localhost:8000/feed/rssfeed/keywords
 
-Example : motogp honda lang:fr   
+*Example :* motogp honda lang:fr   
 Search on Twitter :  
 ![Twitter search](https://raw.githubusercontent.com/SamR1/django-twittfeed/master/images/twitter.png)  
 
@@ -73,6 +73,6 @@ Display on FreshRSS, a great free self-hosted aggregator (https://github.com/Fre
   
 
 ## **Todo :**
-- externalize the Twitter API keys
-- handle the tweeperror "Rate limit exceeded"
-- include query in RSS Feed Description
+- [ ] externalize the Twitter API keys (#1)
+- [ ] handle the tweeperror "Rate limit exceeded" (#2)
+- [ ] include query in RSS Feed Description (#3)

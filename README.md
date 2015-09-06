@@ -1,7 +1,7 @@
 # django-twittfeed
 **Python scripts using django to generate a rss feed from parsed twitter search.**  
   
-The RSS feed displays obly the original tweets (not the retweets) and :
+The RSS feed displays only the original tweets (not the retweets) and :
 - links to :  
 -- the original tweet on Twitter  
 -- hashtags  

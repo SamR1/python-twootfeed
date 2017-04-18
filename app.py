@@ -63,7 +63,7 @@ def rssfeed(query_feed):
                                     '" alt="' + tweet['screen_name'] + \
                                     '" />   <strong>' + tweet['user_name'] + \
                                     ': </strong>' + tweet['text'] + \
-                                    '<br><i>Source : ' + tweet['source'] + '</i>'
+                                    '<br><i>Source: ' + tweet['source'] + '</i>'
 
                 user_mentionslist = i.entities.get('user_mentions')
                 for j in user_mentionslist:

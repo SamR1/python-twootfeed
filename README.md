@@ -8,21 +8,23 @@ The RSS feed displays only the original tweets (not the retweets) and :
 -- usernames  
 - URLs 
 - images
+- source
+- location
 - numbers of retweets and favorites  
 (see example below).  
   
   
 ## **Requirements :**
 - Python 3 (tested with 3.6)
-- Flask
-- Feedgenerator : https://pypi.python.org/pypi/feedgenerator
-- Tweepy : https://github.com/tweepy/tweepy
-- pytz : https://pypi.python.org/pypi/pytz/
+- [Flask](http://flask.pocoo.org/)
+- [Feedgenerator](https://pypi.python.org/pypi/feedgenerator)
+- [Tweepy](https://github.com/tweepy/tweepy)
+- [pytz](https://pypi.python.org/pypi/pytz/)
 - API keys from https://dev.twitter.com/  
   
   
 ## **Steps :**
-- install flask, tweepy and pytz packages :
+- install flask, feedgenerator, tweepy and pytz packages :
 ```bash
 $ pip3 install flask tweepy pytz feedgenerator
 ```

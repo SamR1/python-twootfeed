@@ -91,11 +91,15 @@ def rssfeed(query_feed):
 
                 medialist = i.extended_entities.get('media')
                 if medialist != None:
+                    tweet['htmltext'] = tweet['htmltext'] + '<br> '
                     for j in medialist:
                         if j != '':
                             if (j.get('type') == 'photo'):
                                 tweet['htmltext'] = re.sub(j.get('url'), '', tweet['htmltext'])
-                                tweet['htmltext'] = tweet['htmltext'] + '<br><img src="' + j.get('media_url') + '"> '
+                                tweet['htmltext'] = tweet['htmltext'] + \
+                                                    '<a href="' + j.get('media_url') + '" target="_blank"> '\
+                                                    '<img src="' + j.get('media_url') + ':thumb' + '"> ' + \
+                                                    '</a>'
 
                 tweet['htmltext'] = tweet['htmltext'] + '<br> ♻️ : ' + str(tweet['retweets']) + ', ' + '♥ : ' + str(
                     tweet['favorites']) + '</div></blockquote>'

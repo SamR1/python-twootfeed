@@ -1,4 +1,4 @@
-# python-twittfeed
+# python-twootfeed
 **Python script to generate a rss feed from parsed Twitter or Mastodon search, using Flask.**  
   
 The RSS feed displays only the original tweets (not the retweets) and :

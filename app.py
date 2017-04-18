@@ -49,19 +49,21 @@ def rssfeed(query_feed):
 
                 tweet['text'] = i.text
                 tweet['screen_name'] = i.user.screen_name
-                tweet['profile_image_url'] = i.user.profile_image_url
+                tweet['profile_image_url'] = i.user.profile_image_url_https
                 tweet['user_name'] = i.user.name
                 tweet['user_url'] = i.user.url
                 tweet['id_str'] = i.id_str
                 tweet['created_at'] = i.created_at
+                tweet['source'] = i.source
                 tweet['retweets'] = i.retweet_count
                 tweet['favorites'] = i.favorite_count
                 tweet['tweet_url'] = 'https://twitter.com/' + tweet['user_name'] + '/status/' + tweet['id_str']
 
                 tweet['htmltext'] = '<blockquote><div><img src="' + tweet['profile_image_url'] + \
                                     '" alt="' + tweet['screen_name'] + \
-                                    '" />  <strong>' + tweet['user_name'] + \
-                                    ': </strong>' + tweet['text']
+                                    '" />   <strong>' + tweet['user_name'] + \
+                                    ': </strong>' + tweet['text'] + \
+                                    '<br><i>Source : ' + tweet['source'] + '</i>'
 
                 user_mentionslist = i.entities.get('user_mentions')
                 for j in user_mentionslist:
@@ -100,11 +102,15 @@ def rssfeed(query_feed):
                                 if (j.get('type') == 'photo'):
                                     tweet['htmltext'] = re.sub(j.get('url'), '', tweet['htmltext'])
                                     tweet['htmltext'] = tweet['htmltext'] + \
-                                                        '<a href="' + j.get('media_url') + '" target="_blank"> '\
-                                                        '<img src="' + j.get('media_url') + ':thumb' + '"> ' + \
+                                                        '<a href="' + j.get('media_url_https') + '" target="_blank"> '\
+                                                        '<img src="' + j.get('media_url_https') + ':thumb' + '"> ' + \
                                                         '</a>'
 
-                tweet['htmltext'] = tweet['htmltext'] + '<br> ♻️ : ' + str(tweet['retweets']) + ', ' + '♥ : ' + str(
+                location = i.place
+                if location != None:
+                    tweet['htmltext'] = tweet['htmltext'] + '<br><i>Location: ' + location.full_name + '</i>'
+
+                tweet['htmltext'] = tweet['htmltext'] + '<br> ♻ : ' + str(tweet['retweets']) + ', ' + '♥ : ' + str(
                     tweet['favorites']) + '</div></blockquote>'
 
                 buffered.append(tweet.copy())

@@ -50,4 +50,4 @@ Display on FreshRSS, a great free self-hosted aggregator (https://github.com/Fre
 ## **Todo :**
 - [x] externalize the Twitter API keys #1
 - [ ] handle the tweeperror "Rate limit exceeded" #2
-- [ ] include query in RSS Feed Description #3
+- [x] include query in RSS Feed Description #3

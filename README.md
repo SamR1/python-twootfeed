@@ -11,7 +11,7 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - source  (only for Twitter for now)
 - location  (only for Twitter)
 - numbers of retweets (or reblogs for Mastodon) and favorites  
-(see example below).  
+(see examples below).  
   
   
 ## **Requirements :**

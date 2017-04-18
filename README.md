@@ -21,13 +21,14 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - [Tweepy](https://github.com/tweepy/tweepy)
 - [pytz](https://pypi.python.org/pypi/pytz/)
 - [BeautifoulSoup](https://pypi.python.org/pypi/beautifulsoup4)
+- [Mastodon.py](https://github.com/halcy/Mastodon.py)
 - API keys Twitter and/or Mastodon 
   
   
 ## **Steps :**
-- install Python packages : flask, BeautifoulSoup, feedgenerator, tweepy and pytz :
+- install Python packages : flask, BeautifoulSoup, Mastodon.py, feedgenerator, tweepy and pytz
 ```bash
-$ pip3 install flask bs4 feedgenerator tweepy pytz
+$ pip3 install flask bs4 feedgenerator tweepy pytz Mastodon.py
 ```
 
 - clone this repo :
@@ -43,16 +44,13 @@ $ git clone https://github.com/SamR1/python-twittfeed.git
         ```python
         from mastodon import Mastodon
         
-        # Register app - only once!
-        
+        # Register app - only once!        
         Mastodon.create_app(
              'pytooterapp',
               to_file = 'tootrss_clientcred.txt'
-        )
+        )        
         
-        
-        # Log in - either every time, or use persisted
-        
+        # Log in - either every time, or use persisted        
         mastodon = Mastodon(client_id = 'pytooter_clientcred.txt')
         mastodon.log_in(
             'my_login_email@example.com',

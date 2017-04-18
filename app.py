@@ -89,7 +89,7 @@ def rssfeed(query_feed):
                                                        'display_url') + '</a>'),
                                                    tweet['htmltext'])
 
-                medialist = i.entities.get('media')
+                medialist = i.extended_entities.get('media')
                 if medialist != None:
                     for j in medialist:
                         if j != '':
@@ -98,7 +98,7 @@ def rssfeed(query_feed):
                                 tweet['htmltext'] = tweet['htmltext'] + '<br><img src="' + j.get('media_url') + '"> '
 
                 tweet['htmltext'] = tweet['htmltext'] + '<br> ♻️ : ' + str(tweet['retweets']) + ', ' + '♥ : ' + str(
-                    tweet['favorites']) + '</blockquote>'
+                    tweet['favorites']) + '</div></blockquote>'
 
                 buffered.append(tweet.copy())
 

@@ -33,7 +33,7 @@ $ pip3 install flask bs4 feedgenerator tweepy pytz Mastodon.py
 
 - clone this repo :
 ```bash
-$ git clone https://github.com/SamR1/python-twittfeed.git
+$ git clone https://github.com/SamR1/python-twootfeed.git
 ```
 
 - API Keys

@@ -3,7 +3,7 @@ twitter:
   consumerSecret: ''
 feed:
   title: 'Recherche Twitter : '
-  link: 'https://www.twitter.com/'
+  link: 'https://twitter.com/search?q='
   description: "Résultat d'une recherche Twitter retournée dans un flux RSS via Tweepy."
   language: 'fr'
   author_name: 'SamR1'

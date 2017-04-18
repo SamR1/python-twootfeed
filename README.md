@@ -15,6 +15,7 @@ The RSS feed displays only the original tweets (not the retweets) and :
 ## **Requirements :**
 - Python 3 (tested with 3.6)
 - Flask
+- Feedgenerator : https://pypi.python.org/pypi/feedgenerator
 - Tweepy : https://github.com/tweepy/tweepy
 - pytz : https://pypi.python.org/pypi/pytz/
 - API keys from https://dev.twitter.com/  
@@ -23,7 +24,7 @@ The RSS feed displays only the original tweets (not the retweets) and :
 ## **Steps :**
 - install flask, tweepy and pytz packages :
 ```
-$ pip3 install flask tweepy pytz
+$ pip3 install flask tweepy pytz feedgenerator
 ```
 
 - clone this repo :

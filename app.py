@@ -117,7 +117,7 @@ def rssfeed(query_feed):
 
     utc = pytz.utc
     f = feedgenerator.Rss201rev2Feed(title=param['feed']['title'] + '"' + query_feed + '"',
-                                     link=param['feed']['link'],
+                                     link=param['feed']['link'] + query_feed,
                                      description=param['feed']['description'],
                                      language=param['feed']['language'],
                                      author_name=param['feed']['author_name'],

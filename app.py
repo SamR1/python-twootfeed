@@ -175,7 +175,7 @@ def tootfeed(query_feed):
             toot['htmltext'] = '<blockquote><div><img src="' + toot['account']['avatar_static'] + \
                                 '" alt="' + toot['account']['display_name'] + \
                                 '" />   <strong>' + toot['account']['username'] + \
-                                ': </strong>' + toot['content'] + \
+                                ': </strong>' + toot['content'] + '<br>' + \
                                '♻ : ' + str(toot['reblogs_count']) + ', ' + \
                                '♥ : ' + str(toot['favourites_count']) + '</div></blockquote>'
 
@@ -193,8 +193,11 @@ def tootfeed(query_feed):
 
         for toot in buffered:
 
+            text = BeautifulSoup(toot['content'], "html.parser").text
+            if len(text) > 100:
+                text = text[:100] + '... '
             f.add_item(title=toot['account']['display_name'] + ' (' + toot['account']['username'] + '): '
-                             + BeautifulSoup(toot['content'], "html.parser").text,
+                             + text,
                        link=toot['url'],
                        pubdate=utc.localize(toot['created_at']).astimezone(pytz.timezone(param['feed']['timezone'])),
                        description=toot['htmltext'])

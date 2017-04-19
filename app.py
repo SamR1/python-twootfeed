@@ -177,7 +177,7 @@ def tootfeed(query_feed):
                                 '" />   <strong>' + toot['account']['username'] + \
                                 ': </strong>' + toot['content'] + '<br>' + \
                                '♻ : ' + str(toot['reblogs_count']) + ', ' + \
-                               '♥ : ' + str(toot['favourites_count']) + '</div></blockquote>'
+                               '✰ : ' + str(toot['favourites_count']) + '</div></blockquote>'
 
             toot['created_at'] = datetime.datetime.strptime(toot['created_at'], '%Y-%m-%dT%H:%M:%S.%fZ')
 

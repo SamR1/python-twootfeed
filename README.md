@@ -20,13 +20,13 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - [Feedgenerator](https://pypi.python.org/pypi/feedgenerator)
 - [Tweepy](https://github.com/tweepy/tweepy)
 - [pytz](https://pypi.python.org/pypi/pytz/)
-- [BeautifoulSoup](https://pypi.python.org/pypi/beautifulsoup4)
+- [BeautifulSoup](https://pypi.python.org/pypi/beautifulsoup4)
 - [Mastodon.py](https://github.com/halcy/Mastodon.py)
 - API keys Twitter and/or Mastodon 
   
   
 ## **Steps :**
-- install Python packages : flask, BeautifoulSoup, Mastodon.py, feedgenerator, tweepy and pytz
+- install Python packages : flask, BeautifulSoup, Mastodon.py, feedgenerator, tweepy and pytz
 ```bash
 $ pip3 install flask bs4 feedgenerator tweepy pytz Mastodon.py
 ```

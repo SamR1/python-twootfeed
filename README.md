@@ -39,7 +39,7 @@ $ git clone https://github.com/SamR1/python-twootfeed.git
 - API Keys
     - for **Twitter** : see https://dev.twitter.com  
     copy/paste the Twitter API key values in **config.yml.example** ('_consumerKey_' and '_consumerSecret_')
-    - for **Mastodon** : see [Python wrapper for the Mastodon](https://github.com/halcy/Mastodon.py)  
+    - for **Mastodon** : see [Python wrapper for the Mastodon API](https://github.com/halcy/Mastodon.py)  
        - generate client and user credentials files :  
         ```python
         from mastodon import Mastodon
@@ -51,7 +51,7 @@ $ git clone https://github.com/SamR1/python-twootfeed.git
         )        
         
         # Log in - either every time, or use persisted        
-        mastodon = Mastodon(client_id = 'pytooter_clientcred.txt')
+        mastodon = Mastodon(client_id = 'tootrss_clientcred.txt')
         mastodon.log_in(
             'my_login_email@example.com',
             'incrediblygoodpassword',

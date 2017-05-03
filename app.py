@@ -71,7 +71,7 @@ def tweetfeed(query_feed):
 
         for i in tweepy.Cursor(api.search, q=query_feed).items():
             try:
-                a = i.text
+                i.text
             except Exception:
                 break
             else:

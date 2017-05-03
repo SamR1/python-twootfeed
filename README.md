@@ -13,6 +13,7 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - numbers of retweets (or reblogs for Mastodon) and favorites  
 (see examples below).  
   
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SamR1/python-twootfeed&amp;utm_campaign=Badge_Grade)
   
 ## **Requirements :**
 - Python 3 (tested with 3.6)

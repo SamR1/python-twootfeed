@@ -19,7 +19,7 @@ app.debug = True
 
 with open('config.yml', 'r') as stream:
     try:
-        param = yaml.load(stream)
+        param = yaml.safe_load(stream)
     except yaml.YAMLError as e:
         print(e)
         sys.exit()
@@ -37,6 +37,7 @@ except Exception as e:
 else:
     twitterOK = True
 
+
 # Mastodon
 try:
     mastodon = Mastodon(
@@ -48,6 +49,15 @@ except Exception as e:
     mastodonOK = False
 else:
     mastodonOK = True
+
+
+@app.route('/')
+def index():
+    message = 'The RSS feeds are available on these urls : \r\n' \
+              'for Twitter : http://localhost:5000/_keywords_ or http://localhost:5000/tweets/_keywords_ ,\r\n' \
+              'for Mastodon : http://localhost:5000/toots/_keywords_'
+
+    return message
 
 
 @app.route('/<query_feed>')
@@ -118,7 +128,7 @@ def tweetfeed(query_feed):
                                                        tweet['htmltext'])
                     try:
                         medialist = i.extended_entities.get('media')
-                    except Exception:
+                    except AttributeError:
                         pass
                     else:
                         if medialist != None:

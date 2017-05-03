@@ -65,7 +65,7 @@ Rename the config file **config.yml**.
 
 - Start the server
 ```bash
-$ export FLASK_APP=server.py
+$ export FLASK_APP=app.py
 $ python3 -m flask run --host=0.0.0.0
 ```
 

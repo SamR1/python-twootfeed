@@ -16,3 +16,4 @@ feed:
   author_name: ''
   feed_url: 'http://localhost:5000/'
   timezone: 'Europe/Paris'
+  text_length_limit: 100

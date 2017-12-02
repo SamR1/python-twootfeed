@@ -19,6 +19,8 @@ app.debug = True
 
 param = get_config()
 
+text_length_limit = int(param['feed'].get('text_length_limit', 100))
+
 # Twitter
 try:
     consumerKey = param['twitter']['consumerKey']
@@ -43,7 +45,6 @@ try:
         raise Exception("File not found: " + client_file)
 
     mastodon_url = param['mastodon'].get('url', 'https://mastodon.social')
-    print("Using Mastodon instance at:", mastodon_url)
 
     mastodon = Mastodon(
         client_id=client_file,
@@ -215,8 +216,8 @@ def tootfeed(query_feed):
             if not pubdate.tzinfo:
                 pubdate = utc.localize(pubdate).astimezone(pytz.timezone(param['feed']['timezone']))
 
-            if len(text) > 100:
-                text = text[:100] + '... '
+            if len(text) > text_length_limit:
+                text = text[:text_length_limit] + '... '
             f.add_item(title=toot['account']['display_name'] + ' (' + toot['account']['username'] + '): '
                              + text,
                        link=toot['url'],
@@ -265,8 +266,8 @@ def toot_favorites_feed():
             if not pubdate.tzinfo:
                 pubdate = utc.localize(pubdate).astimezone(pytz.timezone(param['feed']['timezone']))
 
-            if len(text) > 100:
-                text = text[:100] + '... '
+            if len(text) > text_length_limit:
+                text = text[:text_length_limit] + '... '
             f.add_item(title=toot['account']['display_name'] + ' (' + toot['account']['username'] + '): '
                              + text,
                        link=toot['url'],

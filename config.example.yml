@@ -8,6 +8,7 @@ mastodon:
   url: 'https://mastodon.social'
   client_id_file: 'tootrss_clientcred.txt'
   access_token_file: 'tootrss_usercred.txt'
+  app_name: 'tootrss'  # Used to identify authenticated apps
   title: 'Recherche Mastodon : '
   description: "Résultat d'une recherche Mastodon retournée dans un flux RSS."
 feed:

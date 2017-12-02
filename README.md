@@ -21,6 +21,7 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - [Feedgenerator](https://pypi.python.org/pypi/feedgenerator)
 - [Tweepy](https://github.com/tweepy/tweepy)
 - [pytz](https://pypi.python.org/pypi/pytz/)
+- [PyYAML](https://github.com/yaml/pyyaml)
 - [BeautifulSoup](https://pypi.python.org/pypi/beautifulsoup4)
 - [Mastodon.py](https://github.com/halcy/Mastodon.py)
 - API keys Twitter and/or Mastodon 
@@ -44,9 +45,9 @@ $ git clone https://github.com/SamR1/python-twootfeed.git
     copy/paste the Twitter API key values in **config.yml.example** ('_consumerKey_' and '_consumerSecret_')
     - for **Mastodon** : see [Python wrapper for the Mastodon API](https://mastodonpy.readthedocs.io/)
       - Generate the client and user credentials manually via the [Mastodon client](https://mastodonpy.readthedocs.io/en/latest/#app-registration-and-user-authentication)
+        - note that using an instance other than https://mastodon.social requires adding `api_base_url` to most method calls.
         - the file names for **client_id** and **access_token_file** go in the mastodon section of **config.yml**
       - Or use the included script (`python3 create_mastodon_client.py`) which will register your app and prompt you to log in, creating the credential files for you.
-        
 
 - Start the server
 ```bash

@@ -9,7 +9,7 @@ if __name__ == '__main__':
 
     mast_cfg = config['mastodon']
     print("Configuration found.")
-    print("Looks like you want to use this instance:", mast_cfg['url'])
+    print("Looks like you want to use this instance: ", mast_cfg['url'])
     print("If that's wrong, now is a good time to cancel (^C) and fix it.")
     input("<enter> to continue")
 

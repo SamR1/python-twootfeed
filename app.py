@@ -235,7 +235,6 @@ def toot_favorites_feed():
 
     if mastodonOK:
         buffered = []
-#        hashtagResult = mastodon.timeline_hashtag(query_feed)
         favorite_toots = mastodon.favourites()
         for toot in favorite_toots:
 

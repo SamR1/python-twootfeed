@@ -11,18 +11,15 @@ import re
 import tweepy
 import yaml
 import sys
-
+import os
+from config import get_config
 
 app = Flask(__name__)
 app.debug = True
 
+param = get_config()
 
-with open('config.yml', 'r') as stream:
-    try:
-        param = yaml.safe_load(stream)
-    except yaml.YAMLError as e:
-        print(e)
-        sys.exit()
+text_length_limit = int(param['feed'].get('text_length_limit', 100))
 
 # Twitter
 try:
@@ -40,9 +37,19 @@ else:
 
 # Mastodon
 try:
+    client_file = param['mastodon']['client_id_file']
+    if not os.path.exists(client_file):
+        raise Exception("File not found: " + client_file)
+    access_token_file = param['mastodon']['access_token_file']
+    if not os.path.exists(access_token_file):
+        raise Exception("File not found: " + client_file)
+
+    mastodon_url = param['mastodon'].get('url', 'https://mastodon.social')
+
     mastodon = Mastodon(
-        client_id=param['mastodon']['client_id_file'],
-        access_token=param['mastodon']['access_token_file']
+        client_id=client_file,
+        access_token=access_token_file,
+        api_base_url=mastodon_url
     )
 except Exception as e:
     print('Error Mastodon instance creation: ' + str(e))
@@ -189,7 +196,8 @@ def tootfeed(query_feed):
                                '♻ : ' + str(toot['reblogs_count']) + ', ' + \
                                '✰ : ' + str(toot['favourites_count']) + '</div></blockquote>'
 
-            toot['created_at'] = datetime.datetime.strptime(toot['created_at'], '%Y-%m-%dT%H:%M:%S.%fZ')
+            if isinstance(toot['created_at'], str):
+                toot['created_at'] = datetime.datetime.strptime(toot['created_at'], '%Y-%m-%dT%H:%M:%S.%fZ')
 
             buffered.append(toot.copy())
 
@@ -204,12 +212,66 @@ def tootfeed(query_feed):
         for toot in buffered:
 
             text = BeautifulSoup(toot['content'], "html.parser").text
-            if len(text) > 100:
-                text = text[:100] + '... '
+            pubdate = toot['created_at']
+            if not pubdate.tzinfo:
+                pubdate = utc.localize(pubdate).astimezone(pytz.timezone(param['feed']['timezone']))
+
+            if len(text) > text_length_limit:
+                text = text[:text_length_limit] + '... '
             f.add_item(title=toot['account']['display_name'] + ' (' + toot['account']['username'] + '): '
                              + text,
                        link=toot['url'],
-                       pubdate=utc.localize(toot['created_at']).astimezone(pytz.timezone(param['feed']['timezone'])),
+                       pubdate=pubdate,
+                       description=toot['htmltext'])
+
+        xml = f.writeString('UTF-8')
+    else:
+        xml = 'error - Mastodon parameters not defined'
+
+    return xml
+
+@app.route('/toot_favorites')
+def toot_favorites_feed():
+    """ generate an rss feed authenticated user's favorites """
+
+    if mastodonOK:
+        buffered = []
+        favorite_toots = mastodon.favourites()
+        for toot in favorite_toots:
+
+            toot['htmltext'] = '<blockquote><div><img src="' + toot['account']['avatar_static'] + \
+                                '" alt="' + toot['account']['display_name'] + \
+                                '" />   <strong>' + toot['account']['username'] + \
+                                ': </strong>' + toot['content'] + '<br>' + \
+                               '♻ : ' + str(toot['reblogs_count']) + ', ' + \
+                               '✰ : ' + str(toot['favourites_count']) + '</div></blockquote>'
+
+            if isinstance(toot['created_at'], str):
+                toot['created_at'] = datetime.datetime.strptime(toot['created_at'], '%Y-%m-%dT%H:%M:%S.%fZ')
+
+            buffered.append(toot.copy())
+
+        utc = pytz.utc
+        f = feedgenerator.Rss201rev2Feed(title=param['mastodon']['title'] + ' Favourites ',
+                                         link=param['mastodon']['url'] + '/web/favourites',
+                                         description=param['mastodon']['description'],
+                                         language=param['feed']['language'],
+                                         author_name=param['feed']['author_name'],
+                                         feed_url=param['feed']['feed_url'])
+
+        for toot in buffered:
+
+            text = BeautifulSoup(toot['content'], "html.parser").text
+            pubdate = toot['created_at']
+            if not pubdate.tzinfo:
+                pubdate = utc.localize(pubdate).astimezone(pytz.timezone(param['feed']['timezone']))
+
+            if len(text) > text_length_limit:
+                text = text[:text_length_limit] + '... '
+            f.add_item(title=toot['account']['display_name'] + ' (' + toot['account']['username'] + '): '
+                             + text,
+                       link=toot['url'],
+                       pubdate=pubdate,
                        description=toot['htmltext'])
 
         xml = f.writeString('UTF-8')
@@ -220,4 +282,5 @@ def tootfeed(query_feed):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(use_reloader=True)
+

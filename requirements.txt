@@ -1,0 +1,7 @@
+Flask==0.12.2
+bs4==0.0.1
+feedgenerator==1.9
+tweepy==3.5.0
+pytz==2017.3
+Mastodon.py==1.1.2
+PyYAML==3.12

@@ -4,3 +4,9 @@
 ## Python
 .env
 __pycache__
+.pytest_cache
+
+## App
+/python-twootfeed/config.yml
+/python-twootfeed/tootrss_clientcred.txt
+/python-twootfeed/tootrss_usercred.txt

@@ -28,22 +28,22 @@ The RSS feed displays only the original tweets (not the retweets) and :
   
   
 ## **Steps :**
-- clone this repo :
+- Clone this repo :
 ```bash
 $ git clone https://github.com/SamR1/python-twootfeed.git
 ```
 
-- install Python virtualenv and packages
+- Install Python virtualenv and packages
 ```bash
 $ cd python-twootfedd
 $ make install
 ```
 
-- Fill in fields for the client(s) you will use (see next step for API keys).
+- Fill in fields for the client(s) you will use in **python-twootfeed/config.yml** (see next step for API keys).
 
 - Get API Keys
     - for **Twitter** : see https://apps.twitter.com  
-    copy/paste the Twitter API key values in **config.yml** ('_consumerKey_' and '_consumerSecret_')
+    copy/paste the Twitter API key values in **config.yml** file ('_consumerKey_' and '_consumerSecret_')
     - for **Mastodon** : see [Python wrapper for the Mastodon API](https://mastodonpy.readthedocs.io/)  
     use the included script which will register your app and prompt you to log in, creating the credential files for you.
     ```bash
@@ -55,7 +55,7 @@ $ make install
 $ make serve
 ```
 
-- the RSS feeds are available on these urls :  
+- The RSS feeds are available on these urls :  
    - for Twitter : http://localhost:5000/_keywords_ or http://localhost:5000/tweets/_keywords_
    - for Mastodon : http://localhost:5000/toots/_keywords_ and http://localhost:5000/toot_favorites
 

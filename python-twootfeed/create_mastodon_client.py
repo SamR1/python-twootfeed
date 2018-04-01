@@ -21,7 +21,7 @@ if __name__ == '__main__':
     user_email = input("User email: ")
     password = getpass("Password (not shown and not saved):")
 
-    # Log in - either every time, or use persisted        
+    # Log in - either every time, or use persisted
     mastodon.log_in(user_email, password, to_file=mast_cfg['access_token_file'], scopes=['read'])
 
     print("Verifying credentials...")
@@ -33,4 +33,3 @@ if __name__ == '__main__':
     except Exception as ex:
         print("Something went wrong; mastodon client reported an error:")
         print(ex)
-    

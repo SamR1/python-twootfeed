@@ -9,8 +9,6 @@ import feedgenerator
 import pytz
 import re
 import tweepy
-import yaml
-import sys
 import os
 from config import get_config
 

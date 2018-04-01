@@ -21,11 +21,11 @@ if __name__ == '__main__':
     Mastodon.create_app(
         mast_cfg['app_name'],
         api_base_url=mast_cfg['url'],
-        to_file=mast_cfg['client_id_file'],
+        to_file='python-twootfeed/' + mast_cfg['client_id_file'],
         scopes=['read']
     )
     mastodon = Mastodon(
-        client_id=mast_cfg['client_id_file'],
+        client_id='python-twootfeed/' + mast_cfg['client_id_file'],
         api_base_url=mast_cfg['url']
     )
     print('Registration successful.  Now to log in.')
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     mastodon.log_in(
         user_email,
         password,
-        to_file=mast_cfg['access_token_file'],
+        to_file='python-twootfeed/' + mast_cfg['access_token_file'],
         scopes=['read']
     )
 

@@ -1,9 +1,9 @@
 # python-twootfeed
-**Python script to generate a rss feed from parsed Twitter or Mastodon search, using Flask.**  
+**Python script to generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites, using Flask.**  
   
 The RSS feed displays only the original tweets (not the retweets) and :
 - links to :  
--- the original tweet on Twitter or toot on Mastodon
+-- the original tweet on Twitter or toot on Mastodon  
 -- hashtags  
 -- usernames  
 - URLs 
@@ -28,31 +28,31 @@ The RSS feed displays only the original tweets (not the retweets) and :
   
   
 ## **Steps :**
-- install Python packages : flask, BeautifulSoup, Mastodon.py, feedgenerator, tweepy, PyYAML and pytz
-```bash
-$ pip3 install -r requirements.txt
-```
-
 - clone this repo :
 ```bash
 $ git clone https://github.com/SamR1/python-twootfeed.git
 ```
 
-- Copy the included **config.example.yml** to **config.yml** and fill in fields for the client(s) you will use.
+- install Python virtualenv and packages
+```bash
+$ cd python-twootfedd
+$ make install
+```
 
-- API Keys
-    - for **Twitter** : see https://dev.twitter.com  
-    copy/paste the Twitter API key values in **config.yml.example** ('_consumerKey_' and '_consumerSecret_')
-    - for **Mastodon** : see [Python wrapper for the Mastodon API](https://mastodonpy.readthedocs.io/)
-      - Generate the client and user credentials manually via the [Mastodon client](https://mastodonpy.readthedocs.io/en/latest/#app-registration-and-user-authentication)
-        - note that using an instance other than https://mastodon.social requires adding `api_base_url` to most method calls.
-        - the file names for **client_id** and **access_token_file** go in the mastodon section of **config.yml**
-      - Or use the included script (`python3 create_mastodon_client.py`) which will register your app and prompt you to log in, creating the credential files for you.
+- Fill in fields for the client(s) you will use (see next step for API keys).
+
+- Get API Keys
+    - for **Twitter** : see https://apps.twitter.com  
+    copy/paste the Twitter API key values in **config.yml** ('_consumerKey_' and '_consumerSecret_')
+    - for **Mastodon** : see [Python wrapper for the Mastodon API](https://mastodonpy.readthedocs.io/)  
+    use the included script which will register your app and prompt you to log in, creating the credential files for you.
+    ```bash
+    $ make create-mastodon-cli
+    ```
 
 - Start the server
 ```bash
-$ export FLASK_APP=app.py
-$ python3 -m flask run --host=0.0.0.0
+$ make serve
 ```
 
 - the RSS feeds are available on these urls :  

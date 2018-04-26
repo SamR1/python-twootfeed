@@ -12,7 +12,8 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - location  (only for Twitter)
 - numbers of retweets (or reblogs for Mastodon) and favorites  
 (see examples below).  
-  
+
+[![Python Version](https://img.shields.io/badge/python-3.6-brightgreen.svg)](https://python.org) 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SamR1/python-twootfeed&amp;utm_campaign=Badge_Grade)
   
 ## **Requirements :**
@@ -77,7 +78,3 @@ Results in RSS Feed :
 
 Display on FreshRSS :
 ![Mastodon FreshRSS](images/MastodonFreshRSS.png)  
-
-## **Todo :**
-- [ ] handle the tweeperror "Rate limit exceeded" #2
-- [ ] handle the different exceptions properly 

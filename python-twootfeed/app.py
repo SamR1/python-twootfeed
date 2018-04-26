@@ -27,7 +27,7 @@ try:
     consumerSecret = param['twitter']['consumerSecret']
 
     auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
-    api = tweepy.API(auth)
+    api = tweepy.API(auth, wait_on_rate_limit=True)
 except Exception as e:
     print('Error Twitter connection: ' + str(e))
     twitterOK = False

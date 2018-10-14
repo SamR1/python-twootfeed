@@ -8,7 +8,6 @@ from flask import Blueprint
 from twootfeed import param, twitter_api
 
 twitter_bp = Blueprint('twitter', __name__)
-text_length_limit = int(param['feed'].get('text_length_limit', 100))
 
 
 @twitter_bp.route('/<query_feed>', methods=['GET'])
@@ -20,9 +19,11 @@ def tweetfeed(query_feed):
         tweet = {}
         buffered = []
 
-        for i in tweepy.Cursor(twitter_api.search, q=query_feed).items():
+        for i in tweepy.Cursor(twitter_api.search,
+                               q=query_feed,
+                               tweet_mode='extended').items():
             try:
-                i.text
+                i.full_text
             except Exception:
                 break
             else:
@@ -34,7 +35,7 @@ def tweetfeed(query_feed):
 
                 if not retweeted_status:  # only the original tweets
 
-                    tweet['text'] = i.text
+                    tweet['text'] = i.full_text
                     tweet['screen_name'] = i.user.screen_name
                     tweet['profile_image_url'] = i.user.profile_image_url_https
                     tweet['user_name'] = i.user.name

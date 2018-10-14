@@ -18,3 +18,6 @@ lint:
 
 serve:
 	$(FLASK) run --with-threads -h $(HOST) -p $(PORT)
+
+test:
+	$(PYTEST) twootfeed --cov-config .coveragerc --cov=twootfeed --cov-report term-missing $(PYTEST_ARGS)

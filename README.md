@@ -3,14 +3,14 @@
   
 The RSS feed displays only the original tweets (not the retweets) and :
 - links to :  
--- the original tweet on Twitter or toot on Mastodon  
--- hashtags  
--- usernames  
+  - the original tweet on Twitter or toot on Mastodon  
+  - hashtags  
+  - usernames  
 - URLs 
-- images (only for Twitter for now)
-- source  (only for Twitter for now)
+- images
+- source
 - location  (only for Twitter)
-- numbers of retweets (or reblogs for Mastodon) and favorites  
+- numbers of retweets (or boots for Mastodon) and favorites  
 (see examples below).  
 
 [![Python Version](https://img.shields.io/badge/python-3.6-brightgreen.svg)](https://python.org) 
@@ -36,7 +36,7 @@ $ git clone https://github.com/SamR1/python-twootfeed.git
 
 - Install Python virtualenv and packages
 ```bash
-$ cd python-twootfedd
+$ cd python-twootfeed
 $ make install
 ```
 

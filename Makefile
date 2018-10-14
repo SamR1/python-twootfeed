@@ -6,15 +6,15 @@ clean:
 	rm -fr $(VENV)
 
 create-mastodon-cli:
-	$(PYTHON) python-twootfeed/create_mastodon_client.py
+	$(PYTHON) twootfeed/utils/create_mastodon_client.py
 
 install:
 	test -d $(VENV) || virtualenv $(VENV) -p $(PYTHON_VERSION)
 	$(PIP) install -r $(REQUIREMENTS)
-	test -e python-twootfeed/config.yml || cp python-twootfeed/config.example.yml python-twootfeed/config.yml
+	test -e twootfeed/config.yml || cp twootfeed/config.example.yml twootfeed/config.yml
 
 lint:
-	$(PYTEST) --flake8 --isort -m "flake8 or isort" python-twootfeed
+	$(PYTEST) --flake8 --isort -m "flake8 or isort" twootfeed
 
 serve:
 	$(FLASK) run --with-threads -h $(HOST) -p $(PORT)

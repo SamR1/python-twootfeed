@@ -18,14 +18,20 @@ def format_toot(toot):
         '" width= 100px"/>   <strong>' + toot['account']['username'] + \
         ': </strong>' + toot['content']
 
+    source = toot.get('application')
+    if source:
+        toot['htmltext'] += '<i>Source: ' + source.get('name') + '</i>'
+
     medialist = toot.get('media_attachments')
+    if len(medialist) > 0:
+        toot['htmltext'] += '<br>'
     for media in medialist:
         if media.type == 'image':
             toot['htmltext'] += '<a href="' + \
                                 media.get('url') + \
-                                '" target="_blank"> <img src="' + \
+                                '" target="_blank"><img src="' + \
                                 media.get('preview_url') + \
-                                '"> </a>'
+                                '"></a>'
 
     toot['htmltext'] += '<br>' + \
         '♻ : ' + str(toot['reblogs_count']) + ', ' + \

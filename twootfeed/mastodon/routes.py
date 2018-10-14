@@ -11,30 +11,43 @@ mastodon_bp = Blueprint('mastodon', __name__)
 text_length_limit = int(param['feed'].get('text_length_limit', 100))
 
 
+def format_toot(toot):
+    toot['htmltext'] = '<blockquote><div><img src="' + toot['account'][
+        'avatar_static'] + \
+        '" alt="' + toot['account']['display_name'] + \
+        '" width= 100px"/>   <strong>' + toot['account']['username'] + \
+        ': </strong>' + toot['content']
+
+    medialist = toot.get('media_attachments')
+    for media in medialist:
+        if media.type == 'image':
+            toot['htmltext'] += '<a href="' + \
+                                media.get('url') + \
+                                '" target="_blank"> <img src="' + \
+                                media.get('preview_url') + \
+                                '"> </a>'
+
+    toot['htmltext'] += '<br>' + \
+        '♻ : ' + str(toot['reblogs_count']) + ', ' + \
+        '✰ : ' + str(toot['favourites_count']) + '</div></blockquote>'
+
+    if isinstance(toot['created_at'], str):
+        toot['created_at'] = datetime.datetime.strptime(
+            toot['created_at'], '%Y-%m-%dT%H:%M:%S.%fZ')
+    return toot
+
+
 @mastodon_bp.route('/toots/<query_feed>', methods=['GET'])
 def tootfeed(query_feed):
     """ generate a rss feed from parsed mastodon search """
 
     if mastodon_api:
         buffered = []
-        hashtagResult = mastodon_api.timeline_hashtag(query_feed)
+        hashtag_result = mastodon_api.timeline_hashtag(query_feed)
 
-        for toot in hashtagResult:
-
-            toot['htmltext'] = '<blockquote><div><img src="' + toot['account'][
-                'avatar_static'] + \
-                '" alt="' + toot['account']['display_name'] + \
-                '" />   <strong>' + toot['account']['username'] + \
-                ': </strong>' + toot['content'] + '<br>' + \
-                '♻ : ' + str(toot['reblogs_count']) + ', ' + \
-                '✰ : ' + str(
-                toot['favourites_count']) + '</div></blockquote>'
-
-            if isinstance(toot['created_at'], str):
-                toot['created_at'] = datetime.datetime.strptime(
-                    toot['created_at'], '%Y-%m-%dT%H:%M:%S.%fZ')
-
-            buffered.append(toot.copy())
+        for toot in hashtag_result:
+            formatted_toot = format_toot(toot)
+            buffered.append(formatted_toot.copy())
 
         utc = pytz.utc
         f = feedgenerator.Rss201rev2Feed(
@@ -77,21 +90,8 @@ def toot_favorites_feed():
         buffered = []
         favorite_toots = mastodon_api.favourites()
         for toot in favorite_toots:
-
-            toot['htmltext'] = '<blockquote><div><img src="' + toot['account'][
-                'avatar_static'] + \
-                '" alt="' + toot['account']['display_name'] + \
-                '" />   <strong>' + toot['account']['username'] + \
-                ': </strong>' + toot['content'] + '<br>' + \
-                '♻ : ' + str(toot['reblogs_count']) + ', ' + \
-                '✰ : ' + str(
-                toot['favourites_count']) + '</div></blockquote>'
-
-            if isinstance(toot['created_at'], str):
-                toot['created_at'] = datetime.datetime.strptime(
-                    toot['created_at'], '%Y-%m-%dT%H:%M:%S.%fZ')
-
-            buffered.append(toot.copy())
+            formatted_toot = format_toot(toot)
+            buffered.append(formatted_toot.copy())
 
         utc = pytz.utc
         f = feedgenerator.Rss201rev2Feed(

@@ -11,7 +11,7 @@ create-mastodon-cli:
 install:
 	test -d $(VENV) || virtualenv $(VENV) -p $(PYTHON_VERSION)
 	$(PIP) install -r $(REQUIREMENTS)
-	cp python-twootfeed/config.example.yml python-twootfeed/config.yml
+	test -e python-twootfeed/config.yml || cp python-twootfeed/config.example.yml python-twootfeed/config.yml
 
 lint:
 	$(PYTEST) --flake8 --isort -m "flake8 or isort" python-twootfeed

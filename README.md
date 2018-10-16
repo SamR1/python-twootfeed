@@ -10,7 +10,7 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - images
 - source
 - location  (only for Twitter)
-- numbers of retweets (or boots for Mastodon) and favorites  
+- numbers of retweets (or boosts for Mastodon) and favorites  
 (see examples below).  
 
 [![Python Version](https://img.shields.io/badge/python-3.6-brightgreen.svg)](https://python.org) 
@@ -58,7 +58,7 @@ $ make serve
 
 - The RSS feeds are available on these urls :  
    - for Twitter : http://localhost:5000/_keywords_ or http://localhost:5000/tweets/_keywords_
-   - for Mastodon : http://localhost:5000/toots/_keywords_ and http://localhost:5000/toot_favorites
+   - for Mastodon : http://localhost:5000/toots/_keywords_ (search) and http://localhost:5000/toot_favorites (favorites toots for connected user)
 
 ## Examples :  
 ### Search on Twitter :  

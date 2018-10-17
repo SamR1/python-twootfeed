@@ -25,6 +25,7 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - [PyYAML](https://github.com/yaml/pyyaml)
 - [BeautifulSoup](https://pypi.python.org/pypi/beautifulsoup4)
 - [Mastodon.py](https://github.com/halcy/Mastodon.py)
+- [gunicorn](https://gunicorn.org/)
 - API keys Twitter and/or Mastodon 
   
   
@@ -52,9 +53,14 @@ $ make install
     ```
 
 - Start the server
-```bash
-$ make serve
-```
+  - dev environment
+  ```bash
+  $ make serve
+  ```
+  - production environment
+  ```bash
+  $ make run
+  ```
 
 - The RSS feeds are available on these urls :  
    - for Twitter : http://localhost:5000/_keywords_ or http://localhost:5000/tweets/_keywords_

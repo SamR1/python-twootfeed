@@ -40,6 +40,20 @@ def format_toot(toot):
     if isinstance(toot['created_at'], str):
         toot['created_at'] = datetime.datetime.strptime(
             toot['created_at'], '%Y-%m-%dT%H:%M:%S.%fZ')
+
+    toot['text'] = BeautifulSoup(toot['content'], "html.parser").text
+
+    utc = pytz.utc
+    pubdate = toot['created_at']
+    if not pubdate.tzinfo:
+        toot['pubdate'] = utc.localize(pubdate).astimezone(
+            pytz.timezone(param['feed']['timezone']))
+    else:
+        toot['pubdate'] = pubdate
+
+    if len(toot['text']) > text_length_limit:
+        toot['text'] = toot['text'][:text_length_limit] + '... '
+
     return toot
 
 
@@ -48,14 +62,8 @@ def tootfeed(query_feed):
     """ generate a rss feed from parsed mastodon search """
 
     if mastodon_api:
-        buffered = []
         hashtag_result = mastodon_api.timeline_hashtag(query_feed)
 
-        for toot in hashtag_result:
-            formatted_toot = format_toot(toot)
-            buffered.append(formatted_toot.copy())
-
-        utc = pytz.utc
         f = feedgenerator.Rss201rev2Feed(
             title=param['mastodon']['title'] + '"' + query_feed + '"',
             link=param['mastodon']['url'] + '/web/timelines/tag/' + query_feed,
@@ -64,22 +72,15 @@ def tootfeed(query_feed):
             author_name=param['feed']['author_name'],
             feed_url=param['feed']['feed_url'])
 
-        for toot in buffered:
-
-            text = BeautifulSoup(toot['content'], "html.parser").text
-            pubdate = toot['created_at']
-            if not pubdate.tzinfo:
-                pubdate = utc.localize(pubdate).astimezone(
-                    pytz.timezone(param['feed']['timezone']))
-
-            if len(text) > text_length_limit:
-                text = text[:text_length_limit] + '... '
+        for toot in hashtag_result:
+            formatted_toot = format_toot(toot)
             f.add_item(
-                title=toot['account']['display_name'] + ' (' + toot['account'][
-                    'username'] + '): ' + text,
-                link=toot['url'],
-                pubdate=pubdate,
-                description=toot['htmltext'])
+                title=(formatted_toot['account']['display_name'] + ' (' +
+                       formatted_toot['account']['username'] + '): ' +
+                       formatted_toot['text']),
+                link=formatted_toot['url'],
+                pubdate=formatted_toot['pubdate'],
+                description=formatted_toot['htmltext'])
 
         xml = f.writeString('UTF-8')
     else:
@@ -95,11 +96,7 @@ def toot_favorites_feed():
     if mastodon_api:
         buffered = []
         favorite_toots = mastodon_api.favourites()
-        for toot in favorite_toots:
-            formatted_toot = format_toot(toot)
-            buffered.append(formatted_toot.copy())
 
-        utc = pytz.utc
         f = feedgenerator.Rss201rev2Feed(
             title=param['mastodon']['title'] + ' Favourites ',
             link=param['mastodon']['url'] + '/web/favourites',
@@ -108,22 +105,15 @@ def toot_favorites_feed():
             author_name=param['feed']['author_name'],
             feed_url=param['feed']['feed_url'])
 
-        for toot in buffered:
-
-            text = BeautifulSoup(toot['content'], "html.parser").text
-            pubdate = toot['created_at']
-            if not pubdate.tzinfo:
-                pubdate = utc.localize(pubdate).astimezone(
-                    pytz.timezone(param['feed']['timezone']))
-
-            if len(text) > text_length_limit:
-                text = text[:text_length_limit] + '... '
+        for toot in favorite_toots:
+            formatted_toot = format_toot(toot)
             f.add_item(
-                title=toot['account']['display_name'] + ' (' + toot['account'][
-                    'username'] + '): ' + text,
-                link=toot['url'],
-                pubdate=pubdate,
-                description=toot['htmltext'])
+                title=(formatted_toot['account']['display_name'] + ' (' +
+                       formatted_toot['account']['username'] + '): ' +
+                       formatted_toot['text']),
+                link=formatted_toot['url'],
+                pubdate=formatted_toot['pubdate'],
+                description=formatted_toot['htmltext'])
 
         xml = f.writeString('UTF-8')
     else:

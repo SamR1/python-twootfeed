@@ -107,7 +107,6 @@ def tweetfeed(query_feed):
         feed_title = param['twitter']['title'] + '"' + query_feed + '"'
         feed_link = param['twitter']['link'] + query_feed
         f = generate_feed(feed_title, feed_link, param)
-        utc = pytz.utc
 
         for i in tweepy.Cursor(twitter_api.search,
                                q=query_feed,
@@ -131,8 +130,9 @@ def tweetfeed(query_feed):
                         + tweet['user_name'] + '): '
                         + tweet['text'],
                         link=tweet['tweet_url'],
-                        pubdate=utc.localize(tweet['created_at']).astimezone(
-                                pytz.timezone(param['feed']['timezone'])),
+                        pubdate=pytz.utc.localize(
+                            tweet['created_at']).astimezone(
+                            pytz.timezone(param['feed']['timezone'])),
                         description=tweet['htmltext'])
 
         xml = f.writeString('UTF-8')

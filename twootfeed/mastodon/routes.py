@@ -44,10 +44,9 @@ def format_toot(toot):
 
     toot['text'] = BeautifulSoup(toot['content'], "html.parser").text
 
-    utc = pytz.utc
     pubdate = toot['created_at']
     if not pubdate.tzinfo:
-        toot['pubdate'] = utc.localize(pubdate).astimezone(
+        toot['pubdate'] = pytz.utc.localize(pubdate).astimezone(
             pytz.timezone(param['feed']['timezone']))
     else:
         toot['pubdate'] = pubdate
@@ -95,7 +94,8 @@ def toot_favorites_feed():
 
         feed_title = param['mastodon']['title'] + ' Favourites '
         feed_link = param['mastodon']['url'] + '/web/favourites'
-        f = generate_feed(feed_title, feed_link, param)
+        feed_desc = param['feed']['author_name'] + ' favourites toots'
+        f = generate_feed(feed_title, feed_link, param, feed_desc)
 
         for toot in favorite_toots:
             formatted_toot = format_toot(toot)

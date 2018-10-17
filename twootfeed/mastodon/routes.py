@@ -56,6 +56,24 @@ def format_toot(toot):
     return toot
 
 
+def return_feed(result, feed_title, feed_link, feed_desc=None):
+    f = generate_feed(feed_title, feed_link, param, feed_desc)
+
+    for toot in result:
+        formatted_toot = format_toot(toot)
+        f.add_item(
+            title=(formatted_toot['account']['display_name'] + ' (' +
+                   formatted_toot['account']['username'] + '): ' +
+                   formatted_toot['text']),
+            link=formatted_toot['url'],
+            pubdate=formatted_toot['pubdate'],
+            description=formatted_toot['htmltext'])
+
+    xml = f.writeString('UTF-8')
+
+    return xml
+
+
 @mastodon_bp.route('/toots/<query_feed>', methods=['GET'])
 def tootfeed(query_feed):
     """ generate a rss feed from parsed mastodon search """
@@ -65,19 +83,7 @@ def tootfeed(query_feed):
         feed_title = param['mastodon']['title'] + '"' + query_feed + '"'
         feed_link = (param['mastodon']['url'] + '/web/timelines/tag/' +
                      query_feed)
-        f = generate_feed(feed_title, feed_link, param)
-
-        for toot in hashtag_result:
-            formatted_toot = format_toot(toot)
-            f.add_item(
-                title=(formatted_toot['account']['display_name'] + ' (' +
-                       formatted_toot['account']['username'] + '): ' +
-                       formatted_toot['text']),
-                link=formatted_toot['url'],
-                pubdate=formatted_toot['pubdate'],
-                description=formatted_toot['htmltext'])
-
-        xml = f.writeString('UTF-8')
+        xml = return_feed(hashtag_result, feed_title, feed_link)
     else:
         xml = 'error - Mastodon parameters not defined'
 
@@ -90,23 +96,10 @@ def toot_favorites_feed():
 
     if mastodon_api:
         favorite_toots = mastodon_api.favourites()
-
         feed_title = param['mastodon']['title'] + ' Favourites '
         feed_link = param['mastodon']['url'] + '/web/favourites'
         feed_desc = param['feed']['author_name'] + ' favourites toots'
-        f = generate_feed(feed_title, feed_link, param, feed_desc)
-
-        for toot in favorite_toots:
-            formatted_toot = format_toot(toot)
-            f.add_item(
-                title=(formatted_toot['account']['display_name'] + ' (' +
-                       formatted_toot['account']['username'] + '): ' +
-                       formatted_toot['text']),
-                link=formatted_toot['url'],
-                pubdate=formatted_toot['pubdate'],
-                description=formatted_toot['htmltext'])
-
-        xml = f.writeString('UTF-8')
+        xml = return_feed(favorite_toots, feed_title, feed_link, feed_desc)
     else:
         xml = 'error - Mastodon parameters not defined'
 

@@ -1,11 +1,12 @@
 import re
 
-import feedgenerator
 import pytz
 import tweepy
 from flask import Blueprint
 
 from twootfeed import param, twitter_api
+from twootfeed.utils.feed_generation import generate_feed
+
 
 twitter_bp = Blueprint('twitter', __name__)
 
@@ -103,7 +104,10 @@ def tweetfeed(query_feed):
     """ generate a rss feed from parsed twitter search """
 
     if twitter_api:
-        buffered = []
+        feed_title = param['twitter']['title'] + '"' + query_feed + '"'
+        feed_link = param['twitter']['link'] + query_feed
+        f = generate_feed(feed_title, feed_link, param)
+        utc = pytz.utc
 
         for i in tweepy.Cursor(twitter_api.search,
                                q=query_feed,
@@ -121,27 +125,15 @@ def tweetfeed(query_feed):
 
                 if not retweeted_status:  # only the original tweets
                     tweet = format_tweet(i)
-                    buffered.append(tweet.copy())
-
-        utc = pytz.utc
-        f = feedgenerator.Rss201rev2Feed(
-            title=param['twitter']['title'] + '"' + query_feed + '"',
-            link=param['twitter']['link'] + query_feed,
-            description=param['twitter']['description'],
-            language=param['feed']['language'],
-            author_name=param['feed']['author_name'],
-            feed_url=param['feed']['feed_url'])
-
-        for tweet in buffered:
-            f.add_item(
-                title=tweet['screen_name']
-                + ' ('
-                + tweet['user_name'] + '): '
-                + tweet['text'],
-                link=tweet['tweet_url'],
-                pubdate=utc.localize(tweet['created_at']).astimezone(
-                    pytz.timezone(param['feed']['timezone'])),
-                description=tweet['htmltext'])
+                    f.add_item(
+                        title=tweet['screen_name']
+                        + ' ('
+                        + tweet['user_name'] + '): '
+                        + tweet['text'],
+                        link=tweet['tweet_url'],
+                        pubdate=utc.localize(tweet['created_at']).astimezone(
+                                pytz.timezone(param['feed']['timezone'])),
+                        description=tweet['htmltext'])
 
         xml = f.writeString('UTF-8')
     else:

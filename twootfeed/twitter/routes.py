@@ -7,7 +7,6 @@ from flask import Blueprint
 from twootfeed import param, twitter_api
 from twootfeed.utils.feed_generation import generate_feed
 
-
 twitter_bp = Blueprint('twitter', __name__)
 
 
@@ -15,8 +14,9 @@ def format_tweet(i):
     tweet = {'text': i.full_text, 'screen_name': i.user.screen_name,
              'profile_image_url': i.user.profile_image_url_https,
              'user_name': i.user.name, 'user_url': i.user.url,
-             'id_str': i.id_str, 'created_at': i.created_at, 'source': i.source,
-             'retweets': i.retweet_count, 'favorites': i.favorite_count}
+             'id_str': i.id_str, 'created_at': i.created_at,
+             'source': i.source, 'retweets': i.retweet_count,
+             'favorites': i.favorite_count}
     tweet['tweet_url'] = 'https://twitter.com/' + tweet[
         'user_name'] + '/status/' + tweet['id_str']
 
@@ -76,14 +76,11 @@ def format_tweet(i):
                             media.get('url'), '',
                             tweet['htmltext']
                         )
-                        tweet['htmltext'] = tweet['htmltext'] \
-                                            + '<a href="' \
-                                            + media.get('media_url_https') \
-                                            + '" target="_blank"> ' \
-                                              '<img src="' \
-                                            + media.get('media_url_https') \
-                                            + ':thumb' + '"> ' \
-                                            + '</a>'
+                        tweet['htmltext'] = (tweet['htmltext'] + ' <a href="' +
+                                             media.get('media_url_https') +
+                                             '" target="_blank"><img src="' +
+                                             media.get('media_url_https') +
+                                             ':thumb' + '"></a>')
 
     location = i.place
     if location is not None:

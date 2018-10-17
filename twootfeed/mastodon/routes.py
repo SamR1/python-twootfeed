@@ -7,7 +7,6 @@ from flask import Blueprint
 from twootfeed import mastodon_api, param
 from twootfeed.utils.feed_generation import generate_feed
 
-
 mastodon_bp = Blueprint('mastodon', __name__)
 text_length_limit = int(param['feed'].get('text_length_limit', 100))
 

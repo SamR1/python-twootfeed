@@ -1,11 +1,12 @@
 import datetime
 
-import feedgenerator
 import pytz
 from bs4 import BeautifulSoup
 from flask import Blueprint
 
 from twootfeed import mastodon_api, param
+from twootfeed.utils.feed_generation import generate_feed
+
 
 mastodon_bp = Blueprint('mastodon', __name__)
 text_length_limit = int(param['feed'].get('text_length_limit', 100))
@@ -63,14 +64,10 @@ def tootfeed(query_feed):
 
     if mastodon_api:
         hashtag_result = mastodon_api.timeline_hashtag(query_feed)
-
-        f = feedgenerator.Rss201rev2Feed(
-            title=param['mastodon']['title'] + '"' + query_feed + '"',
-            link=param['mastodon']['url'] + '/web/timelines/tag/' + query_feed,
-            description=param['mastodon']['description'],
-            language=param['feed']['language'],
-            author_name=param['feed']['author_name'],
-            feed_url=param['feed']['feed_url'])
+        feed_title = param['mastodon']['title'] + '"' + query_feed + '"'
+        feed_link = (param['mastodon']['url'] + '/web/timelines/tag/' +
+                     query_feed)
+        f = generate_feed(feed_title, feed_link, param)
 
         for toot in hashtag_result:
             formatted_toot = format_toot(toot)
@@ -94,16 +91,11 @@ def toot_favorites_feed():
     """ generate an rss feed authenticated user's favorites """
 
     if mastodon_api:
-        buffered = []
         favorite_toots = mastodon_api.favourites()
 
-        f = feedgenerator.Rss201rev2Feed(
-            title=param['mastodon']['title'] + ' Favourites ',
-            link=param['mastodon']['url'] + '/web/favourites',
-            description=param['mastodon']['description'],
-            language=param['feed']['language'],
-            author_name=param['feed']['author_name'],
-            feed_url=param['feed']['feed_url'])
+        feed_title = param['mastodon']['title'] + ' Favourites '
+        feed_link = param['mastodon']['url'] + '/web/favourites'
+        f = generate_feed(feed_title, feed_link, param)
 
         for toot in favorite_toots:
             formatted_toot = format_toot(toot)

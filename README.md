@@ -20,11 +20,11 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - Python 3 (tested with 3.6)
 - [Flask](http://flask.pocoo.org/)
 - [Feedgenerator](https://pypi.python.org/pypi/feedgenerator)
-- [Tweepy](https://github.com/tweepy/tweepy)
+- [Tweepy](https://github.com/tweepy/tweepy) (only tested with the [Twitter Standard API](https://developer.twitter.com/en/docs/tweets/search/overview/standard.html))
+- [Mastodon.py](https://github.com/halcy/Mastodon.py)
 - [pytz](https://pypi.python.org/pypi/pytz/)
 - [PyYAML](https://github.com/yaml/pyyaml)
 - [BeautifulSoup](https://pypi.python.org/pypi/beautifulsoup4)
-- [Mastodon.py](https://github.com/halcy/Mastodon.py)
 - [gunicorn](https://gunicorn.org/)
 - API keys Twitter and/or Mastodon 
   

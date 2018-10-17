@@ -19,5 +19,8 @@ lint:
 serve:
 	$(FLASK) run --with-threads -h $(HOST) -p $(PORT)
 
+run:
+	FLASK_ENV=production && $(GUNICORN) -b 127.0.0.1:5000 "twootfeed:create_app()" --error-logfile $(GUNICORN_LOG)
+
 test:
 	$(PYTEST) twootfeed --cov-config .coveragerc --cov=twootfeed --cov-report term-missing $(PYTEST_ARGS)

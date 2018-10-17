@@ -37,7 +37,7 @@ def create_app():
     app.register_blueprint(twitter_bp)
 
     @app.route('/')
-    def index():
+    def index_page():
         message = 'The RSS feeds are available on these urls : \r\n' \
                   'for Twitter : http://localhost:5000/_keywords_ or ' \
                   'http://localhost:5000/tweets/_keywords_ ,\r\n' \

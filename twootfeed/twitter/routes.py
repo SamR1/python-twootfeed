@@ -18,7 +18,7 @@ def format_tweet(i):
              'source': i.source, 'retweets': i.retweet_count,
              'favorites': i.favorite_count}
     tweet['tweet_url'] = 'https://twitter.com/' + tweet[
-        'user_name'] + '/status/' + tweet['id_str']
+        'screen_name'] + '/status/' + tweet['id_str']
 
     tweet['htmltext'] = '<blockquote><div><img src="' + tweet[
         'profile_image_url'] + \

@@ -13,17 +13,15 @@ twitter_bp = Blueprint('twitter', __name__)
 def format_tweet(tweet):
     rss_tweet = {'text': tweet.full_text, 'user_name': tweet.user.name,
                  'screen_name': tweet.user.screen_name,
-                 'created_at': tweet.created_at}
-
-    rss_tweet['tweet_url'] = 'https://twitter.com/{}/status/{}'.format(
-        tweet.user.screen_name, tweet.id_str
-    )
-
-    rss_tweet['htmltext'] = ('<blockquote><div><img src="{}" alt="{}'.format(
-        tweet.user.profile_image_url_https, tweet.user.screen_name
-    ) + 'profile image"/> <strong>{}: </strong>{}<br><i>Source: {}'.format(
-        tweet.user.name, tweet.full_text, tweet.source
-    ) + '</i>')
+                 'created_at': tweet.created_at,
+                 'tweet_url': 'https://twitter.com/{}/status/{}'.format(
+                     tweet.user.screen_name, tweet.id_str
+                 ),
+                 'htmltext': ('<blockquote><div><img src="{}" alt="{}'.format(
+                     tweet.user.profile_image_url_https, tweet.user.screen_name
+                 ) + 'profile image"/> <strong>{}: </strong>{}<br><i>'.format(
+                     tweet.user.name, tweet.full_text
+                 ) + 'Source: {}</i>'.format(tweet.source))}
 
     user_mentionslist = tweet.entities.get('user_mentions')
     for user in user_mentionslist:
@@ -116,9 +114,9 @@ def tweetfeed(query_feed):
                 if not retweeted_status:  # only the original tweets
                     formatted_tweet = format_tweet(tweet)
                     f.add_item(
-                        title=formatted_tweet['screen_name']
+                        title=formatted_tweet['user_name']
                         + ' ('
-                        + formatted_tweet['user_name'] + '): '
+                        + formatted_tweet['screen_name'] + '): '
                         + formatted_tweet['text'],
                         link=formatted_tweet['tweet_url'],
                         pubdate=pytz.utc.localize(

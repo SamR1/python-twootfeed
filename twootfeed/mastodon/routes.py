@@ -83,7 +83,8 @@ def tootfeed(query_feed):
         feed_title = param['mastodon']['title'] + '"' + query_feed + '"'
         feed_link = (param['mastodon']['url'] + '/web/timelines/tag/' +
                      query_feed)
-        xml = return_feed(hashtag_result, feed_title, feed_link)
+        feed_desc = param['mastodon']['description']
+        xml = return_feed(hashtag_result, feed_title, feed_link, feed_desc)
     else:
         xml = 'error - Mastodon parameters not defined'
 

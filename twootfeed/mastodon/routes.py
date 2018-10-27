@@ -12,30 +12,27 @@ text_length_limit = int(param['feed'].get('text_length_limit', 100))
 
 
 def format_toot(toot):
-    toot['htmltext'] = '<blockquote><div><img src="' + toot['account'][
-        'avatar_static'] + \
-        '" alt="' + toot['account']['display_name'] + \
-        '" width= 100px"/>   <strong>' + toot['account']['username'] + \
-        ': </strong>' + toot['content']
+    toot['htmltext'] = ('<blockquote><div><img src="{}" alt="{}"'.format(
+        toot['account']['avatar_static'], toot['account']['display_name']
+    ) + ' width= 100px"/> <strong>{}: </strong>{}'.format(
+        toot['account']['display_name'], toot['content']
+    ))
 
     source = toot.get('application')
     if source:
-        toot['htmltext'] += '<i>Source: ' + source.get('name') + '</i>'
+        toot['htmltext'] += '<i>Source: {}</i>'.format(source.get('name'))
 
     medialist = toot.get('media_attachments')
     if len(medialist) > 0:
         toot['htmltext'] += '<br>'
     for media in medialist:
         if media.type == 'image':
-            toot['htmltext'] += '<a href="' + \
-                                media.get('url') + \
-                                '" target="_blank"><img src="' + \
-                                media.get('preview_url') + \
-                                '"></a>'
+            toot['htmltext'] += ('<a href="{}" target="_blank">'.format(
+                media.get('url')) + '<img src="{}"></a>'.format(
+                media.get('preview_url')))
 
-    toot['htmltext'] += '<br>' + \
-        '♻ : ' + str(toot['reblogs_count']) + ', ' + \
-        '✰ : ' + str(toot['favourites_count']) + '</div></blockquote>'
+    toot['htmltext'] += '<br>♻ : {}, ✰ : {}</div></blockquote>'.format(
+        toot['reblogs_count'], toot['favourites_count'])
 
     if isinstance(toot['created_at'], str):
         toot['created_at'] = datetime.datetime.strptime(

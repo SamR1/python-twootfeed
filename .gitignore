@@ -7,9 +7,11 @@
 __pycache__
 .pytest_cache
 /.coverage
+/.eggs/
 
 ## App
 config.yml
 tootrss_clientcred.txt
 tootrss_usercred.txt
 *.log
+/twootfeed.egg-info/

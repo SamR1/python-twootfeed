@@ -5,6 +5,10 @@ python:
 install:
   - pip install coveralls
 
+before_script:
+  - export APP_CONFIG=twootfeed/config.yml
+  - cp twootfeed/config.example.yml twootfeed/config.yml
+
 script:
   - python setup.py test
 

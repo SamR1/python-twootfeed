@@ -1,6 +1,11 @@
 # python-twootfeed
 **Python script to generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites, using Flask.**  
   
+[![Python Version](https://img.shields.io/badge/python-3.6-brightgreen.svg)](https://python.org) 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed)
+[![Coverage Status](https://coveralls.io/repos/github/SamR1/python-twootfeed/badge.svg?branch=master)](https://coveralls.io/github/SamR1/python-twootfeed?branch=master)
+[![Build Status](https://travis-ci.org/SamR1/python-twootfeed.svg?branch=master)](https://travis-ci.org/SamR1/python-twootfeed)
+ 
 The RSS feed displays only the original tweets (not the retweets) and :
 - links to :  
   - the original tweet on Twitter or toot on Mastodon  
@@ -13,9 +18,6 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - numbers of retweets (or boosts for Mastodon) and favorites  
 (see examples below).  
 
-[![Python Version](https://img.shields.io/badge/python-3.6-brightgreen.svg)](https://python.org) 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SamR1/python-twootfeed&amp;utm_campaign=Badge_Grade)
-  
 ## **Requirements :**
 - Python 3 (tested with 3.6)
 - [Flask](http://flask.pocoo.org/)
@@ -31,9 +33,16 @@ The RSS feed displays only the original tweets (not the retweets) and :
   
 ## **Steps :**
 - Clone this repo :
-```bash
-$ git clone https://github.com/SamR1/python-twootfeed.git
-```
+  - dev environment
+  ```bash
+  $ git clone https://github.com/SamR1/python-twootfeed.git
+  ```
+  - production environment
+  ```bash
+  $ wget https://github.com/SamR1/python-twootfeed/archive/v0.5.1.tar.gz
+  $ tar -xzf v0.5.1.tar.gz
+  $ mv python-twootfeed-0.5.1 python-twootfeed
+  ```
 
 - Install Python virtualenv and packages
 ```bash

@@ -1,8 +1,7 @@
 from getpass import getpass
 
-from mastodon import Mastodon
-
 from config import get_config
+from mastodon import Mastodon
 
 if __name__ == '__main__':
     print('This script helps you create a new mastodon client and log in.')

@@ -1,6 +1,6 @@
 import pytest
 
-from twootfeed import create_app
+from .. import create_app
 
 
 @pytest.fixture

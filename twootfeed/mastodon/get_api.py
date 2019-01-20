@@ -6,12 +6,13 @@ from mastodon import Mastodon
 def get_mastodon_api(param, app_log):
     mastodon_api = None
 
-    client_file = 'twootfeed/' + param['mastodon']['client_id_file']
-    access_token_file = ('twootfeed/' +
-                         param['mastodon']['access_token_file'])
+    try:
+        mastodon_param = param['mastodon']
+        client_file = 'twootfeed/' + mastodon_param['client_id_file']
+        access_token_file = 'twootfeed/' + mastodon_param['access_token_file']
 
-    if os.path.exists(client_file) and os.path.exists(access_token_file):
-        try:
+        if os.path.isfile(client_file) and os.path.isfile(access_token_file):
+
             mastodon_url = param['mastodon'].get('url',
                                                  'https://mastodon.social')
             mastodon_api = Mastodon(
@@ -19,9 +20,10 @@ def get_mastodon_api(param, app_log):
                 access_token=access_token_file,
                 api_base_url=mastodon_url
             )
-        except Exception as e:
-            app_log.error('Mastodon API: ' + str(e))
-    else:
-        app_log.warning('Mastodon API: no client_id_file or '
-                        'access_token_file. ')
+        else:
+            app_log.warning('Mastodon API: no client_id_file or '
+                            'access_token_file.')
+    except Exception as e:
+        app_log.error(f'Mastodon API: invalid config file ({e})')
+
     return mastodon_api

@@ -7,8 +7,9 @@
 * [Issue 17](https://github.com/SamR1/python-twootfeed/issues/17) - [Twitter] the name used in url is the display name and not the username
 
 #### Misc
-* refactor
-* continuous integration and tests coverage
+* Python 3.7 support
+* Refactor
+* Continuous integration and tests coverage
 
 In this release 1 issue was closed.
 
@@ -32,7 +33,7 @@ In this release 1 issue was closed.
 * [Issue 2](https://github.com/SamR1/python-twootfeed/issues/2) - handle the tweeperror "Rate limit exceeded"
 
 #### Misc
-* major refactor
+* Major refactor
 
 In this release 4 issues were closed.
 
@@ -55,7 +56,7 @@ Thanks to @georgedorn for adding:
 ## Version 0.2.1 (2017-05-03)
 
 #### Misc
-* minor fixes
+* Minor fixes
 
 
 ## Version 0.2.0 (2017-04-18)

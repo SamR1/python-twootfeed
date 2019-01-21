@@ -87,45 +87,52 @@ def format_tweet(tweet):
     return rss_tweet
 
 
+def generate_twitter_feed(api, query_feed, twitter_param):
+    feed_title = twitter_param['twitter']['title'] + '"' + query_feed + '"'
+    feed_link = twitter_param['twitter']['link'] + query_feed
+    f = generate_feed(feed_title, feed_link, twitter_param)
+
+    result = tweepy.Cursor(api,
+                           q=query_feed,
+                           tweet_mode='extended')
+
+    for tweet in result.items():
+        try:
+            tweet.full_text
+        except Exception:
+            break
+        else:
+            try:
+                retweeted_status = tweet.retweeted_status
+
+            except Exception:
+                retweeted_status = False
+
+            if not retweeted_status:  # only the original tweets
+                formatted_tweet = format_tweet(tweet)
+                f.add_item(
+                    title=formatted_tweet['user_name']
+                    + ' ('
+                    + formatted_tweet['screen_name'] + '): '
+                    + formatted_tweet['text'],
+                    link=formatted_tweet['tweet_url'],
+                    pubdate=pytz.utc.localize(
+                        formatted_tweet['created_at']).astimezone(
+                        pytz.timezone(twitter_param['feed']['timezone'])),
+                    description=formatted_tweet['htmltext'])
+    return f.writeString('UTF-8')
+
+
+def generate_xml(api, query_feed, param):
+    if api:
+        xml = generate_twitter_feed(api.search, query_feed, param)
+    else:
+        xml = 'error - Twitter parameters not defined'
+    return xml
+
+
 @twitter_bp.route('/<query_feed>', methods=['GET'])
 @twitter_bp.route('/tweets/<query_feed>', methods=['GET'])
 def tweetfeed(query_feed):
     """ generate a rss feed from parsed twitter search """
-
-    if twitter_api:
-        feed_title = param['twitter']['title'] + '"' + query_feed + '"'
-        feed_link = param['twitter']['link'] + query_feed
-        f = generate_feed(feed_title, feed_link, param)
-
-        for tweet in tweepy.Cursor(twitter_api.search,
-                                   q=query_feed,
-                                   tweet_mode='extended').items():
-            try:
-                tweet.full_text
-            except Exception:
-                break
-            else:
-                try:
-                    retweeted_status = tweet.retweeted_status
-
-                except Exception:
-                    retweeted_status = False
-
-                if not retweeted_status:  # only the original tweets
-                    formatted_tweet = format_tweet(tweet)
-                    f.add_item(
-                        title=formatted_tweet['user_name']
-                        + ' ('
-                        + formatted_tweet['screen_name'] + '): '
-                        + formatted_tweet['text'],
-                        link=formatted_tweet['tweet_url'],
-                        pubdate=pytz.utc.localize(
-                            formatted_tweet['created_at']).astimezone(
-                            pytz.timezone(param['feed']['timezone'])),
-                        description=formatted_tweet['htmltext'])
-
-        xml = f.writeString('UTF-8')
-    else:
-        xml = 'error - Twitter parameters not defined'
-
-    return xml
+    return generate_xml(twitter_api, query_feed, param)

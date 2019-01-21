@@ -1,7 +1,7 @@
 from .. import app_log
 from ..mastodon.get_api import get_mastodon_api
 from ..twitter.get_api import get_twitter_api
-from .data import invalid_param
+from .data import invalid_param, invalid_param_api
 
 
 def test_mastodon_invalid_param(caplog):
@@ -23,8 +23,7 @@ def test_twitter_invalid_param(caplog):
 
 
 def test_mastodon_incomplete_param(caplog):
-    invalid_param['mastodon'] = None
-    mastodon_api = get_mastodon_api(invalid_param, app_log)
+    mastodon_api = get_mastodon_api(invalid_param_api, app_log)
     assert mastodon_api is None
     assert len(caplog.records) == 1
     assert caplog.records[0].levelname == 'ERROR'
@@ -34,8 +33,7 @@ def test_mastodon_incomplete_param(caplog):
 
 
 def test_twitter_incomplete_param(caplog):
-    invalid_param['twitter'] = None
-    twitter_api = get_twitter_api(invalid_param, app_log)
+    twitter_api = get_twitter_api(invalid_param_api, app_log)
     assert twitter_api is None
     assert len(caplog.records) == 1
     assert caplog.records[0].levelname == 'ERROR'

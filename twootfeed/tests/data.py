@@ -28,9 +28,66 @@ invalid_param = {
         }
 }
 
+invalid_param_api = {
+    'twitter': None,
+    'mastodon': None,
+    'feed':
+        {
+            'language': 'fr',
+            'author_name': '',
+            'feed_url': 'http://localhost:5000/',
+            'timezone': 'Europe/Paris',
+            'text_length_limit': 100
+        }
+}
+
+retweet = {
+    'created_at': 'Thu Apr 06 15:24:15 +0000 2017',
+    'id': 850006245121695744,
+    'id_str': '850006245121695744',
+    'full_text': 'We are sharing our vision for the future of the Twitter API',
+    'user': {
+        'id': 2244994945,
+        'name': 'Twitter Dev',
+        'screen_name': 'TwitterDev',
+        'location': 'Internet',
+        'url': 'https://dev.twitter.com',
+        'description': 'Your official source for Twitter Platform news'
+    },
+    'place': {},
+    'entities': {
+        'hashtags': [],
+        'urls': [],
+        'user_mentions': []
+    },
+    'retweeted_status': True,  # Status()
+}
+
+tweet_no_full_text = {
+    'created_at': 'Thu Apr 06 15:24:15 +0000 2017',
+    'id': 850006245121695744,
+    'id_str': '850006245121695744',
+    'text': 'We are sharing our vision for the future of the Twitter API',
+    'user': {
+        'id': 2244994945,
+        'name': 'Twitter Dev',
+        'screen_name': 'TwitterDev',
+        'location': 'Internet',
+        'url': 'https://dev.twitter.com',
+        'description': 'Your official source for Twitter Platform news'
+    },
+    'place': {},
+    'entities': {
+        'hashtags': [],
+        'urls': [],
+        'user_mentions': []
+    },
+}
+
 # minimal structure
 tweet_1 = {
     'created_at': 'Thu Apr 06 15:24:15 +0000 2017',
+    'id': 850006245121695744,
     'id_str': '850006245121695744',
     'full_text': 'We are sharing our vision for the future of the Twitter API',
     'user': {
@@ -61,6 +118,31 @@ formatted_tweet_1 = {
                 '<i>Source: None</i><br><i>Location: None</i><br>'
                 ' ♻ : None, ♥ : None</div></blockquote>'
 }
+tweet_1_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Recherche Twitter : "test"</title>'
+    '<link>https://twitter.com/search?q=test</link>'
+    '<description>Résultat d\'une recherche Twitter retournée dans un flux RSS'
+    ' via Tweepy.</description>'
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate>'
+    '<item>'
+    '<title>Twitter Dev (TwitterDev): We are sharing our vision for the '
+    'future of the Twitter API</title>'
+    '<link>https://twitter.com/TwitterDev/status/850006245121695744</link>'
+    '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="None" '
+    'alt="TwitterDevprofile image"/&gt; &lt;strong&gt;Twitter Dev: '
+    '&lt;/strong&gt;We are sharing our vision for the future of the Twitter '
+    'API&lt;br&gt;&lt;i&gt;Source: None&lt;/i&gt;&lt;br&gt;&lt;i&gt;Location: '
+    'None&lt;/i&gt;&lt;br&gt; ♻ : None, ♥ : None&lt;/div&gt;&lt;/blockquote&gt;'  # noqa
+    '</description>'
+    '<pubDate>Thu, 06 Apr 2017 17:24:15 +0200</pubDate>'
+    '</item>'
+    '</channel>'
+    '</rss>'
+)
 
 # full tweet
 tweet_2 = {
@@ -284,3 +366,14 @@ formatted_tweet_2 = {
                 '</div>'
                 '</blockquote>'
 }
+
+empty_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Recherche Twitter : "test"</title>'
+    '<link>https://twitter.com/search?q=test</link>'
+    '<description>Résultat d\'une recherche Twitter retournée dans un flux RSS via Tweepy.</description>'  # noqa
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate></channel></rss>'
+)

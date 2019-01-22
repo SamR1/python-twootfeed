@@ -7,7 +7,7 @@
 * [Issue 17](https://github.com/SamR1/python-twootfeed/issues/17) - [Twitter] the name used in url is the display name and not the username
 
 #### Misc
-* Python 3.7 support
+* Python 3.7 support (since Tweepy 3.7 support)
 * Refactor
 * Continuous integration and tests coverage
 

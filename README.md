@@ -2,10 +2,12 @@
 **Python script to generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites, using Flask.**  
   
 [![Python Version](https://img.shields.io/badge/python-3.6+-brightgreen.svg)](https://python.org) 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed)
-[![Coverage Status](https://coveralls.io/repos/github/SamR1/python-twootfeed/badge.svg?branch=master)](https://coveralls.io/github/SamR1/python-twootfeed?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed) 
+[![Coverage Status](https://coveralls.io/repos/github/SamR1/python-twootfeed/badge.svg?branch=master)](https://coveralls.io/github/SamR1/python-twootfeed?branch=master) 
 [![Build Status](https://travis-ci.org/SamR1/python-twootfeed.svg?branch=master)](https://travis-ci.org/SamR1/python-twootfeed)
- 
+
+---
+
 The RSS feed displays only the original tweets (not the retweets) and :
 - links to :  
   - the original tweet on Twitter or toot on Mastodon  
@@ -18,8 +20,8 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - numbers of retweets (or boosts for Mastodon) and favorites  
 (see examples below).  
 
-## **Requirements :**
-- Python 3
+## Requirements
+- Python 3.6+
 - [Flask](http://flask.pocoo.org/)
 - [Feedgenerator](https://pypi.python.org/pypi/feedgenerator)
 - [Tweepy](https://github.com/tweepy/tweepy) (only tested with the [Twitter Standard API](https://developer.twitter.com/en/docs/tweets/search/overview/standard.html))
@@ -31,7 +33,10 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - API keys Twitter and/or Mastodon 
   
   
-## **Steps :**
+## Steps
+
+### Installation
+
 - Clone this repo :
   - dev environment
   ```bash
@@ -75,8 +80,13 @@ $ make install
    - for Twitter : http://localhost:5000/_keywords_ or http://localhost:5000/tweets/_keywords_
    - for Mastodon : http://localhost:5000/toots/_keywords_ (search) and http://localhost:5000/toot_favorites (favorites toots for connected user)
 
-## Examples :  
-### Search on Twitter :  
+
+### Upgrade
+`TODO`
+
+
+## Examples 
+### Search on Twitter 
 ![Twitter search](images/twitter.png)  
 
 Results in RSS Feed :  
@@ -85,7 +95,7 @@ Results in RSS Feed :
 Display on FreshRSS, a great free self-hosted aggregator (https://github.com/FreshRSS/FreshRSS):    
 ![FreshRSS](images/FreshRSS.png)  
 
-### Search on Mastodon : 
+### Search on Mastodon
 ![Mastodon search](images/mastodon.png)
 
 Results in RSS Feed :  

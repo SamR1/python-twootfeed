@@ -30,61 +30,9 @@ invalid_param = {
         }
 }
 
-invalid_param_api = {
-    'twitter': None,
-    'mastodon': None,
-    'feed':
-        {
-            'language': 'fr',
-            'author_name': '',
-            'feed_url': 'http://localhost:5000/',
-            'timezone': 'Europe/Paris',
-            'text_length_limit': 100
-        }
-}
-
-retweet = {
-    'created_at': 'Thu Apr 06 15:24:15 +0000 2017',
-    'id': 850006245121695744,
-    'id_str': '850006245121695744',
-    'full_text': 'We are sharing our vision for the future of the Twitter API',
-    'user': {
-        'id': 2244994945,
-        'name': 'Twitter Dev',
-        'screen_name': 'TwitterDev',
-        'location': 'Internet',
-        'url': 'https://dev.twitter.com',
-        'description': 'Your official source for Twitter Platform news'
-    },
-    'place': {},
-    'entities': {
-        'hashtags': [],
-        'urls': [],
-        'user_mentions': []
-    },
-    'retweeted_status': True,  # Status()
-}
-
-tweet_no_full_text = {
-    'created_at': 'Thu Apr 06 15:24:15 +0000 2017',
-    'id': 850006245121695744,
-    'id_str': '850006245121695744',
-    'text': 'We are sharing our vision for the future of the Twitter API',
-    'user': {
-        'id': 2244994945,
-        'name': 'Twitter Dev',
-        'screen_name': 'TwitterDev',
-        'location': 'Internet',
-        'url': 'https://dev.twitter.com',
-        'description': 'Your official source for Twitter Platform news'
-    },
-    'place': {},
-    'entities': {
-        'hashtags': [],
-        'urls': [],
-        'user_mentions': []
-    },
-}
+invalid_param_api = invalid_param.copy()
+invalid_param_api['twitter'] = None
+invalid_param_api['mastodon'] = None
 
 # minimal structure
 tweet_1 = {
@@ -98,27 +46,39 @@ tweet_1 = {
         'screen_name': 'TwitterDev',
         'location': 'Internet',
         'url': 'https://dev.twitter.com',
-        'description': 'Your official source for Twitter Platform news'
+        'profile_image_url_https': '',
     },
     'place': {},
+    'source': '',
     'entities': {
         'hashtags': [],
         'urls': [],
         'user_mentions': []
-    }
+    },
+    'retweet_count': 0,
+    'favorite_count': 0,
 }
+
+retweet = tweet_1.copy()
+retweet['retweeted_status'] = True
+
+tweet_no_full_text = tweet_1.copy()
+tweet_no_full_text['text'] = tweet_no_full_text['full_text']
+tweet_no_full_text.pop('full_text', None)
+
+
 formatted_tweet_1 = {
     'text': 'We are sharing our vision for the future of the Twitter API',
     'user_name': 'Twitter Dev',
     'screen_name': 'TwitterDev',
     'created_at': 'Thu Apr 06 15:24:15 +0000 2017',
     'tweet_url': 'https://twitter.com/TwitterDev/status/850006245121695744',
-    'htmltext': '<blockquote><div><img src="None" '
-                'alt="TwitterDevprofile image"/> '
+    'htmltext': '<blockquote><div><img src="" '
+                'alt="TwitterDev profile image"/> '
                 '<strong>Twitter Dev: </strong>We are sharing our vision for '
                 'the future of the Twitter API<br>'
-                '<i>Source: None</i><br><i>Location: None</i><br>'
-                ' ♻ : None, ♥ : None</div></blockquote>'
+                '<i>Source: </i><br><i>Location: None</i><br>'
+                ' ♻ : 0, ♥ : 0</div></blockquote>'
 }
 tweet_1_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -134,11 +94,11 @@ tweet_1_feed = (
     '<title>Twitter Dev (TwitterDev): We are sharing our vision for the '
     'future of the Twitter API</title>'
     '<link>https://twitter.com/TwitterDev/status/850006245121695744</link>'
-    '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="None" '
-    'alt="TwitterDevprofile image"/&gt; &lt;strong&gt;Twitter Dev: '
+    '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="" '
+    'alt="TwitterDev profile image"/&gt; &lt;strong&gt;Twitter Dev: '
     '&lt;/strong&gt;We are sharing our vision for the future of the Twitter '
-    'API&lt;br&gt;&lt;i&gt;Source: None&lt;/i&gt;&lt;br&gt;&lt;i&gt;Location: '
-    'None&lt;/i&gt;&lt;br&gt; ♻ : None, ♥ : None&lt;/div&gt;&lt;/blockquote&gt;'  # noqa
+    'API&lt;br&gt;&lt;i&gt;Source: &lt;/i&gt;&lt;br&gt;&lt;i&gt;Location: '
+    'None&lt;/i&gt;&lt;br&gt; ♻ : 0, ♥ : 0&lt;/div&gt;&lt;/blockquote&gt;'
     '</description>'
     '<pubDate>Thu, 06 Apr 2017 17:24:15 +0200</pubDate>'
     '</item>'
@@ -353,7 +313,7 @@ formatted_tweet_2 = {
     'tweet_url': 'https://twitter.com/UserA/status/1111111111111111111',
     'htmltext': '<blockquote>'
                 '<div>'
-                '<img src="https://pbs.twimg.com/profile_images/xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg" alt="UserAprofile image"/> '  # noqa
+                '<img src="https://pbs.twimg.com/profile_images/xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg" alt="UserA profile image"/> '  # noqa
                 '<strong>User A: </strong>'
                 'tweet <a href="https://twitter.com/hashtag/test?src=hash" target="_blank">#test</a> '  # noqa
                 'cc '

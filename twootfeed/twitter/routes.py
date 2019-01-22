@@ -19,7 +19,7 @@ def format_tweet(tweet):
                  ),
                  'htmltext': ('<blockquote><div><img src="{}" alt="{}'.format(
                      tweet.user.profile_image_url_https, tweet.user.screen_name
-                 ) + 'profile image"/> <strong>{}: </strong>{}<br><i>'.format(
+                 ) + ' profile image"/> <strong>{}: </strong>{}<br><i>'.format(
                      tweet.user.name, tweet.full_text
                  ) + 'Source: {}</i>'.format(tweet.source))}
 

@@ -61,5 +61,12 @@ class Tweepy:
 
 
 class Api:
-    def __init__(self):
+    def __init__(self, toots=None):
         self.search = True
+        self.toots = toots
+
+    def timeline_hashtag(self, query):
+        return self.toots
+
+    def favourites(self):
+        return self.toots

@@ -1,3 +1,5 @@
+import datetime
+
 invalid_param = {
     'twitter':
         {
@@ -376,4 +378,227 @@ empty_feed = (
     '<description>Résultat d\'une recherche Twitter retournée dans un flux RSS via Tweepy.</description>'  # noqa
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate></channel></rss>'
+)
+
+toot1 = {
+    'id': 111111111111111111,
+    'created_at': datetime.datetime(2018, 10, 25, 14, 16, 42, 11000),
+    'in_reply_to_id': None,
+    'in_reply_to_account_id': None,
+    'sensitive': False,
+    'spoiler_text': '',
+    'visibility': 'public',
+    'language': 'en',
+    'uri': 'https://mastodon.social/users/UserD/statuses/111111111111111111',
+    'content': '<p>test</p>',
+    'url': 'https://mastodon.social/@UserD/111111111111111111',
+    'replies_count': 0,
+    'reblogs_count': 0,
+    'favourites_count': 0,
+    'favourited': False,
+    'reblogged': False,
+    'muted': False,
+    'pinned': False,
+    'reblog': None,
+    'application': {},
+    'account': {
+        'id': 00000,
+        'username': 'UserD',
+        'acct': 'UserD',
+        'display_name': 'User',
+        'locked': False,
+        'bot': False,
+        'created_at': datetime.datetime(2017, 4, 4, 9, 20, 43, 157000),
+        'note': '',
+        'url': 'https://mastodon.social/@UserD',
+        'avatar': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+        'avatar_static': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+        'header': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+        'header_static': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+        'followers_count': 10,
+        'following_count': 20,
+        'statuses_count': 300,
+        'emojis': [],
+        'fields': []
+    },
+    'media_attachments': [],
+    'mentions': [],
+    'tags': [],
+    'emojis': [],
+    'card': None
+}
+
+formatted_toot1 = {
+    'display_name': 'User',
+    'screen_name': 'UserD',
+    'created_at': datetime.datetime(2018, 10, 25, 14, 16, 42, 11000),
+    'url': 'https://mastodon.social/@UserD/111111111111111111',
+    'htmltext': '<blockquote>'
+                '<div>'
+                '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
+                '<strong>User: </strong>'
+                '<p>test</p>'  # noqa
+                '<br>♻ : 0, ✰ : 0</div></blockquote>',
+    'text': 'test'
+}
+toot_1_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Recherche Mastodon : "test"</title>'
+    '<link>https://mastodon.social/web/timelines/tag/test</link><'
+    'description>Résultat d\'une recherche Mastodon retournée dans un flux '
+    'RSS.</description>'
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate>'
+    '<item>'
+    '<title>User (UserD): test</title>'
+    '<link>https://mastodon.social/@UserD/111111111111111111</link>'
+    '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
+    'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
+    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User: &lt;/strong&gt'
+    ';&lt;p&gt;test&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/'
+    'blockquote&gt;</description>'
+    '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
+    '</item>'
+    '</channel>'
+    '</rss>'
+)
+toot_1_favorites_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Recherche Mastodon :  Favourites</title>'
+    '<link>https://mastodon.social/web/favourites</link><'
+    'description> favourites toots.</description>'
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate>'
+    '<item>'
+    '<title>User (UserD): test</title>'
+    '<link>https://mastodon.social/@UserD/111111111111111111</link>'
+    '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
+    'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
+    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User: &lt;/strong&gt'
+    ';&lt;p&gt;test&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/'
+    'blockquote&gt;</description>'
+    '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
+    '</item>'
+    '</channel>'
+    '</rss>'
+)
+
+toot2 = {
+    'id': 111111111111111111,
+    'created_at': datetime.datetime(2018, 10, 25, 14, 16, 42, 11000),
+    'in_reply_to_id': None,
+    'in_reply_to_account_id': None,
+    'sensitive': False,
+    'spoiler_text': '',
+    'visibility': 'public',
+    'language': 'en',
+    'uri': 'https://mastodon.social/users/UserD/statuses/111111111111111111',
+    'content': '<p>This is a <a href="https://mastodon.social/tags/testtag" class="mention hashtag" rel="tag">#<span>TestTag</span></a></p>',  # noqa
+    'url': 'https://mastodon.social/@UserD/111111111111111111',
+    'replies_count': 0,
+    'reblogs_count': 0,
+    'favourites_count': 0,
+    'favourited': False,
+    'reblogged': False,
+    'muted': False,
+    'pinned': False,
+    'reblog': None,
+    'application': {
+        'name': 'Twidere for Android',
+        'website': 'https://github.com/TwidereProject/'
+    },
+    'account': {
+        'id': 00000,
+        'username': 'UserD',
+        'acct': 'UserD',
+        'display_name': 'User',
+        'locked': False,
+        'bot': False,
+        'created_at': datetime.datetime(2017, 4, 4, 9, 20, 43, 157000),
+        'note': '',
+        'url': 'https://mastodon.social/@UserD',
+        'avatar': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+        'avatar_static': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+        'header': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+        'header_static': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+        'followers_count': 10,
+        'following_count': 20,
+        'statuses_count': 300,
+        'emojis': [],
+        'fields':
+            [
+                {
+                    'name': 'GitHub',
+                    'value': '<a href="https://github.com/UserD" rel="nofollow noopener" target="_blank"><span class="invisible">https://</span><span class="">github.com/UserD</span><span class="invisible"></span></a>',  # noqa
+                    'verified_at': None
+                }
+            ]
+    },
+    'media_attachments':
+        [
+            {
+                'id': 7398805,
+                'type': 'image',
+                'url': 'https://files.mastodon.social/media_attachments/files/999/999/999/original/a2a2a2a2a2a2a2a2.jpg',  # noqa
+                'preview_url': 'https://files.mastodon.social/media_attachments/files/999/999/999/small/a2a2a2a2a2a2a2a2.jpg',  # noqa
+                'remote_url': None,
+                'text_url': 'https://mastodon.social/media/2a2a2a2a2a2a2_a2a2a',  # noqa
+                'meta': {
+                    'original': {
+                        'width': 1109,
+                        'height': 1478,
+                        'size': '1109x1478',
+                        'aspect': 0.7503382949932341
+                    },
+                    'small': {
+                        'width': 346,
+                        'height': 461,
+                        'size': '346x461',
+                        'aspect': 0.7505422993492408
+                    }
+                },
+                'description': None
+            }
+        ],
+    'mentions': [],
+    'tags': [
+        {'name': 'testtag',
+         'url': 'https://mastodon.social/tags/testtag'}
+    ],
+    'emojis': [],
+    'card': None
+}
+
+formatted_toot2 = {
+    'display_name': 'User',
+    'screen_name': 'UserD',
+    'created_at': datetime.datetime(2018, 10, 25, 14, 16, 42, 11000),
+    'url': 'https://mastodon.social/@UserD/111111111111111111',
+    'htmltext': '<blockquote>'
+                '<div>'
+                '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
+                '<strong>User: </strong>'
+                '<p>This is a <a href="https://mastodon.social/tags/testtag" class="mention hashtag" rel="tag">#<span>TestTag</span></a></p>'  # noqa
+                '<i>Source: Twidere for Android</i><br>'
+                '<a href="https://files.mastodon.social/media_attachments/files/999/999/999/original/a2a2a2a2a2a2a2a2.jpg" target="_blank"><img src="https://files.mastodon.social/media_attachments/files/999/999/999/small/a2a2a2a2a2a2a2a2.jpg"></a>'  # noqa
+                '<br>♻ : 0, ✰ : 0</div></blockquote>',
+    'text': 'This is a ... '
+}
+
+empty_toot_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Recherche Mastodon : "test"</title>'
+    '<link>https://mastodon.social/web/timelines/tag/test</link><'
+    'description>Résultat d\'une recherche Mastodon retournée dans un flux '
+    'RSS.</description>'
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate>'
+    '</channel>'
+    '</rss>'
 )

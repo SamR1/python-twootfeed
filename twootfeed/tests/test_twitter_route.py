@@ -14,7 +14,7 @@ from .data import (
 from .utils import Api as TwitterApi, ToDotNotation
 
 
-def test_format_toot():
+def test_format_tweet():
     assert format_tweet(ToDotNotation(tweet_1)) == formatted_tweet_1
     assert format_tweet(ToDotNotation(tweet_2)) == formatted_tweet_2
 

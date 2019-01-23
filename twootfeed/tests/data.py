@@ -1,6 +1,7 @@
 import datetime
+from copy import deepcopy
 
-invalid_param = {
+init_param = {
     'twitter':
         {
             'consumerKey': '',
@@ -13,8 +14,8 @@ invalid_param = {
     'mastodon':
         {
             'url': 'https://mastodon.social',
-            'client_id_file': 'tootrss_clientcred_invalid.txt',
-            'access_token_file': 'tootrss_clientcred_invalid.txt',
+            'client_id_file': 'tootrss_clientcred.txt',
+            'access_token_file': 'tootrss_usercred.txt',
             'app_name': 'tootrss',
             'title': 'Recherche Mastodon : ',
             'description': 'Résultat d\'une recherche Mastodon retournée dans'
@@ -27,10 +28,20 @@ invalid_param = {
             'feed_url': 'http://localhost:5000/',
             'timezone': 'Europe/Paris',
             'text_length_limit': 100
+        },
+    'app':
+        {
+            'host': '0.0.0.0',
+            'port': '8080'
         }
 }
 
-invalid_param_api = invalid_param.copy()
+invalid_param = deepcopy(init_param)
+invalid_param['mastodon']['client_id_file'] = 'tootrss_clientcred_invalid.txt'
+invalid_param['mastodon']['access_token_file'] = \
+    'tootrss_usercred_invalid.txt'
+
+invalid_param_api = deepcopy(invalid_param)
 invalid_param_api['twitter'] = None
 invalid_param_api['mastodon'] = None
 

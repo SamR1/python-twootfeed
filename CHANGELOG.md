@@ -1,6 +1,6 @@
 # Change log
 
-## Version 0.x.x  (2019/xx/xx)
+## Version 0.6.x  (2019/xx/xx)
 
 #### Bugs Fixed
 

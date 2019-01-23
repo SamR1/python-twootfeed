@@ -1,7 +1,30 @@
+from os.path import isfile
+
 from .. import app_log
 from ..mastodon.get_api import get_mastodon_api
 from ..twitter.get_api import get_twitter_api
-from .data import invalid_param, invalid_param_api
+from ..utils.config import get_config, get_config_file, init_config
+from .data import init_param, invalid_param, invalid_param_api
+
+
+def test_config_file(monkeypatch, tmpdir):
+    test_dir = str(tmpdir)
+    monkeypatch.setenv('DEFAULT_DIRECTORY', test_dir)
+    monkeypatch.setenv('APP_CONFIG', test_dir + '/config.yml')
+    assert get_config() == init_param
+
+
+def test_config_no_config_file(monkeypatch, tmpdir):
+    test_dir = str(tmpdir)
+    monkeypatch.setenv('DEFAULT_DIRECTORY', test_dir)
+    assert isfile(get_config_file(None))
+
+
+def test_init_config(monkeypatch, tmpdir):
+    test_dir = str(tmpdir)
+    monkeypatch.setenv('DEFAULT_DIRECTORY', test_dir)
+    monkeypatch.setenv('APP_CONFIG', test_dir + '/config.yml')
+    assert init_config()
 
 
 def test_mastodon_invalid_param(caplog):

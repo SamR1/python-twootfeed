@@ -1,9 +1,8 @@
 import pytz
 from bs4 import BeautifulSoup
 from flask import Blueprint
-
-from .. import mastodon_api, param as mastodon_param
-from ..utils.feed_generation import generate_feed
+from twootfeed import mastodon_api, param as mastodon_param
+from twootfeed.utils.feed_generation import generate_feed
 
 mastodon_bp = Blueprint('mastodon', __name__)
 

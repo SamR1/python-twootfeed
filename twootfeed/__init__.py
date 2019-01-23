@@ -4,10 +4,9 @@ import sys
 
 
 from flask import Flask
-
-from .twitter.get_api import get_twitter_api
-from .mastodon.get_api import get_mastodon_api
-from .utils.config import get_config
+from twootfeed.twitter.get_api import get_twitter_api
+from twootfeed.mastodon.get_api import get_mastodon_api
+from twootfeed.utils.config import get_config
 
 log_file = os.getenv('APP_LOG')
 logging.basicConfig(filename=log_file,

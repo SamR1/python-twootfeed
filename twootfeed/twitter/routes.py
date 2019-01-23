@@ -3,9 +3,8 @@ import re
 import pytz
 import tweepy
 from flask import Blueprint
-
-from .. import param, twitter_api
-from ..utils.feed_generation import generate_feed
+from twootfeed import param, twitter_api
+from twootfeed.utils.feed_generation import generate_feed
 
 twitter_bp = Blueprint('twitter', __name__)
 

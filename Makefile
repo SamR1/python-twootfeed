@@ -5,6 +5,10 @@ include Makefile.config
 clean:
 	rm -fr $(VENV)
 	rm -fr *.egg-info
+	rm -fr .eggs
+	rm -rf .pytest_cache
+	rm -fr build
+	rm -rf dist
 
 create-mastodon-cli:
 	$(PYTHON) twootfeed/utils/create_mastodon_client.py

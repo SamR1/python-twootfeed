@@ -1,5 +1,5 @@
 # python-twootfeed
-**Python script to generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites, using Flask.**  
+**a Python script to generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites, using Flask.**  
   
 [![Python Version](https://img.shields.io/badge/python-3.6+-brightgreen.svg)](https://python.org) 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed) 
@@ -20,86 +20,75 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - numbers of retweets (or boosts for Mastodon) and favorites  
 (see examples below).  
 
+
 ## Requirements
+
 - Python 3.6+
-- [Flask](http://flask.pocoo.org/)
-- [Feedgenerator](https://pypi.python.org/pypi/feedgenerator)
-- [Tweepy](https://github.com/tweepy/tweepy) (only tested with the [Twitter Standard API](https://developer.twitter.com/en/docs/tweets/search/overview/standard.html))
-- [Mastodon.py](https://github.com/halcy/Mastodon.py)
-- [pytz](https://pypi.python.org/pypi/pytz/)
-- [PyYAML](https://github.com/yaml/pyyaml)
-- [BeautifulSoup](https://pypi.python.org/pypi/beautifulsoup4)
-- [gunicorn](https://gunicorn.org/)
 - API keys Twitter and/or Mastodon 
+
   
-  
-## Steps
+## Installation and configuration
 
-### Installation
+- Install from pip
 
-- Clone this repo :
-  - dev environment
-  ```bash
-  $ git clone https://github.com/SamR1/python-twootfeed.git
-  ```
-  - production environment
-  ```bash
-  $ wget https://github.com/SamR1/python-twootfeed/archive/v0.5.1.tar.gz
-  $ tar -xzf v0.5.1.tar.gz
-  $ mv python-twootfeed-0.5.1 python-twootfeed
-  ```
-
-- Install Python virtualenv and packages
 ```bash
-$ cd python-twootfeed
-$ make install
+$ pip install twootfeed
 ```
 
-- Fill in fields for the client(s) you will use in **python-twootfeed/config.yml** (see next step for API keys).
+- Initialize the configuration file
+```bash
+$ twootfeed_init
+```
 
-- Get API Keys
-    - for **Twitter** : see https://apps.twitter.com  
-    copy/paste the Twitter API key values in **config.yml** file ('_consumerKey_' and '_consumerSecret_')
-    - for **Mastodon** : see [Python wrapper for the Mastodon API](https://mastodonpy.readthedocs.io/)  
-    use the included script which will register your app and prompt you to log in, creating the credential files for you.
-    ```bash
-    $ make create-mastodon-cli
-    ```
-
-- Start the server
-  - dev environment
+- Fill in fields for the client(s) you will use in **'~/.config/twootfeed/config.yml'** :
+  - for **Twitter** : see https://apps.twitter.com  
+  copy/paste the Twitter API key values in **config.yml** file ('_consumerKey_' and '_consumerSecret_')
+  - for **Mastodon** : see [Python wrapper for the Mastodon API](https://mastodonpy.readthedocs.io/)  
+  use the included script which will register your app and prompt you to log in, creating the credential files for you.
   ```bash
-  $ make serve
-  ```
-  - production environment
-  ```bash
-  $ make run
+  $ twootfeed_create_mastodon_cli
   ```
 
-- The RSS feeds are available on these urls :  
-   - for Twitter : http://localhost:5000/_keywords_ or http://localhost:5000/tweets/_keywords_
-   - for Mastodon : http://localhost:5000/toots/_keywords_ (search) and http://localhost:5000/toot_favorites (favorites toots for connected user)
+- Start the app
+```bash
+$ twootfeed
+```
 
+## Usage 
 
-### Upgrade
-`TODO`
+The RSS feeds are available on these urls:  
+  - for Twitter: http://localhost:8080/_keywords_ or http://localhost:8080/tweets/_keywords_
+  - for Mastodon: 
+    - search: http://localhost:8080/toots/_keywords_ 
+    - connected user favorites: http://localhost:8080/toot_favorites
 
 
 ## Examples 
+
 ### Search on Twitter 
+
 ![Twitter search](images/twitter.png)  
 
-Results in RSS Feed :  
+Results in RSS Feed:  
 ![RSS Feed](images/RSSFeed.png)  
   
-Display on FreshRSS, a great free self-hosted aggregator (https://github.com/FreshRSS/FreshRSS):    
+Display on FreshRSS, a great free self-hosted aggregator (https://github.com/FreshRSS/FreshRSS):   
 ![FreshRSS](images/FreshRSS.png)  
 
 ### Search on Mastodon
+
 ![Mastodon search](images/mastodon.png)
 
-Results in RSS Feed :  
+Results in RSS Feed:  
 ![Mastodon Feed](images/MastodonRSSFeed.png) 
 
-Display on FreshRSS :
+Display on FreshRSS:  
 ![Mastodon FreshRSS](images/MastodonFreshRSS.png)  
+
+
+## Contribute
+see [Quick start for developers](https://github.com/SamR1/python-twootfeed/wiki/Quick-start-for-developers)
+
+
+## Contributors
+- [georgedorn](https://github.com/georgedorn)

@@ -1,6 +1,10 @@
 # Change log
 
-## Version 0.6.x  (2019/xx/xx)
+## Version 0.6.0 (2019/01/23)
+
+#### New Features
+
+* twootfeed is now available on PyPI
 
 #### Bugs Fixed
 

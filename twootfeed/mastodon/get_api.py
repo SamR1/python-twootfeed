@@ -1,6 +1,7 @@
 import os
 
 from mastodon import Mastodon
+from twootfeed.utils.config import default_directory
 
 
 def get_mastodon_api(param, app_log):
@@ -8,8 +9,9 @@ def get_mastodon_api(param, app_log):
 
     try:
         mastodon_param = param['mastodon']
-        client_file = 'twootfeed/' + mastodon_param['client_id_file']
-        access_token_file = 'twootfeed/' + mastodon_param['access_token_file']
+        client_file = default_directory + mastodon_param['client_id_file']
+        access_token_file = (default_directory +
+                             mastodon_param['access_token_file'])
 
         if os.path.isfile(client_file) and os.path.isfile(access_token_file):
 

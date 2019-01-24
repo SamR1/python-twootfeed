@@ -5,8 +5,8 @@ from shutil import copyfile
 import yaml
 
 DEFAULT_DIRECTORY = os.path.expanduser('~/.config/twootfeed/')
-default_directory = (os.getenv('APP_CONFIG_DIR')
-                     if os.getenv('APP_CONFIG_DIR')
+default_directory = (os.getenv('TWOOTFEED_CONFIG_DIR')
+                     if os.getenv('TWOOTFEED_CONFIG_DIR')
                      else DEFAULT_DIRECTORY)
 DEFAULT_CONFIG = default_directory + 'config.yml'
 
@@ -23,7 +23,7 @@ def get_config_file(config_file):
 
 
 def get_config():
-    config_file = get_config_file(os.getenv('APP_CONFIG'))
+    config_file = get_config_file(os.getenv('TWOOTFEED_CONFIG_FILE'))
     with open(config_file, 'r', encoding='utf-8') as stream:
         return yaml.safe_load(stream)
 

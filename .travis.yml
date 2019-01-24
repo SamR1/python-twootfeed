@@ -11,7 +11,7 @@ install:
   - pip install coveralls
 
 before_script:
-  - export APP_CONFIG=twootfeed/config.yml
+  - export TWOOTFEED_CONFIG_FILE=twootfeed/config.yml
   - cp twootfeed/config.example.yml twootfeed/config.yml
 
 script:

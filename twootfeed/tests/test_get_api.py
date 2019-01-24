@@ -9,21 +9,21 @@ from .data import init_param, invalid_param, invalid_param_api
 
 def test_config_file(monkeypatch, tmpdir):
     test_dir = str(tmpdir)
-    monkeypatch.setenv('DEFAULT_DIRECTORY', test_dir)
-    monkeypatch.setenv('APP_CONFIG', test_dir + '/config.yml')
+    monkeypatch.setenv('TWOOTFEED_CONFIG', test_dir)
+    monkeypatch.setenv('TWOOTFEED_CONFIG_FILE', test_dir + '/config.yml')
     assert get_config() == init_param
 
 
 def test_config_no_config_file(monkeypatch, tmpdir):
     test_dir = str(tmpdir)
-    monkeypatch.setenv('DEFAULT_DIRECTORY', test_dir)
+    monkeypatch.setenv('TWOOTFEED_CONFIG', test_dir)
     assert isfile(get_config_file(None))
 
 
 def test_init_config(monkeypatch, tmpdir):
     test_dir = str(tmpdir)
-    monkeypatch.setenv('DEFAULT_DIRECTORY', test_dir)
-    monkeypatch.setenv('APP_CONFIG', test_dir + '/config.yml')
+    monkeypatch.setenv('TWOOTFEED_CONFIG', test_dir)
+    monkeypatch.setenv('TWOOTFEED_CONFIG_FILE', test_dir + '/config.yml')
     assert init_config()
 
 

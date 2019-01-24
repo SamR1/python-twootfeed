@@ -51,10 +51,10 @@ $ twootfeed_init
   
 - The location for configuration and credentials files can be changed with the following environment variables:
 
-| variable         | description                                   | app default value                                                                         |
-|------------------|-----------------------------------------------| ------------------------------------------------------------------------------------------|
-| `APP_CONFIG_DIR` | configuration and credentials files directory | **'~/.config/twootfeed/'**                                                                |
-| `APP_CONFIG`     | config file full path                         | config dir + **'config.yml'** => with default value: **'~/.config/twootfeed/config.yml'** |
+| variable               | description                                   | app default value                                                                         |
+|------------------------|-----------------------------------------------| ------------------------------------------------------------------------------------------|
+| `TWOOTFEED_CONFIG_DIR` | configuration and credentials files directory | **'~/.config/twootfeed/'**                                                                |
+| `TWOOTFEED_CONFIG_FILE`| config file full path                         | config dir + **'config.yml'** => with default value: **'~/.config/twootfeed/config.yml'** |
 
 - Start the app
 ```bash

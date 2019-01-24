@@ -8,7 +8,7 @@ from twootfeed.twitter.get_api import get_twitter_api
 from twootfeed.mastodon.get_api import get_mastodon_api
 from twootfeed.utils.config import get_config
 
-log_file = os.getenv('APP_LOG')
+log_file = os.getenv('TWOOTFEED_LOG')
 logging.basicConfig(filename=log_file,
                     format=('%(asctime)s - %(name)s - %(levelname)s - '
                             '%(message)s'),

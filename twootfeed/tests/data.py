@@ -361,7 +361,9 @@ toot1 = {
     'visibility': 'public',
     'language': 'en',
     'uri': 'https://mastodon.social/users/UserD/statuses/111111111111111111',
-    'content': '<p>test</p>',
+    'content': '<p>What\'s New in <a href="https://linuxjobs.social/tags/'
+               'python" class="mention hashtag" rel="nofollow noopener" '
+               'target="_blank">#<span>python</span></a> today?</p>',
     'url': 'https://mastodon.social/@UserD/111111111111111111',
     'replies_count': 0,
     'reblogs_count': 0,
@@ -408,9 +410,9 @@ formatted_toot1 = {
                 '<div>'
                 '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
                 '<strong>User: </strong>'
-                '<p>test</p>'  # noqa
+                '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
                 '<br>♻ : 0, ✰ : 0</div></blockquote>',
-    'text': 'test'
+    'text': 'What\'s New in #python today?'
 }
 toot_1_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -423,13 +425,15 @@ toot_1_feed = (
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate>'
     '<item>'
-    '<title>User (UserD): test</title>'
+    '<title>User (UserD): What\'s New in #python today?</title>'
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
     '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User: &lt;/strong&gt'
-    ';&lt;p&gt;test&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/'
-    'blockquote&gt;</description>'
+    ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
+    'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
+    '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
+    '&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote&gt;</description>'
     '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
     '</item>'
     '</channel>'
@@ -445,13 +449,15 @@ toot_1_favorites_feed = (
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate>'
     '<item>'
-    '<title>User (UserD): test</title>'
+    '<title>User (UserD): What\'s New in #python today?</title>'
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
     '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User: &lt;/strong&gt'
-    ';&lt;p&gt;test&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/'
-    'blockquote&gt;</description>'
+    ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
+    'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
+    '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
+    '&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote&gt;</description>'
     '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
     '</item>'
     '</channel>'

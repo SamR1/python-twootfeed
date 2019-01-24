@@ -1,3 +1,5 @@
+from html import unescape
+
 import pytz
 from bs4 import BeautifulSoup
 from flask import Blueprint
@@ -38,7 +40,8 @@ def format_toot(toot, text_length_limit):
                              f"✰ : {toot['favourites_count']}"
                              f"</div></blockquote>")
 
-    rss_toot['text'] = BeautifulSoup(toot['content'], "html.parser").text
+    rss_toot['text'] = BeautifulSoup(unescape(toot['content']),
+                                     "html.parser").text
 
     if len(rss_toot['text']) > text_length_limit:
         rss_toot['text'] = rss_toot['text'][:text_length_limit] + '... '

@@ -1,5 +1,18 @@
 # Change log
 
+## Version 0.6.1 (2019/01/xx)
+
+#### New Features
+
+* [Issue 19](https://github.com/SamR1/python-twootfeed/issues/19) - Change environment variables
+
+#### Bugs Fixed
+
+* [Issue 18](https://github.com/SamR1/python-twootfeed/issues/18) - [Mastodon] fix reference characters in items title
+
+In this release 2 issue were closed.
+
+
 ## Version 0.6.0 (2019/01/23)
 
 #### New Features

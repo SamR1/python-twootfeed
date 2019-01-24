@@ -49,12 +49,13 @@ $ twootfeed_init
   $ twootfeed_create_mastodon_cli
   ```
   
-- The location for configuration and credentials files can be changed with the following environment variables:
+- The files location can be changed with the following environment variables:
 
 | variable               | description                                   | app default value                                                                         |
 |------------------------|-----------------------------------------------| ------------------------------------------------------------------------------------------|
 | `TWOOTFEED_CONFIG_DIR` | configuration and credentials files directory | **'~/.config/twootfeed/'**                                                                |
 | `TWOOTFEED_CONFIG_FILE`| config file full path                         | config dir + **'config.yml'** => with default value: **'~/.config/twootfeed/config.yml'** |
+| `TWOOTFEED_LOG`        | application log file                          | _no default value (log printed on the console)_                                           |
 
 - Start the app
 ```bash

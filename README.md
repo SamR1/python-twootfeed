@@ -48,6 +48,13 @@ $ twootfeed_init
   ```bash
   $ twootfeed_create_mastodon_cli
   ```
+  
+- The location for configuration and credentials files can be changed with the following environment variables:
+
+| variable         | description                                   | app default value                                                                         |
+|------------------|-----------------------------------------------| ------------------------------------------------------------------------------------------|
+| `APP_CONFIG_DIR` | configuration and credentials files directory | **'~/.config/twootfeed/'**                                                                |
+| `APP_CONFIG`     | config file full path                         | config dir + **'config.yml'** => with default value: **'~/.config/twootfeed/config.yml'** |
 
 - Start the app
 ```bash
@@ -67,23 +74,23 @@ The RSS feeds are available on these urls:
 
 ### Search on Twitter 
 
-![Twitter search](images/twitter.png)  
+![Twitter search](https://raw.githubusercontent.com/SamR1/python-twootfeed/master/images/twitter.png)  
 
 Results in RSS Feed:  
-![RSS Feed](images/RSSFeed.png)  
+![RSS Feed](https://raw.githubusercontent.com/SamR1/python-twootfeed/master/images/RSSFeed.png)  
   
 Display on FreshRSS, a great free self-hosted aggregator (https://github.com/FreshRSS/FreshRSS):   
-![FreshRSS](images/FreshRSS.png)  
+![FreshRSS](https://raw.githubusercontent.com/SamR1/python-twootfeed/master/images/FreshRSS.png)  
 
 ### Search on Mastodon
 
-![Mastodon search](images/mastodon.png)
+![Mastodon search](https://raw.githubusercontent.com/SamR1/python-twootfeed/master/images/mastodon.png)
 
 Results in RSS Feed:  
-![Mastodon Feed](images/MastodonRSSFeed.png) 
+![Mastodon Feed](https://raw.githubusercontent.com/SamR1/python-twootfeed/master/images/MastodonRSSFeed.png) 
 
 Display on FreshRSS:  
-![Mastodon FreshRSS](images/MastodonFreshRSS.png)  
+![Mastodon FreshRSS](https://raw.githubusercontent.com/SamR1/python-twootfeed/master/images/MastodonFreshRSS.png)  
 
 
 ## Contribute
@@ -91,4 +98,7 @@ see [Quick start for developers](https://github.com/SamR1/python-twootfeed/wiki/
 
 
 ## Contributors
-- [georgedorn](https://github.com/georgedorn)
+Thanks to:
+- [georgedorn](https://github.com/georgedorn) for adding:
+  - rss feed generation with authenticated user's favorites
+  - script to register the app and generate credentials for Mastodon

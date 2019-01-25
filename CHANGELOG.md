@@ -1,6 +1,6 @@
 # Change log
 
-## Version 0.6.1 (2019/01/xx)
+## Version 0.6.1 (2019/01/25)
 
 #### New Features
 
@@ -8,9 +8,10 @@
 
 #### Bugs Fixed
 
+* [Issue 20](https://github.com/SamR1/python-twootfeed/issues/20) - Limit items in feed to avoid error or time-out
 * [Issue 18](https://github.com/SamR1/python-twootfeed/issues/18) - [Mastodon] fix reference characters in items title
 
-In this release 2 issue were closed.
+In this release 3 issues were closed.
 
 
 ## Version 0.6.0 (2019/01/23)

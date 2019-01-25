@@ -1,5 +1,5 @@
 # python-twootfeed
-**a Python script to generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites, using Flask.**  
+**generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites, using Flask.**  
   
 [![Python Version](https://img.shields.io/badge/python-3.6+-brightgreen.svg)](https://python.org) 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed) 
@@ -8,7 +8,7 @@
 
 ---
 
-The RSS feed displays only the original tweets (not the retweets) and :
+The RSS feed displays only the original tweets (not the retweets) and toots, with:
 - links to :  
   - the original tweet on Twitter or toot on Mastodon  
   - hashtags  
@@ -16,7 +16,7 @@ The RSS feed displays only the original tweets (not the retweets) and :
 - URLs 
 - images
 - source
-- location  (only for Twitter)
+- location (only for Twitter)
 - numbers of retweets (or boosts for Mastodon) and favorites  
 (see examples below).  
 
@@ -39,6 +39,7 @@ $ pip install twootfeed
 ```bash
 $ twootfeed_init
 ```
+.
 
 - Fill in fields for the client(s) you will use in **'~/.config/twootfeed/config.yml'** :
   - for **Twitter** : see https://apps.twitter.com  
@@ -48,6 +49,8 @@ $ twootfeed_init
   ```bash
   $ twootfeed_create_mastodon_cli
   ```
+  If needed, update the feed and app parameters.
+
   
 - The files location can be changed with the following environment variables:
 

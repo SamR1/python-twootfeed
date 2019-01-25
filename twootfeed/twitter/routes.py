@@ -91,6 +91,7 @@ def generate_twitter_feed(api, query_feed, twitter_param):
     feed_link = twitter_param['twitter']['link'] + query_feed
     f = generate_feed(feed_title, feed_link, twitter_param)
 
+    # https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html  # noqa
     result = tweepy.Cursor(api,
                            q=query_feed,
                            tweet_mode='extended',  # to get tweet.full_text

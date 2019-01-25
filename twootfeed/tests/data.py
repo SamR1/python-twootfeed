@@ -27,7 +27,8 @@ init_param = {
             'author_name': '',
             'feed_url': 'http://localhost:5000/',
             'timezone': 'Europe/Paris',
-            'text_length_limit': 100
+            'text_length_limit': 100,
+            'max_items': 100
         },
     'app':
         {
@@ -113,6 +114,35 @@ tweet_1_feed = (
     '</description>'
     '<pubDate>Thu, 06 Apr 2017 17:24:15 +0200</pubDate>'
     '</item>'
+    '</channel>'
+    '</rss>'
+)
+
+tweet_100_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Recherche Twitter : "test"</title>'
+    '<link>https://twitter.com/search?q=test</link>'
+    '<description>Résultat d\'une recherche Twitter retournée dans un flux RSS'
+    ' via Tweepy.</description>'
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate>' +
+    (
+        '<item>'
+        '<title>Twitter Dev (TwitterDev): We are sharing our vision for the '
+        'future of the Twitter API</title>'
+        '<link>https://twitter.com/TwitterDev/status/850006245121695744</link>'
+        '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="" '
+        'alt="TwitterDev profile image"/&gt; &lt;strong&gt;Twitter Dev: '
+        '&lt;/strong&gt;We are sharing our vision for the future of the '
+        'Twitter '
+        'API&lt;br&gt;&lt;i&gt;Source: &lt;/i&gt;&lt;br&gt;&lt;i&gt;Location: '
+        'None&lt;/i&gt;&lt;br&gt; ♻ : 0, ♥ : 0&lt;/div&gt;&lt;/blockquote&gt;'
+        '</description>'
+        '<pubDate>Thu, 06 Apr 2017 17:24:15 +0200</pubDate>'
+        '</item>'
+    ) * 100 +
     '</channel>'
     '</rss>'
 )
@@ -436,6 +466,34 @@ toot_1_feed = (
     '&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote&gt;</description>'
     '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
     '</item>'
+    '</channel>'
+    '</rss>'
+)
+toot_100_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Recherche Mastodon : "test"</title>'
+    '<link>https://mastodon.social/web/timelines/tag/test</link><'
+    'description>Résultat d\'une recherche Mastodon retournée dans un flux '
+    'RSS.</description>'
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate>' +
+    (
+        '<item>'
+        '<title>User (UserD): What\'s New in #python today?</title>'
+        '<link>https://mastodon.social/@UserD/111111111111111111</link>'
+        '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files'
+        '.mastodon.social/accounts/avatars/000/000/000/original/'
+        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;'
+        'User: &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
+        'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow'
+        ' noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a'
+        '&gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/'
+        'blockquote&gt;</description>'
+        '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
+        '</item>'
+    ) * 100 +
     '</channel>'
     '</rss>'
 )

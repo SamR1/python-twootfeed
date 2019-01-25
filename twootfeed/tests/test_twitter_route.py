@@ -10,6 +10,7 @@ from .data import (
     tweet_1,
     tweet_1_feed,
     tweet_2,
+    tweet_100_feed,
 )
 from .utils import Api as TwitterApi, ToDotNotation
 
@@ -68,6 +69,32 @@ def test_tweetfeed_ok(get_mock, fake_tweepy_ok):
         val
     )
     assert val == tweet_1_feed
+
+
+@patch('tweepy.Cursor')
+def test_tweetfeed_limit_ok(get_mock, fake_tweepy_200_ok):
+    get_mock.return_value = fake_tweepy_200_ok.return_value
+    val = generate_twitter_feed(None, 'test', param)
+    # remove date
+    val = re.sub(
+        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
+        '<lastBuildDate></lastBuildDate>',
+        val
+    )
+    assert val == tweet_100_feed
+
+
+@patch('tweepy.Cursor')
+def test_tweetfeed_limit_with_retweet_ok(get_mock, fake_tweepy_220_ok):
+    get_mock.return_value = fake_tweepy_220_ok.return_value
+    val = generate_twitter_feed(None, 'test', param)
+    # remove date
+    val = re.sub(
+        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
+        '<lastBuildDate></lastBuildDate>',
+        val
+    )
+    assert val == tweet_100_feed
 
 
 @patch('tweepy.Cursor')

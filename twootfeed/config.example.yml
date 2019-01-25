@@ -17,6 +17,7 @@ feed:
   feed_url: 'http://localhost:5000/'
   timezone: 'Europe/Paris'
   text_length_limit: 100
+  max_items: 100
 app:
   host: '0.0.0.0'
   port: '8080'

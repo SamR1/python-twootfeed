@@ -54,10 +54,25 @@ class ToDotNotationTweepy(ToDotNotation):
 
 class Tweepy:
     def __init__(self, tweets):
+        self.tweet_pages = self.items_in_pages(tweets)
         self.tweets = [ToDotNotationTweepy(tweet) for tweet in tweets]
+
+    def pages(self):
+        return self.tweet_pages
 
     def items(self):
         return self.tweets
+
+    @staticmethod
+    def items_in_pages(tweets):
+        pages = []
+        current_page = []
+        for tweet_index, tweet in enumerate(tweets):
+            current_page.append(ToDotNotationTweepy(tweet))
+            if tweet_index > 4 or tweet_index == len(tweets) - 1:
+                pages.append(current_page)
+                current_page = []
+        return pages
 
 
 class Api:

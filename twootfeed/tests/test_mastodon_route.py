@@ -10,6 +10,7 @@ from .data import (
     toot2,
     toot_1_favorites_feed,
     toot_1_feed,
+    toot_100_feed,
 )
 from .utils import Api as MastodonApi
 
@@ -34,6 +35,23 @@ def test_generate_feed():
         val
     )
     assert val == toot_1_feed
+
+
+def test_generate_feed_200_toots():
+    val = generate_mastodon_feed(
+        [toot1] * 200,
+        param,
+        'Recherche Mastodon : "test"',
+        'https://mastodon.social/web/timelines/tag/test',
+        'Résultat d\'une recherche Mastodon retournée dans un flux RSS.'
+    )
+    # remove date
+    val = re.sub(
+        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
+        '<lastBuildDate></lastBuildDate>',
+        val
+    )
+    assert val == toot_100_feed
 
 
 def test_generate_xml_no_api():

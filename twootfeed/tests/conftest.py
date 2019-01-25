@@ -37,3 +37,15 @@ def fake_tweepy_no_full_text():
 @pytest.fixture()
 def fake_tweepy_no_tweets():
     return mock_api(tweets=[])
+
+
+@pytest.fixture()
+def fake_tweepy_200_ok():
+    return mock_api(tweets=[tweet_1] * 200)
+
+
+@pytest.fixture()
+def fake_tweepy_220_ok():
+    return mock_api(tweets=[tweet_1] * 200 +
+                           [tweet_no_full_text] * 10 +
+                           [retweet] * 10)

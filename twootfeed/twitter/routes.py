@@ -93,32 +93,47 @@ def generate_twitter_feed(api, query_feed, twitter_param):
 
     result = tweepy.Cursor(api,
                            q=query_feed,
-                           tweet_mode='extended')
+                           tweet_mode='extended',  # to get tweet.full_text
+                           result_type='recent')  # default is 'mixed'
 
-    for tweet in result.items():
-        try:
-            tweet.full_text
-        except Exception:
+    max_tweets = twitter_param['feed']['max_items']
+    tweet_index = 0
+    end_search = False
+
+    for page in result.pages():
+        if end_search:
             break
-        else:
+
+        for tweet in page:
             try:
-                retweeted_status = tweet.retweeted_status
-
+                tweet.full_text
             except Exception:
-                retweeted_status = False
+                break
 
-            if not retweeted_status:  # only the original tweets
-                formatted_tweet = format_tweet(tweet)
-                f.add_item(
-                    title=formatted_tweet['user_name']
-                    + ' ('
-                    + formatted_tweet['screen_name'] + '): '
-                    + formatted_tweet['text'],
-                    link=formatted_tweet['tweet_url'],
-                    pubdate=pytz.utc.localize(
-                        formatted_tweet['created_at']).astimezone(
-                        pytz.timezone(twitter_param['feed']['timezone'])),
-                    description=formatted_tweet['htmltext'])
+            else:
+                try:
+                    retweeted_status = tweet.retweeted_status
+                except Exception:
+                    retweeted_status = False
+
+                if not retweeted_status:  # only the original tweets
+                    tweet_index += 1
+                    if tweet_index > max_tweets:
+                        end_search = True
+                        break
+
+                    formatted_tweet = format_tweet(tweet)
+                    f.add_item(
+                        title=formatted_tweet['user_name']
+                        + ' ('
+                        + formatted_tweet['screen_name'] + '): '
+                        + formatted_tweet['text'],
+                        link=formatted_tweet['tweet_url'],
+                        pubdate=pytz.utc.localize(
+                            formatted_tweet['created_at']).astimezone(
+                            pytz.timezone(twitter_param['feed']['timezone'])),
+                        description=formatted_tweet['htmltext'])
+
     return f.writeString('UTF-8')
 
 

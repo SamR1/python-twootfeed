@@ -54,7 +54,10 @@ def generate_mastodon_feed(
     text_length_limit = int(param['feed'].get('text_length_limit', 100))
     f = generate_feed(feed_title, feed_link, param, feed_desc)
 
-    for toot in result:
+    max_toots = param['feed']['max_items'] - 1
+    for toot_index, toot in enumerate(result):
+        if toot_index > max_toots:
+            break
         formatted_toot = format_toot(toot, text_length_limit)
         pubdate = formatted_toot['created_at']
         if not pubdate.tzinfo:

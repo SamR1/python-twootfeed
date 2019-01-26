@@ -1,5 +1,16 @@
 # Change log
 
+## Version 0.6.2 (2019/01/26)
+
+#### New Features
+
+* [Issue 23](https://github.com/SamR1/python-twootfeed/issues/23) - [Mastodon] add a new search route
+* [Issue 22](https://github.com/SamR1/python-twootfeed/issues/22) - The number of workers for the HTTP Server can be set
+* [Issue 21](https://github.com/SamR1/python-twootfeed/issues/21) - [Mastodon] use pagination to get toots
+
+In this release 3 issues were closed.
+
+
 ## Version 0.6.1 (2019/01/25)
 
 #### New Features

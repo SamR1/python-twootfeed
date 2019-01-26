@@ -76,16 +76,35 @@ def generate_mastodon_feed(
     return xml
 
 
+def get_next_toots(api, first_toots, max_items):
+    result = first_toots
+    nb_items = len(result)
+    next_toots = api.fetch_next(first_toots)
+    while next_toots:
+        nb_next_toots = len(next_toots)
+        if nb_items + nb_next_toots < max_items:
+            result += next_toots
+            nb_items = len(result)
+            next_toots = api.fetch_next(next_toots)
+        else:
+            result += next_toots[:(max_items - nb_items)]
+            next_toots = None
+    return result
+
+
 def generate_xml(api, param, query_feed=None):
     if api:
+        max_items = param['feed']['max_items']
         if query_feed:
             result = api.timeline_hashtag(query_feed)
+            result = get_next_toots(api, result, max_items)
             feed_title = param['mastodon']['title'] + '"' + query_feed + '"'
             feed_link = (param['mastodon']['url'] + '/web/timelines/tag/' +
                          query_feed)
             feed_desc = param['mastodon']['description']
         else:
             result = api.favourites()
+            result = get_next_toots(api, result, max_items)
             feed_title = param['mastodon']['title'] + ' Favourites'
             feed_link = param['mastodon']['url'] + '/web/favourites'
             feed_desc = param['feed']['author_name'] + ' favourites toots.'

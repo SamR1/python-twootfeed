@@ -75,13 +75,26 @@ class Tweepy:
         return pages
 
 
-class Api:
-    def __init__(self, toots=None):
+class TwitterApi:
+    def __init__(self):
         self.search = True
+
+
+class MastodonApi:
+    def __init__(self, toots, limit=10):
         self.toots = toots
+        self.limit = limit - 1
+
+    def return_result(self):
+        result = self.toots[:self.limit]
+        del self.toots[:self.limit]
+        return result
 
     def timeline_hashtag(self, query):
-        return self.toots
+        return self.return_result()
 
     def favourites(self):
-        return self.toots
+        return self.return_result()
+
+    def fetch_next(self, toots):
+        return self.return_result()

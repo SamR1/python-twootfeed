@@ -12,7 +12,7 @@ from .data import (
     tweet_2,
     tweet_100_feed,
 )
-from .utils import Api as TwitterApi, ToDotNotation
+from .utils import ToDotNotation, TwitterApi
 
 
 def test_format_tweet():

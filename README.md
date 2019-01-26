@@ -39,7 +39,6 @@ $ pip install twootfeed
 ```bash
 $ twootfeed_init
 ```
-.
 
 - Fill in fields for the client(s) you will use in **'~/.config/twootfeed/config.yml'** :
   - for **Twitter** : see https://apps.twitter.com  
@@ -49,7 +48,7 @@ $ twootfeed_init
   ```bash
   $ twootfeed_create_mastodon_cli
   ```
-  If needed, update the feed and app parameters.
+  Update the [feed and app parameters](https://github.com/SamR1/python-twootfeed/wiki/Application-parameters).
 
   
 - The files location can be changed with the following environment variables:

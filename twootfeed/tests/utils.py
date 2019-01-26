@@ -97,3 +97,10 @@ class MastodonApi:
 
     def fetch_next(self, toots):
         return self.return_result()
+
+    def search(self, query, resolve=False):
+        return {
+            'accounts': [],
+            'hashtags': [],
+            'statuses': self.toots,
+        }

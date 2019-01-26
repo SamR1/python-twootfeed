@@ -77,6 +77,8 @@ def generate_mastodon_feed(
 
 
 def get_next_toots(api, first_toots, max_items):
+    if len(first_toots) == 0:
+        return first_toots
     result = first_toots
     nb_items = len(result)
     next_toots = api.fetch_next(first_toots)
@@ -96,11 +98,19 @@ def generate_xml(api, param, query_feed=None):
     if api:
         max_items = param['feed']['max_items']
         if query_feed:
-            result = api.timeline_hashtag(query_feed)
-            result = get_next_toots(api, result, max_items)
-            feed_title = param['mastodon']['title'] + '"' + query_feed + '"'
-            feed_link = (param['mastodon']['url'] + '/web/timelines/tag/' +
-                         query_feed)
+            hashtag = query_feed.get('hashtag')
+            query = query_feed.get('query')
+            if hashtag:
+                result = api.timeline_hashtag(hashtag)
+                result = get_next_toots(api, result, max_items)
+                feed_title = param['mastodon']['title'] + '"' + hashtag + '"'
+                feed_link = (param['mastodon']['url'] + '/web/timelines/tag/' +
+                             hashtag)
+            else:
+                search_result = api.search(query, resolve=True)
+                result = search_result['statuses'][:max_items - 1]
+                feed_title = param['mastodon']['title'] + '"' + query + '"'
+                feed_link = (param['mastodon']['url'] + '/web/search/')
             feed_desc = param['mastodon']['description']
         else:
             result = api.favourites()
@@ -115,10 +125,16 @@ def generate_xml(api, param, query_feed=None):
     return xml
 
 
-@mastodon_bp.route('/toots/<query_feed>', methods=['GET'])
+@mastodon_bp.route('/toots/<hashtag>', methods=['GET'])
+def tootfeed_hastag(hashtag):
+    """ generate a rss feed from parsed mastodon search """
+    return generate_xml(mastodon_api, mastodon_param, {'hashtag': hashtag})
+
+
+@mastodon_bp.route('/toot_search/<query_feed>', methods=['GET'])
 def tootfeed(query_feed):
     """ generate a rss feed from parsed mastodon search """
-    return generate_xml(mastodon_api, mastodon_param, query_feed)
+    return generate_xml(mastodon_api, mastodon_param, {'query': query_feed})
 
 
 @mastodon_bp.route('/toot_favorites', methods=['GET'])

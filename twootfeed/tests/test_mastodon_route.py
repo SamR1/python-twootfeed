@@ -3,6 +3,7 @@ import re
 from ..mastodon.routes import format_toot, generate_mastodon_feed, generate_xml
 from .data import (
     empty_toot_feed,
+    empty_toot_search_feed,
     formatted_toot1,
     formatted_toot2,
     invalid_param as param,
@@ -10,6 +11,7 @@ from .data import (
     toot2,
     toot_1_favorites_feed,
     toot_1_feed,
+    toot_1_search_feed,
     toot_100_favorites_feed,
     toot_100_feed,
 )
@@ -56,13 +58,13 @@ def test_generate_feed_200_toots():
 
 
 def test_generate_xml_no_api():
-    val = generate_xml(None, param, 'test')
+    val = generate_xml(None, param, {'hashtag': 'test'})
     assert val == 'error - Mastodon parameters not defined'
 
 
 def test_generate_xml_no_toots():
     api = MastodonApi([])
-    val = generate_xml(api, param, 'test')
+    val = generate_xml(api, param, {'hashtag': 'test'})
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
@@ -73,7 +75,7 @@ def test_generate_xml_no_toots():
 
 def test_generate_xml_query_ok():
     api = MastodonApi([toot1])
-    val = generate_xml(api, param, 'test')
+    val = generate_xml(api, param, {'hashtag': 'test'})
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
@@ -84,13 +86,35 @@ def test_generate_xml_query_ok():
 
 def test_generate_xml_query_limit_ok():
     api = MastodonApi([toot1]*200)
-    val = generate_xml(api, param, 'test')
+    val = generate_xml(api, param, {'hashtag': 'test'})
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
         val
     )
     assert val == toot_100_feed
+
+
+def test_generate_xml_search_no_toots():
+    api = MastodonApi([])
+    val = generate_xml(api, param, {'query': 'test'})
+    val = re.sub(
+        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
+        '<lastBuildDate></lastBuildDate>',
+        val
+    )
+    assert val == empty_toot_search_feed
+
+
+def test_generate_xml_search_ok():
+    api = MastodonApi([toot1])
+    val = generate_xml(api, param, {'query': 'test'})
+    val = re.sub(
+        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
+        '<lastBuildDate></lastBuildDate>',
+        val
+    )
+    assert val == toot_1_search_feed
 
 
 def test_generate_xml_favorites_ok():

@@ -19,7 +19,6 @@ The RSS feed displays only the original tweets (not the retweets) and toots, wit
 - location (only for Twitter)
 - numbers of retweets and likes for tweets and boosts and favourites for toots   
 (see examples below).  
-Note: for Mastodon, the search only retrieves the toots with the keyword as hashtag
 
 ## Requirements
 
@@ -67,9 +66,11 @@ $ twootfeed
 ## Usage 
 
 The RSS feeds are available on these urls:  
-  - for Twitter: http://localhost:8080/_keywords_ or http://localhost:8080/tweets/_keywords_
+  - for Twitter: http://localhost:8080/<keywords> or http://localhost:8080/tweets/<keywords>
   - for Mastodon: 
-    - search: http://localhost:8080/toots/_keywords_ 
+    - search: (see #23)
+        - keyword as a hashtag: http://localhost:8080/toots/<hashtag> (without the leading #)
+        - query: http://localhost:8080/toot_search/<query>
     - connected user favourites: http://localhost:8080/toot_favorites
 
 

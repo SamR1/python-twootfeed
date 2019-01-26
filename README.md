@@ -19,7 +19,7 @@ The RSS feed displays only the original tweets (not the retweets) and toots, wit
 - location (only for Twitter)
 - numbers of retweets and likes for tweets and boosts and favourites for toots   
 (see examples below).  
-
+Note: for Mastodon, the search only retrieves the toots with the keyword as hashtag
 
 ## Requirements
 

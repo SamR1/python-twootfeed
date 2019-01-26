@@ -126,7 +126,7 @@ def generate_xml(api, param, query_feed=None):
 
 
 @mastodon_bp.route('/toots/<hashtag>', methods=['GET'])
-def tootfeed_hastag(hashtag):
+def tootfeed_hashtag(hashtag):
     """ generate a rss feed from parsed mastodon search """
     return generate_xml(mastodon_api, mastodon_param, {'hashtag': hashtag})
 

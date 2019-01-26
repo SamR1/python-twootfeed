@@ -21,3 +21,4 @@ feed:
 app:
   host: '0.0.0.0'
   port: '8080'
+#  nb_workers: 4 # if not defined, the number is defined by the app

@@ -33,7 +33,7 @@ def main():
     app = create_app()
     options = {
         'bind': f"{param['app']['host']}:{param['app']['port']}",
-        'workers': number_of_workers(),
+        'workers': param['app'].get('nb_workers', number_of_workers()),
     }
     StandaloneApplication(app, options).run()
 

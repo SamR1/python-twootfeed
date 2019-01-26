@@ -68,7 +68,7 @@ $ twootfeed
 The RSS feeds are available on these urls:  
   - for Twitter: http://localhost:8080/<keywords> or http://localhost:8080/tweets/<keywords>
   - for Mastodon: 
-    - search: (see #23)
+    - search:
         - keyword as a hashtag: http://localhost:8080/toots/<hashtag> (without the leading #)
         - query: http://localhost:8080/toot_search/<query>
     - connected user favourites: http://localhost:8080/toot_favorites

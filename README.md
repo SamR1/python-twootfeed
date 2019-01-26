@@ -1,5 +1,5 @@
 # python-twootfeed
-**generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites, using Flask.**  
+**generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites**  
   
 [![Python Version](https://img.shields.io/badge/python-3.6+-brightgreen.svg)](https://python.org) 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed) 
@@ -10,14 +10,14 @@
 
 The RSS feed displays only the original tweets (not the retweets) and toots, with:
 - links to :  
-  - the original tweet on Twitter or toot on Mastodon  
+  - the tweet on Twitter or toot on Mastodon  
   - hashtags  
   - usernames  
 - URLs 
 - images
 - source
 - location (only for Twitter)
-- numbers of retweets (or boosts for Mastodon) and favorites  
+- numbers of retweets and likes for tweets and boosts and favourites for toots   
 (see examples below).  
 
 
@@ -70,7 +70,7 @@ The RSS feeds are available on these urls:
   - for Twitter: http://localhost:8080/_keywords_ or http://localhost:8080/tweets/_keywords_
   - for Mastodon: 
     - search: http://localhost:8080/toots/_keywords_ 
-    - connected user favorites: http://localhost:8080/toot_favorites
+    - connected user favourites: http://localhost:8080/toot_favorites
 
 
 ## Examples 

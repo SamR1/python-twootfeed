@@ -106,34 +106,24 @@ def generate_twitter_feed(api, query_feed, twitter_param):
             break
 
         for tweet in page:
-            try:
-                tweet.full_text
-            except Exception:
-                break
+            retweeted_status = getattr(tweet, 'retweeted_status', False)
+            if not retweeted_status:  # only the original tweets
+                tweet_index += 1
+                if tweet_index > max_tweets:
+                    end_search = True
+                    break
 
-            else:
-                try:
-                    retweeted_status = tweet.retweeted_status
-                except Exception:
-                    retweeted_status = False
-
-                if not retweeted_status:  # only the original tweets
-                    tweet_index += 1
-                    if tweet_index > max_tweets:
-                        end_search = True
-                        break
-
-                    formatted_tweet = format_tweet(tweet)
-                    f.add_item(
-                        title=formatted_tweet['user_name']
-                        + ' ('
-                        + formatted_tweet['screen_name'] + '): '
-                        + formatted_tweet['text'],
-                        link=formatted_tweet['tweet_url'],
-                        pubdate=pytz.utc.localize(
-                            formatted_tweet['created_at']).astimezone(
-                            pytz.timezone(twitter_param['feed']['timezone'])),
-                        description=formatted_tweet['htmltext'])
+                formatted_tweet = format_tweet(tweet)
+                f.add_item(
+                    title=formatted_tweet['user_name']
+                    + ' ('
+                    + formatted_tweet['screen_name'] + '): '
+                    + formatted_tweet['text'],
+                    link=formatted_tweet['tweet_url'],
+                    pubdate=pytz.utc.localize(
+                        formatted_tweet['created_at']).astimezone(
+                        pytz.timezone(twitter_param['feed']['timezone'])),
+                    description=formatted_tweet['htmltext'])
 
     return f.writeString('UTF-8')
 

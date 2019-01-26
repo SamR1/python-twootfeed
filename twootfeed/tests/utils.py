@@ -16,8 +16,7 @@ class ToDotNotation(dict):
                 self[k] = ToDotNotation(v) if isinstance(v, dict) else v
 
     def __getattr__(self, attr):
-        return (self[attr] if attr in ['full_text', 'retweeted_status']
-                else self.get(attr))
+        return self.get(attr)
 
     def __setattr__(self, key, value):
         self.__setitem__(key, value)

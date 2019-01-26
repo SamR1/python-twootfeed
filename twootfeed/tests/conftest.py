@@ -14,7 +14,10 @@ def mock_api(tweets):
 
 
 @pytest.fixture
-def app():
+def app(monkeypatch, tmpdir):
+    test_dir = str(tmpdir)
+    monkeypatch.setenv('TWOOTFEED_CONFIG', test_dir)
+    monkeypatch.setenv('TWOOTFEED_CONFIG_FILE', test_dir + '/config.yml')
     app = create_app()
     return app
 

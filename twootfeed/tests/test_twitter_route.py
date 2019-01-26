@@ -46,19 +46,6 @@ def test_tweetfeed_retweet(get_mock, fake_tweepy_retweet):
 
 
 @patch('tweepy.Cursor')
-def test_tweetfeed_no_full_text(get_mock, fake_tweepy_no_full_text):
-    get_mock.return_value = fake_tweepy_no_full_text.return_value
-    val = generate_twitter_feed(None, 'test', param)
-    # remove date
-    val = re.sub(
-        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
-        '<lastBuildDate></lastBuildDate>',
-        val
-    )
-    assert val == empty_feed
-
-
-@patch('tweepy.Cursor')
 def test_tweetfeed_ok(get_mock, fake_tweepy_ok):
     get_mock.return_value = fake_tweepy_ok.return_value
     val = generate_twitter_feed(None, 'test', param)

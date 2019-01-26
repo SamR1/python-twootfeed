@@ -10,6 +10,7 @@ from .data import (
     toot2,
     toot_1_favorites_feed,
     toot_1_feed,
+    toot_100_favorites_feed,
     toot_100_feed,
 )
 from .utils import MastodonApi
@@ -101,3 +102,14 @@ def test_generate_xml_favorites_ok():
         val
     )
     assert val == toot_1_favorites_feed
+
+
+def test_generate_xml_favorites_limit_ok():
+    api = MastodonApi([toot1]*150)
+    val = generate_xml(api, param)
+    val = re.sub(
+        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
+        '<lastBuildDate></lastBuildDate>',
+        val
+    )
+    assert val == toot_100_favorites_feed

@@ -1,6 +1,8 @@
 # python-twootfeed
 **generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites**  
   
+[![PyPI version](https://img.shields.io/pypi/v/twootfeed.svg)](https://pypi.org/project/twootfeed/)
+[![Downloads](https://pepy.tech/badge/twootfeed)](https://pepy.tech/project/twootfeed)
 [![Python Version](https://img.shields.io/badge/python-3.6+-brightgreen.svg)](https://python.org) 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed) 
 [![Coverage Status](https://coveralls.io/repos/github/SamR1/python-twootfeed/badge.svg?branch=master)](https://coveralls.io/github/SamR1/python-twootfeed?branch=master) 

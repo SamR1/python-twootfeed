@@ -107,7 +107,7 @@ def generate_xml(api, param, query_feed=None):
                 feed_link = (param['mastodon']['url'] + '/web/timelines/tag/' +
                              hashtag)
             else:
-                search_result = api.search(query, resolve=True)
+                search_result = api.search_v1(query, resolve=True)
                 result = search_result['statuses'][:max_items - 1]
                 feed_title = param['mastodon']['title'] + '"' + query + '"'
                 feed_link = (param['mastodon']['url'] + '/web/search/')

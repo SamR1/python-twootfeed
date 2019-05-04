@@ -131,9 +131,11 @@ def generate_twitter_feed(api, query_feed, twitter_param):
 def generate_xml(api, query_feed, param):
     if api:
         xml = generate_twitter_feed(api.search, query_feed, param)
+        code = 200
     else:
         xml = 'error - Twitter parameters not defined'
-    return xml
+        code = 401
+    return xml, code
 
 
 @twitter_bp.route('/<query_feed>', methods=['GET'])

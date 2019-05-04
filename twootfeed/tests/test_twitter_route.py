@@ -87,7 +87,7 @@ def test_tweetfeed_limit_with_retweet_ok(get_mock, fake_tweepy_220_ok):
 @patch('tweepy.Cursor')
 def test_generate_xml_ok(get_mock, fake_tweepy_ok):
     get_mock.return_value = fake_tweepy_ok.return_value
-    val = generate_xml(TwitterApi(), 'test', param)
+    val, code = generate_xml(TwitterApi(), 'test', param)
     # remove date
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
@@ -95,8 +95,10 @@ def test_generate_xml_ok(get_mock, fake_tweepy_ok):
         val
     )
     assert val == tweet_1_feed
+    assert code == 200
 
 
 def test_generate_xml_no_api():
-    val = generate_xml(None, 'test', param)
+    val, code = generate_xml(None, 'test', param)
     assert val == 'error - Twitter parameters not defined'
+    assert code == 401

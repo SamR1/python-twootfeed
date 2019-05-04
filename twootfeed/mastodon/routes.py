@@ -120,9 +120,11 @@ def generate_xml(api, param, query_feed=None):
             feed_desc = param['feed']['author_name'] + ' favourites toots.'
         xml = generate_mastodon_feed(
             result, param, feed_title, feed_link, feed_desc)
+        code = 200
     else:
         xml = 'error - Mastodon parameters not defined'
-    return xml
+        code = 401
+    return xml, code
 
 
 @mastodon_bp.route('/toots/<hashtag>', methods=['GET'])

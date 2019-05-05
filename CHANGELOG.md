@@ -1,5 +1,18 @@
 # Change log
 
+## Version 0.6.3 (2019/05/05)
+
+#### Bugs Fixed
+
+* [Issue 24](https://github.com/SamR1/python-twootfeed/issues/24) - return the correct HTTP code status when no keys are provided
+
+#### Misc
+
+* Update dependencies
+
+In this release 1 issue was closed.
+
+
 ## Version 0.6.2 (2019/01/26)
 
 #### New Features

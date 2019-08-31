@@ -1,5 +1,12 @@
 # Change log
 
+## Version 0.6.4 (2019/08/30)
+
+#### Misc
+
+* Update dependencies
+
+
 ## Version 0.6.3 (2019/05/05)
 
 #### Bugs Fixed

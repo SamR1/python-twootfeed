@@ -1,6 +1,6 @@
 # Change log
 
-## Version 0.6.4 (2019/08/30)
+## Version 0.6.4 (2019/08/31)
 
 #### Misc
 

@@ -1,5 +1,14 @@
 # Change log
 
+## Version 0.6.5 (2019/09/23)
+
+#### Bugs Fixed
+
+* [Issue 25](https://github.com/SamR1/python-twootfeed/issues/25) - toot_search route returns 404 error
+
+In this release 1 issue was closed.
+
+
 ## Version 0.6.4 (2019/08/31)
 
 #### Misc

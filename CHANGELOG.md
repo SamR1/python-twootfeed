@@ -1,5 +1,12 @@
 # Change log
 
+## Version 0.6.6 (2019/10/20)
+
+#### Misc
+
+* Update dependencies
+
+
 ## Version 0.6.5 (2019/09/23)
 
 #### Bugs Fixed

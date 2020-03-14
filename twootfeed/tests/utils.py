@@ -92,6 +92,9 @@ class MastodonApi:
     def timeline_hashtag(self, query):
         return self.return_result()
 
+    def bookmarks(self):
+        return self.return_result()
+
     def favourites(self):
         return self.return_result()
 

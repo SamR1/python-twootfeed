@@ -9,9 +9,11 @@ from .data import (
     invalid_param as param,
     toot1,
     toot2,
+    toot_1_bookmarks_feed,
     toot_1_favorites_feed,
     toot_1_feed,
     toot_1_search_feed,
+    toot_100_bookmarks_feed,
     toot_100_favorites_feed,
     toot_100_feed,
 )
@@ -125,7 +127,7 @@ def test_generate_xml_search_ok():
 
 def test_generate_xml_favorites_ok():
     api = MastodonApi([toot1])
-    val, code = generate_xml(api, param)
+    val, code = generate_xml(api, param, favorites=True)
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
@@ -137,11 +139,35 @@ def test_generate_xml_favorites_ok():
 
 def test_generate_xml_favorites_limit_ok():
     api = MastodonApi([toot1]*150)
-    val, code = generate_xml(api, param)
+    val, code = generate_xml(api, param, favorites=True)
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
         val
     )
     assert val == toot_100_favorites_feed
+    assert code == 200
+
+
+def test_generate_xml_bookmarks_ok():
+    api = MastodonApi([toot1])
+    val, code = generate_xml(api, param)
+    val = re.sub(
+        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
+        '<lastBuildDate></lastBuildDate>',
+        val
+    )
+    assert val == toot_1_bookmarks_feed
+    assert code == 200
+
+
+def test_generate_xml_bookmarks_limit_ok():
+    api = MastodonApi([toot1]*150)
+    val, code = generate_xml(api, param)
+    val = re.sub(
+        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
+        '<lastBuildDate></lastBuildDate>',
+        val
+    )
+    assert val == toot_100_bookmarks_feed
     assert code == 200

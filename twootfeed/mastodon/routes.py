@@ -94,7 +94,7 @@ def get_next_toots(api, first_toots, max_items):
     return result
 
 
-def generate_xml(api, param, query_feed=None):
+def generate_xml(api, param, query_feed=None, favorites=False):
     if api:
         max_items = param['feed']['max_items']
         if query_feed:
@@ -112,12 +112,18 @@ def generate_xml(api, param, query_feed=None):
                 feed_title = param['mastodon']['title'] + '"' + query + '"'
                 feed_link = (param['mastodon']['url'] + '/web/search/')
             feed_desc = param['mastodon']['description']
-        else:
+        elif favorites:
             result = api.favourites()
             result = get_next_toots(api, result, max_items)
             feed_title = param['mastodon']['title'] + ' Favourites'
             feed_link = param['mastodon']['url'] + '/web/favourites'
             feed_desc = param['feed']['author_name'] + ' favourites toots.'
+        else:
+            result = api.bookmarks()
+            result = get_next_toots(api, result, max_items)
+            feed_title = param['mastodon']['title'] + ' Bookmarks'
+            feed_link = param['mastodon']['url'] + '/web/bookmarks'
+            feed_desc = param['feed']['author_name'] + ' bookmarks toots.'
         xml = generate_mastodon_feed(
             result, param, feed_title, feed_link, feed_desc)
         code = 200
@@ -142,4 +148,10 @@ def tootfeed(query_feed):
 @mastodon_bp.route('/toot_favorites', methods=['GET'])
 def toot_favorites_feed():
     """ generate an rss feed authenticated user's favorites """
+    return generate_xml(mastodon_api, mastodon_param, favorites=True)
+
+
+@mastodon_bp.route('/toot_bookmarks', methods=['GET'])
+def toot_bookmarks_feed():
+    """ generate an rss feed authenticated user's bookmarks """
     return generate_xml(mastodon_api, mastodon_param)

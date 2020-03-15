@@ -1,5 +1,15 @@
 # Change log
 
+## Version 0.6.7 (2020/03/15)
+
+#### New Features
+
+* [Issue 27](https://github.com/SamR1/python-twootfeed/issues/27) - generate documentation with sphinx
+* [Issue 26](https://github.com/SamR1/python-twootfeed/issues/26) - [Mastodon] add feed with user's bookmarks
+
+In this release 2 issue were closed.
+
+
 ## Version 0.6.6 (2019/10/20)
 
 #### Misc

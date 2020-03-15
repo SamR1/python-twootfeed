@@ -6,7 +6,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.6+-brightgreen.svg)](https://python.org) 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed) 
 [![Coverage Status](https://coveralls.io/repos/github/SamR1/python-twootfeed/badge.svg?branch=master)](https://coveralls.io/github/SamR1/python-twootfeed?branch=master) 
-[![Build Status](https://travis-ci.org/SamR1/python-twootfeed.svg?branch=master)](https://travis-ci.org/SamR1/python-twootfeed)
+[![pipeline status](https://gitlab.com/SamR1/python-twootfeed/badges/master/pipeline.svg)](https://gitlab.com/SamR1/python-twootfeed/commits/master)
 
 ---
 

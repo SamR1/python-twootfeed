@@ -17,3 +17,6 @@ tootrss_clientcred.txt
 tootrss_usercred.txt
 *.log
 /twootfeed.egg-info/
+
+## Doc
+/docsrc/build/

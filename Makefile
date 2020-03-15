@@ -13,9 +13,16 @@ clean:
 create-mastodon-cli:
 	$(PYTHON) twootfeed/utils/create_mastodon_client.py
 
+html:
+	rm -rf docsrc/build
+	rm -rf docs/*
+	touch docs/.nojekyll
+	$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	cp -a docsrc/build/html/. docs
+
 install:
 	test -d $(VENV) || virtualenv $(VENV) -p $(PYTHON_VERSION)
-	$(PIP) install -e .[test]
+	$(PIP) install -e .[test,doc]
 	test -e twootfeed/config.yml || cp twootfeed/config.example.yml twootfeed/config.yml
 
 serve:

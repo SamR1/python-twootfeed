@@ -1,5 +1,5 @@
 # python-twootfeed
-**generate a rss feed from parsed Twitter or Mastodon search and Mastodon favorites**  
+**generate an RSS feed from parsed Twitter or Mastodon search and Mastodon bookmarks/favorites**  
   
 [![PyPI version](https://img.shields.io/pypi/v/twootfeed.svg)](https://pypi.org/project/twootfeed/)
 [![Downloads](https://pepy.tech/badge/twootfeed)](https://pepy.tech/project/twootfeed)

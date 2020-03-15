@@ -1,0 +1,30 @@
+image: python:3.8
+
+stages:
+  - tests
+
+.python:
+  stage: tests
+  script:
+    - python setup.py test
+
+python-3.6:
+  stage: tests
+  extends: .python
+  image: python:3.6
+
+python-3.7:
+  stage: tests
+  extends: .python
+  image: python:3.7
+
+python-3.8:
+  stage: tests
+  before_script:
+    - pip install coveralls
+    - echo "FAILED" > .job_status
+  script:
+    - python setup.py test
+    - echo "SUCCESS" > .job_status
+  after_script:
+    - if [ "$(cat .job_status)" == "SUCCESS" ]; then GIT_BRANCH="${CI_COMMIT_REF_NAME}" coveralls; fi

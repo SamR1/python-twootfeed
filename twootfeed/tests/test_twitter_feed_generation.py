@@ -1,7 +1,11 @@
 import re
 from unittest.mock import patch
 
-from ..twitter.routes import format_tweet, generate_twitter_feed, generate_xml
+from ..twitter.generate_tweets_feed import (
+    format_tweet,
+    generate_twitter_feed,
+    generate_xml,
+)
 from .data import (
     empty_feed,
     formatted_tweet_1,

@@ -1,6 +1,10 @@
 import re
 
-from ..mastodon.routes import format_toot, generate_mastodon_feed, generate_xml
+from ..mastodon.generate_toots_feed import (
+    format_toot,
+    generate_mastodon_feed,
+    generate_xml,
+)
 from .data import (
     empty_toot_feed,
     empty_toot_search_feed,

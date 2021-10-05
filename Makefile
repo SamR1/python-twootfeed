@@ -2,6 +2,9 @@ include Makefile.config
 -include Makefile.custom.config
 .SILENT:
 
+black:
+	$(BLACK) $(FLASK_APP)
+
 clean:
 	rm -fr $(VENV)
 	rm -fr *.egg-info
@@ -11,7 +14,7 @@ clean:
 	rm -rf dist
 
 create-mastodon-cli:
-	$(PYTHON) twootfeed/utils/create_mastodon_client.py
+	$(PYTHON) $(FLASK_APP)/utils/create_mastodon_client.py
 
 html:
 	rm -rf docsrc/build
@@ -22,13 +25,13 @@ html:
 
 install: venv
 	$(PIP) install -e .[test,doc]
-	test -e twootfeed/config.yml || cp twootfeed/config.example.yml twootfeed/config.yml
+	test -e $(FLASK_APP)/config.yml || cp $(FLASK_APP)/config.example.yml $(FLASK_APP)/config.yml
 
 serve:
 	$(FLASK) run --with-threads -h $(HOST) -p $(PORT)
 
 run:
-	FLASK_ENV=production && $(GUNICORN) -b 127.0.0.1:5000 "twootfeed:create_app()" --error-logfile $(GUNICORN_LOG)
+	FLASK_ENV=production && $(GUNICORN) -b 127.0.0.1:5000 "$(FLASK_APP):create_app()" --error-logfile $(GUNICORN_LOG)
 
 venv:
 	test -d $(VENV) || $(PYTHON_VERSION) -m venv $(VENV)

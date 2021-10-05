@@ -1,4 +1,4 @@
-image: python:3.8
+image: python:3.9
 
 stages:
   - tests
@@ -19,6 +19,11 @@ python-3.7:
   image: python:3.7
 
 python-3.8:
+  stage: tests
+  extends: .python
+  image: python:3.8
+
+python-3.9:
   stage: tests
   before_script:
     - pip install coveralls

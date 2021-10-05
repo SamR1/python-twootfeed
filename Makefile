@@ -20,8 +20,7 @@ html:
 	$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 	cp -a docsrc/build/html/. docs
 
-install:
-	test -d $(VENV) || virtualenv $(VENV) -p $(PYTHON_VERSION)
+install: venv
 	$(PIP) install -e .[test,doc]
 	test -e twootfeed/config.yml || cp twootfeed/config.example.yml twootfeed/config.yml
 
@@ -30,6 +29,10 @@ serve:
 
 run:
 	FLASK_ENV=production && $(GUNICORN) -b 127.0.0.1:5000 "twootfeed:create_app()" --error-logfile $(GUNICORN_LOG)
+
+venv:
+	test -d $(VENV) || $(PYTHON_VERSION) -m venv $(VENV)
+	$(PIP) install -U pip setuptools
 
 test:
 	$(PYTHON) setup.py test

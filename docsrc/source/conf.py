@@ -17,13 +17,13 @@ from pathlib import Path
 
 
 def setup(app):
-    app.add_stylesheet("custom.css")
+    app.add_css_file("custom.css")
 
 
 # -- Project information -----------------------------------------------------
 
 project = 'twootfeed'
-copyright = '2015 - 2020, SamR1'
+copyright = '2015 - 2021, SamR1'
 author = 'SamR1'
 
 # The full version, including alpha/beta/rc tags.

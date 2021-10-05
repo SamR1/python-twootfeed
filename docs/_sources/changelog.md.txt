@@ -1,5 +1,14 @@
 # Change log
 
+## Version 0.6.8 (2021/10/05)
+
+#### Misc
+
+* Update dependencies including **Tweepy** 4.0
+
+Note: **twootfeed** still using **Twitter** API v1.1
+
+
 ## Version 0.6.7 (2020/03/15)
 
 #### New Features

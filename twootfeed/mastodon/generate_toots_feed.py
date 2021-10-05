@@ -11,12 +11,14 @@ def format_toot(toot, text_length_limit):
         'screen_name': toot['account']['username'],
         'created_at': toot['created_at'],
         'url': toot['url'],
-        'htmltext': ("<blockquote><div><img src=\""
-                     f"{toot['account']['avatar_static']}\" "
-                     f"alt=\"{toot['account']['display_name']}\""
-                     f" width= 100px\"/> "
-                     f"<strong>{toot['account']['display_name']}: </strong>"
-                     f"{toot['content']}")
+        'htmltext': (
+            "<blockquote><div><img src=\""
+            f"{toot['account']['avatar_static']}\" "
+            f"alt=\"{toot['account']['display_name']}\""
+            f" width= 100px\"/> "
+            f"<strong>{toot['account']['display_name']}: </strong>"
+            f"{toot['content']}"
+        ),
     }
 
     source = toot.get('application')
@@ -28,16 +30,21 @@ def format_toot(toot, text_length_limit):
         rss_toot['htmltext'] += '<br>'
     for media in medialist:
         if media['type'] == 'image':
-            rss_toot['htmltext'] += (f"<a href=\"{media.get('url')}\" target="
-                                     f"\"_blank\"><img src=\""
-                                     f"{media.get('preview_url')}\"></a>")
+            rss_toot['htmltext'] += (
+                f"<a href=\"{media.get('url')}\" target="
+                f"\"_blank\"><img src=\""
+                f"{media.get('preview_url')}\"></a>"
+            )
 
-    rss_toot['htmltext'] += (f"<br>♻ : {toot['reblogs_count']}, "
-                             f"✰ : {toot['favourites_count']}"
-                             f"</div></blockquote>")
+    rss_toot['htmltext'] += (
+        f"<br>♻ : {toot['reblogs_count']}, "
+        f"✰ : {toot['favourites_count']}"
+        f"</div></blockquote>"
+    )
 
-    rss_toot['text'] = BeautifulSoup(unescape(toot['content']),
-                                     "html.parser").text
+    rss_toot['text'] = BeautifulSoup(
+        unescape(toot['content']), "html.parser"
+    ).text
 
     if len(rss_toot['text']) > text_length_limit:
         rss_toot['text'] = rss_toot['text'][:text_length_limit] + '... '
@@ -46,7 +53,8 @@ def format_toot(toot, text_length_limit):
 
 
 def generate_mastodon_feed(
-        result, param, feed_title, feed_link, feed_desc=None):
+    result, param, feed_title, feed_link, feed_desc=None
+):
     text_length_limit = int(param['feed'].get('text_length_limit', 100))
     f = generate_feed(feed_title, feed_link, param, feed_desc)
 
@@ -58,14 +66,20 @@ def generate_mastodon_feed(
         pubdate = formatted_toot['created_at']
         if not pubdate.tzinfo:
             pubdate = pytz.utc.localize(pubdate).astimezone(
-                pytz.timezone(param['feed']['timezone']))
+                pytz.timezone(param['feed']['timezone'])
+            )
         f.add_item(
-            title=(formatted_toot['display_name'] + ' (' +
-                   formatted_toot['screen_name'] + '): ' +
-                   formatted_toot['text']),
+            title=(
+                formatted_toot['display_name']
+                + ' ('
+                + formatted_toot['screen_name']
+                + '): '
+                + formatted_toot['text']
+            ),
             link=formatted_toot['url'],
             pubdate=pubdate,
-            description=formatted_toot['htmltext'])
+            description=formatted_toot['htmltext'],
+        )
 
     xml = f.writeString('UTF-8')
 
@@ -85,7 +99,7 @@ def get_next_toots(api, first_toots, max_items):
             nb_items = len(result)
             next_toots = api.fetch_next(next_toots)
         else:
-            result += next_toots[:(max_items - nb_items)]
+            result += next_toots[: (max_items - nb_items)]
             next_toots = None
     return result
 
@@ -100,13 +114,14 @@ def generate_xml(api, param, query_feed=None, favorites=False):
                 result = api.timeline_hashtag(hashtag)
                 result = get_next_toots(api, result, max_items)
                 feed_title = param['mastodon']['title'] + '"' + hashtag + '"'
-                feed_link = (param['mastodon']['url'] + '/web/timelines/tag/' +
-                             hashtag)
+                feed_link = (
+                    param['mastodon']['url'] + '/web/timelines/tag/' + hashtag
+                )
             else:
                 search_result = api.search(query, resolve=True)
-                result = search_result['statuses'][:max_items - 1]
+                result = search_result['statuses'][: max_items - 1]
                 feed_title = param['mastodon']['title'] + '"' + query + '"'
-                feed_link = (param['mastodon']['url'] + '/web/search/')
+                feed_link = param['mastodon']['url'] + '/web/search/'
             feed_desc = param['mastodon']['description']
         elif favorites:
             result = api.favourites()
@@ -121,7 +136,8 @@ def generate_xml(api, param, query_feed=None, favorites=False):
             feed_link = param['mastodon']['url'] + '/web/bookmarks'
             feed_desc = param['feed']['author_name'] + ' bookmarks toots.'
         xml = generate_mastodon_feed(
-            result, param, feed_title, feed_link, feed_desc)
+            result, param, feed_title, feed_link, feed_desc
+        )
         code = 200
     else:
         xml = 'error - Mastodon parameters not defined'

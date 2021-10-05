@@ -2,45 +2,37 @@ import datetime
 from copy import deepcopy
 
 init_param = {
-    'twitter':
-        {
-            'consumerKey': '',
-            'consumerSecret': '',
-            'title': 'Recherche Twitter : ',
-            'link': 'https://twitter.com/search?q=',
-            'description': 'Résultat d\'une recherche Twitter retournée dans'
-                           ' un flux RSS via Tweepy.'
-        },
-    'mastodon':
-        {
-            'url': 'https://mastodon.social',
-            'client_id_file': 'tootrss_clientcred.txt',
-            'access_token_file': 'tootrss_usercred.txt',
-            'app_name': 'tootrss',
-            'title': 'Recherche Mastodon : ',
-            'description': 'Résultat d\'une recherche Mastodon retournée dans'
-                           ' un flux RSS.'
-        },
-    'feed':
-        {
-            'language': 'fr',
-            'author_name': '',
-            'feed_url': 'http://localhost:5000/',
-            'timezone': 'Europe/Paris',
-            'text_length_limit': 100,
-            'max_items': 100
-        },
-    'app':
-        {
-            'host': '0.0.0.0',
-            'port': '8080'
-        }
+    'twitter': {
+        'consumerKey': '',
+        'consumerSecret': '',
+        'title': 'Recherche Twitter : ',
+        'link': 'https://twitter.com/search?q=',
+        'description': 'Résultat d\'une recherche Twitter retournée dans'
+        ' un flux RSS via Tweepy.',
+    },
+    'mastodon': {
+        'url': 'https://mastodon.social',
+        'client_id_file': 'tootrss_clientcred.txt',
+        'access_token_file': 'tootrss_usercred.txt',
+        'app_name': 'tootrss',
+        'title': 'Recherche Mastodon : ',
+        'description': 'Résultat d\'une recherche Mastodon retournée dans'
+        ' un flux RSS.',
+    },
+    'feed': {
+        'language': 'fr',
+        'author_name': '',
+        'feed_url': 'http://localhost:5000/',
+        'timezone': 'Europe/Paris',
+        'text_length_limit': 100,
+        'max_items': 100,
+    },
+    'app': {'host': '0.0.0.0', 'port': '8080'},
 }
 
 invalid_param = deepcopy(init_param)
 invalid_param['mastodon']['client_id_file'] = 'tootrss_clientcred_invalid.txt'
-invalid_param['mastodon']['access_token_file'] = \
-    'tootrss_usercred_invalid.txt'
+invalid_param['mastodon']['access_token_file'] = 'tootrss_usercred_invalid.txt'
 
 invalid_param_api = deepcopy(invalid_param)
 invalid_param_api['twitter'] = None
@@ -62,11 +54,7 @@ tweet_1 = {
     },
     'place': {},
     'source': '',
-    'entities': {
-        'hashtags': [],
-        'urls': [],
-        'user_mentions': []
-    },
+    'entities': {'hashtags': [], 'urls': [], 'user_mentions': []},
     'retweet_count': 0,
     'favorite_count': 0,
 }
@@ -86,11 +74,11 @@ formatted_tweet_1 = {
     'created_at': 'Thu Apr 06 15:24:15 +0000 2017',
     'tweet_url': 'https://twitter.com/TwitterDev/status/850006245121695744',
     'htmltext': '<blockquote><div><img src="" '
-                'alt="TwitterDev profile image"/> '
-                '<strong>Twitter Dev: </strong>We are sharing our vision for '
-                'the future of the Twitter API<br>'
-                '<i>Source: </i><br><i>Location: None</i><br>'
-                ' ♻ : 0, ♥ : 0</div></blockquote>'
+    'alt="TwitterDev profile image"/> '
+    '<strong>Twitter Dev: </strong>We are sharing our vision for '
+    'the future of the Twitter API<br>'
+    '<i>Source: </i><br><i>Location: None</i><br>'
+    ' ♻ : 0, ♥ : 0</div></blockquote>',
 }
 tweet_1_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -127,8 +115,8 @@ tweet_100_feed = (
     '<description>Résultat d\'une recherche Twitter retournée dans un flux RSS'
     ' via Tweepy.</description>'
     '<language>fr</language>'
-    '<lastBuildDate></lastBuildDate>' +
-    (
+    '<lastBuildDate></lastBuildDate>'
+    + (
         '<item>'
         '<title>Twitter Dev (TwitterDev): We are sharing our vision for the '
         'future of the Twitter API</title>'
@@ -142,8 +130,9 @@ tweet_100_feed = (
         '</description>'
         '<pubDate>Thu, 06 Apr 2017 17:24:15 +0200</pubDate>'
         '</item>'
-    ) * 100 +
-    '</channel>'
+    )
+    * 100
+    + '</channel>'
     '</rss>'
 )
 
@@ -153,119 +142,110 @@ tweet_2 = {
     'id': 1111111111111111111,
     'id_str': '1111111111111111111',
     'full_text': 'tweet #test cc @userB @userC #opensource \n\n'
-                 'https://t.co/AAAAAAAAAA https://t.co/BBBBBBBBBB',
+    'https://t.co/AAAAAAAAAA https://t.co/BBBBBBBBBB',
     'truncated': False,
     'display_text_range': [0, 93],
     'entities': {
-        'hashtags':
-            [
-                {'text': 'test', 'indices': [6, 11]},
-                {'text': 'opensource', 'indices': [29, 40]},
-            ],
+        'hashtags': [
+            {'text': 'test', 'indices': [6, 11]},
+            {'text': 'opensource', 'indices': [29, 40]},
+        ],
         'symbols': [],
-        'user_mentions':
-            [
-                {
-                    'screen_name': 'userB',
-                    'name': 'User B',
-                    'id': 2222222222222,
-                    'id_str': '2222222222222',
-                    'indices': [15, 21]
+        'user_mentions': [
+            {
+                'screen_name': 'userB',
+                'name': 'User B',
+                'id': 2222222222222,
+                'id_str': '2222222222222',
+                'indices': [15, 21],
+            },
+            {
+                'screen_name': 'userC',
+                'name': 'User C',
+                'id': 3333333333333,
+                'id_str': '3333333333333',
+                'indices': [22, 28],
+            },
+        ],
+        'urls': [
+            {
+                'url': 'https://t.co/AAAAAAAAAA',
+                'expanded_url': 'https://www.example.com/test/'
+                'this-is-an-example',
+                'display_url': 'example.com/test/this-is-…',
+                'indices': [45, 68],
+            }
+        ],
+        'media': [
+            {
+                'id': 9999999999999999999,
+                'id_str': '9999999999999999999',
+                'indices': [69, 92],
+                'media_url': 'http://pbs.twimg.com/media/'
+                'DxDxDxDxDxDxDxD.jpg',
+                'media_url_https': 'https://pbs.twimg.com/media/'
+                'DxDxDxDxDxDxDxD.jpg',
+                'url': 'https://t.co/BBBBBBBBBB',
+                'display_url': 'pic.twitter.com/pictwitter',
+                'expanded_url': 'https://twitter.com/UserA/status/'
+                '1111111111111111111/photo/1',
+                'type': 'photo',
+                'sizes': {
+                    'large': {'w': 2048, 'h': 1448, 'resize': 'fit'},
+                    'thumb': {'w': 150, 'h': 150, 'resize': 'crop'},
+                    'small': {'w': 680, 'h': 481, 'resize': 'fit'},
+                    'medium': {'w': 1200, 'h': 848, 'resize': 'fit'},
                 },
-                {
-                    'screen_name': 'userC',
-                    'name': 'User C',
-                    'id': 3333333333333,
-                    'id_str': '3333333333333',
-                    'indices': [22, 28]
-                }
-            ],
-        'urls':
-            [
-                {
-                    'url': 'https://t.co/AAAAAAAAAA',
-                    'expanded_url': 'https://www.example.com/test/'
-                                    'this-is-an-example',
-                    'display_url': 'example.com/test/this-is-…',
-                    'indices': [45, 68]
-                }
-            ],
-        'media':
-            [
-                {
-                    'id': 9999999999999999999,
-                    'id_str': '9999999999999999999',
-                    'indices': [69, 92],
-                    'media_url': 'http://pbs.twimg.com/media/'
-                                 'DxDxDxDxDxDxDxD.jpg',
-                    'media_url_https': 'https://pbs.twimg.com/media/'
-                                       'DxDxDxDxDxDxDxD.jpg',
-                    'url': 'https://t.co/BBBBBBBBBB',
-                    'display_url': 'pic.twitter.com/pictwitter',
-                    'expanded_url': 'https://twitter.com/UserA/status/'
-                                    '1111111111111111111/photo/1',
-                    'type': 'photo',
-                    'sizes': {
-                        'large': {'w': 2048, 'h': 1448, 'resize': 'fit'},
-                        'thumb': {'w': 150, 'h': 150, 'resize': 'crop'},
-                        'small': {'w': 680, 'h': 481, 'resize': 'fit'},
-                        'medium': {'w': 1200, 'h': 848, 'resize': 'fit'}
-                    }
-                }
-            ]
+            }
+        ],
     },
-    'extended_entities':
-        {
-            'media':
-                [
-                    {
-                        'id': 9999999999999999999,
-                        'id_str': '9999999999999999999',
-                        'indices': [69, 92],
-                        'media_url': 'http://pbs.twimg.com/media/'
-                                     'DxDxDxDxDxDxDxD.jpg',
-                        'media_url_https': 'https://pbs.twimg.com/media/'
-                                           'DxDxDxDxDxDxDxD.jpg',
-                        'url': 'https://t.co/BBBBBBBBBB',
-                        'display_url': 'pic.twitter.com/pictwitter',
-                        'expanded_url': 'https://twitter.com/UserA/status/'
-                                        '1111111111111111111/photo/1',
-                        'type': 'photo',
-                        'sizes': {
-                            'large': {'w': 2048, 'h': 1448, 'resize': 'fit'},
-                            'thumb': {'w': 150, 'h': 150, 'resize': 'crop'},
-                            'small': {'w': 680, 'h': 481, 'resize': 'fit'},
-                            'medium': {'w': 1200, 'h': 848, 'resize': 'fit'}
-                        }
-                    },
-                    {
-                        'id': 8888888888888888888,
-                        'id_str': '8888888888888888888',
-                        'indices': [69, 92],
-                        'media_url': 'http://pbs.twimg.com/media/'
-                                     'xDxDxDxDxDxDxDx.jpg',
-                        'media_url_https': 'https://pbs.twimg.com/media/'
-                                           'xDxDxDxDxDxDxDx.jpg',
-                        'url': 'https://t.co/BBBBBBBBBB',
-                        'display_url': 'pic.twitter.com/pictwitter',
-                        'expanded_url': 'https://twitter.com/UserA/status/'
-                                        '1111111111111111111/photo/1',
-                        'type': 'photo',
-                        'sizes': {
-                            'thumb': {'w': 150, 'h': 150, 'resize': 'crop'},
-                            'medium': {'w': 1200, 'h': 848, 'resize': 'fit'},
-                            'large': {'w': 2048, 'h': 1447, 'resize': 'fit'},
-                            'small': {'w': 680, 'h': 481, 'resize': 'fit'}
-                        }
-                    }
-                ]
-        },
-    'metadata': {
-        'iso_language_code': 'fr',
-        'result_type': 'recent'
+    'extended_entities': {
+        'media': [
+            {
+                'id': 9999999999999999999,
+                'id_str': '9999999999999999999',
+                'indices': [69, 92],
+                'media_url': 'http://pbs.twimg.com/media/'
+                'DxDxDxDxDxDxDxD.jpg',
+                'media_url_https': 'https://pbs.twimg.com/media/'
+                'DxDxDxDxDxDxDxD.jpg',
+                'url': 'https://t.co/BBBBBBBBBB',
+                'display_url': 'pic.twitter.com/pictwitter',
+                'expanded_url': 'https://twitter.com/UserA/status/'
+                '1111111111111111111/photo/1',
+                'type': 'photo',
+                'sizes': {
+                    'large': {'w': 2048, 'h': 1448, 'resize': 'fit'},
+                    'thumb': {'w': 150, 'h': 150, 'resize': 'crop'},
+                    'small': {'w': 680, 'h': 481, 'resize': 'fit'},
+                    'medium': {'w': 1200, 'h': 848, 'resize': 'fit'},
+                },
+            },
+            {
+                'id': 8888888888888888888,
+                'id_str': '8888888888888888888',
+                'indices': [69, 92],
+                'media_url': 'http://pbs.twimg.com/media/'
+                'xDxDxDxDxDxDxDx.jpg',
+                'media_url_https': 'https://pbs.twimg.com/media/'
+                'xDxDxDxDxDxDxDx.jpg',
+                'url': 'https://t.co/BBBBBBBBBB',
+                'display_url': 'pic.twitter.com/pictwitter',
+                'expanded_url': 'https://twitter.com/UserA/status/'
+                '1111111111111111111/photo/1',
+                'type': 'photo',
+                'sizes': {
+                    'thumb': {'w': 150, 'h': 150, 'resize': 'crop'},
+                    'medium': {'w': 1200, 'h': 848, 'resize': 'fit'},
+                    'large': {'w': 2048, 'h': 1447, 'resize': 'fit'},
+                    'small': {'w': 680, 'h': 481, 'resize': 'fit'},
+                },
+            },
+        ]
     },
+    'metadata': {'iso_language_code': 'fr', 'result_type': 'recent'},
     'source': '<a href="https://example.com/" rel="nofollow">'
-              'Twitter for Android</a>',
+    'Twitter for Android</a>',
     'in_reply_to_status_id': None,
     'in_reply_to_status_id_str': None,
     'in_reply_to_user_id': None,
@@ -281,18 +261,16 @@ tweet_2 = {
         'url': 'https://t.co/xxxxxxxxxx',
         'entities': {
             'url': {
-                'urls':
-                    [
-                        {'url': 'https://t.co/xxxxxxxxxx',
-                         'expanded_url': 'https://github.com/UserA',
-                         'display_url': 'github.com/UserA',
-                         'indices': [0, 23]
-                         }
-                    ]
+                'urls': [
+                    {
+                        'url': 'https://t.co/xxxxxxxxxx',
+                        'expanded_url': 'https://github.com/UserA',
+                        'display_url': 'github.com/UserA',
+                        'indices': [0, 23],
+                    }
+                ]
             },
-            'description': {
-                'urls': []
-            }
+            'description': {'urls': []},
         },
         'protected': False,
         'followers_count': 10000,
@@ -311,16 +289,16 @@ tweet_2 = {
         'is_translation_enabled': False,
         'profile_background_color': '000000',
         'profile_background_image_url': 'http://abs.twimg.com/images/themes/'
-                                        'theme14/bg.gif',
+        'theme14/bg.gif',
         'profile_background_image_url_https': 'https://abs.twimg.com/images/'
-                                              'themes/theme14/bg.gif',
+        'themes/theme14/bg.gif',
         'profile_background_tile': False,
         'profile_image_url': 'http://pbs.twimg.com/profile_images/'
-                             'xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg',
+        'xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg',
         'profile_image_url_https': 'https://pbs.twimg.com/profile_images/'
-                                   'xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg',
+        'xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg',
         'profile_banner_url': 'https://pbs.twimg.com/profile_banners/'
-                              'xxxxxxxx/xxxxxxxxxx',
+        'xxxxxxxx/xxxxxxxxxx',
         'profile_link_color': '575757',
         'profile_sidebar_border_color': 'FFFFFF',
         'profile_sidebar_fill_color': 'EFEFEF',
@@ -332,7 +310,7 @@ tweet_2 = {
         'following': None,
         'follow_request_sent': None,
         'notifications': None,
-        'translator_type': 'none'
+        'translator_type': 'none',
     },
     'geo': None,
     'coordinates': None,
@@ -344,7 +322,7 @@ tweet_2 = {
     'favorited': False,
     'retweeted': False,
     'possibly_sensitive': False,
-    'lang': 'fr'
+    'lang': 'fr',
 }
 formatted_tweet_2 = {
     'text': 'tweet #test cc @userB @userC #opensource \n\nhttps://t.co/AAAAAAAAAA https://t.co/BBBBBBBBBB',  # noqa
@@ -353,21 +331,21 @@ formatted_tweet_2 = {
     'created_at': 'Fri Jan 18 08:00:25 +0000 2019',
     'tweet_url': 'https://twitter.com/UserA/status/1111111111111111111',
     'htmltext': '<blockquote>'
-                '<div>'
-                '<img src="https://pbs.twimg.com/profile_images/xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg" alt="UserA profile image"/> '  # noqa
-                '<strong>User A: </strong>'
-                'tweet <a href="https://twitter.com/hashtag/test?src=hash" target="_blank">#test</a> '  # noqa
-                'cc '
-                '<a href="https://twitter.com/userB" target="_blank">@userB</a> '  # noqa
-                '<a href="https://twitter.com/userC" target="_blank">@userC</a> '  # noqa
-                '<a href="https://twitter.com/hashtag/opensource?src=hash" target="_blank">#opensource</a> \n\n'  # noqa
-                '<a href="https://www.example.com/test/this-is-an-example" target="_blank">example.com/test/this-is-…</a> <br>'  # noqa
-                '<i>Source: <a href="https://example.com/" rel="nofollow">Twitter for Android</a></i><br> '  # noqa
-                '<a href="https://pbs.twimg.com/media/DxDxDxDxDxDxDxD.jpg" target="_blank"><img src="https://pbs.twimg.com/media/DxDxDxDxDxDxDxD.jpg:thumb"></a>'  # noqa
-                '<a href="https://pbs.twimg.com/media/xDxDxDxDxDxDxDx.jpg" target="_blank"><img src="https://pbs.twimg.com/media/xDxDxDxDxDxDxDx.jpg:thumb"></a><br>'  # noqa
-                ' ♻ : 4, ♥ : 8'
-                '</div>'
-                '</blockquote>'
+    '<div>'
+    '<img src="https://pbs.twimg.com/profile_images/xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg" alt="UserA profile image"/> '  # noqa
+    '<strong>User A: </strong>'
+    'tweet <a href="https://twitter.com/hashtag/test?src=hash" target="_blank">#test</a> '  # noqa
+    'cc '
+    '<a href="https://twitter.com/userB" target="_blank">@userB</a> '  # noqa
+    '<a href="https://twitter.com/userC" target="_blank">@userC</a> '  # noqa
+    '<a href="https://twitter.com/hashtag/opensource?src=hash" target="_blank">#opensource</a> \n\n'  # noqa
+    '<a href="https://www.example.com/test/this-is-an-example" target="_blank">example.com/test/this-is-…</a> <br>'  # noqa
+    '<i>Source: <a href="https://example.com/" rel="nofollow">Twitter for Android</a></i><br> '  # noqa
+    '<a href="https://pbs.twimg.com/media/DxDxDxDxDxDxDxD.jpg" target="_blank"><img src="https://pbs.twimg.com/media/DxDxDxDxDxDxDxD.jpg:thumb"></a>'  # noqa
+    '<a href="https://pbs.twimg.com/media/xDxDxDxDxDxDxDx.jpg" target="_blank"><img src="https://pbs.twimg.com/media/xDxDxDxDxDxDxDx.jpg:thumb"></a><br>'  # noqa
+    ' ♻ : 4, ♥ : 8'
+    '</div>'
+    '</blockquote>',
 }
 
 empty_feed = (
@@ -392,8 +370,8 @@ toot1 = {
     'language': 'en',
     'uri': 'https://mastodon.social/users/UserD/statuses/111111111111111111',
     'content': '<p>What\'s New in <a href="https://linuxjobs.social/tags/'
-               'python" class="mention hashtag" rel="nofollow noopener" '
-               'target="_blank">#<span>python</span></a> today?</p>',
+    'python" class="mention hashtag" rel="nofollow noopener" '
+    'target="_blank">#<span>python</span></a> today?</p>',
     'url': 'https://mastodon.social/@UserD/111111111111111111',
     'replies_count': 0,
     'reblogs_count': 0,
@@ -422,13 +400,13 @@ toot1 = {
         'following_count': 20,
         'statuses_count': 300,
         'emojis': [],
-        'fields': []
+        'fields': [],
     },
     'media_attachments': [],
     'mentions': [],
     'tags': [],
     'emojis': [],
-    'card': None
+    'card': None,
 }
 
 formatted_toot1 = {
@@ -437,12 +415,12 @@ formatted_toot1 = {
     'created_at': datetime.datetime(2018, 10, 25, 14, 16, 42, 11000),
     'url': 'https://mastodon.social/@UserD/111111111111111111',
     'htmltext': '<blockquote>'
-                '<div>'
-                '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
-                '<strong>User: </strong>'
-                '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
-                '<br>♻ : 0, ✰ : 0</div></blockquote>',
-    'text': 'What\'s New in #python today?'
+    '<div>'
+    '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
+    '<strong>User: </strong>'
+    '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
+    '<br>♻ : 0, ✰ : 0</div></blockquote>',
+    'text': 'What\'s New in #python today?',
 }
 toot_1_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -478,8 +456,8 @@ toot_100_feed = (
     'description>Résultat d\'une recherche Mastodon retournée dans un flux '
     'RSS.</description>'
     '<language>fr</language>'
-    '<lastBuildDate></lastBuildDate>' +
-    (
+    '<lastBuildDate></lastBuildDate>'
+    + (
         '<item>'
         '<title>User (UserD): What\'s New in #python today?</title>'
         '<link>https://mastodon.social/@UserD/111111111111111111</link>'
@@ -493,8 +471,9 @@ toot_100_feed = (
         'blockquote&gt;</description>'
         '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
         '</item>'
-    ) * 100 +
-    '</channel>'
+    )
+    * 100
+    + '</channel>'
     '</rss>'
 )
 toot_1_bookmarks_feed = (
@@ -529,8 +508,8 @@ toot_100_bookmarks_feed = (
     '<link>https://mastodon.social/web/bookmarks</link><'
     'description> bookmarks toots.</description>'
     '<language>fr</language>'
-    '<lastBuildDate></lastBuildDate>' +
-    (
+    '<lastBuildDate></lastBuildDate>'
+    + (
         '<item>'
         '<title>User (UserD): What\'s New in #python today?</title>'
         '<link>https://mastodon.social/@UserD/111111111111111111</link>'
@@ -544,8 +523,9 @@ toot_100_bookmarks_feed = (
         '&gt;</description>'
         '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
         '</item>'
-    ) * 100 +
-    '</channel>'
+    )
+    * 100
+    + '</channel>'
     '</rss>'
 )
 toot_1_favorites_feed = (
@@ -580,8 +560,8 @@ toot_100_favorites_feed = (
     '<link>https://mastodon.social/web/favourites</link><'
     'description> favourites toots.</description>'
     '<language>fr</language>'
-    '<lastBuildDate></lastBuildDate>' +
-    (
+    '<lastBuildDate></lastBuildDate>'
+    + (
         '<item>'
         '<title>User (UserD): What\'s New in #python today?</title>'
         '<link>https://mastodon.social/@UserD/111111111111111111</link>'
@@ -595,8 +575,9 @@ toot_100_favorites_feed = (
         '&gt;</description>'
         '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
         '</item>'
-    ) * 100 +
-    '</channel>'
+    )
+    * 100
+    + '</channel>'
     '</rss>'
 )
 
@@ -622,7 +603,7 @@ toot2 = {
     'reblog': None,
     'application': {
         'name': 'Twidere for Android',
-        'website': 'https://github.com/TwidereProject/'
+        'website': 'https://github.com/TwidereProject/',
     },
     'account': {
         'id': 00000,
@@ -642,48 +623,45 @@ toot2 = {
         'following_count': 20,
         'statuses_count': 300,
         'emojis': [],
-        'fields':
-            [
-                {
-                    'name': 'GitHub',
-                    'value': '<a href="https://github.com/UserD" rel="nofollow noopener" target="_blank"><span class="invisible">https://</span><span class="">github.com/UserD</span><span class="invisible"></span></a>',  # noqa
-                    'verified_at': None
-                }
-            ]
-    },
-    'media_attachments':
-        [
+        'fields': [
             {
-                'id': 7398805,
-                'type': 'image',
-                'url': 'https://files.mastodon.social/media_attachments/files/999/999/999/original/a2a2a2a2a2a2a2a2.jpg',  # noqa
-                'preview_url': 'https://files.mastodon.social/media_attachments/files/999/999/999/small/a2a2a2a2a2a2a2a2.jpg',  # noqa
-                'remote_url': None,
-                'text_url': 'https://mastodon.social/media/2a2a2a2a2a2a2_a2a2a',  # noqa
-                'meta': {
-                    'original': {
-                        'width': 1109,
-                        'height': 1478,
-                        'size': '1109x1478',
-                        'aspect': 0.7503382949932341
-                    },
-                    'small': {
-                        'width': 346,
-                        'height': 461,
-                        'size': '346x461',
-                        'aspect': 0.7505422993492408
-                    }
-                },
-                'description': None
+                'name': 'GitHub',
+                'value': '<a href="https://github.com/UserD" rel="nofollow noopener" target="_blank"><span class="invisible">https://</span><span class="">github.com/UserD</span><span class="invisible"></span></a>',  # noqa
+                'verified_at': None,
             }
         ],
+    },
+    'media_attachments': [
+        {
+            'id': 7398805,
+            'type': 'image',
+            'url': 'https://files.mastodon.social/media_attachments/files/999/999/999/original/a2a2a2a2a2a2a2a2.jpg',  # noqa
+            'preview_url': 'https://files.mastodon.social/media_attachments/files/999/999/999/small/a2a2a2a2a2a2a2a2.jpg',  # noqa
+            'remote_url': None,
+            'text_url': 'https://mastodon.social/media/2a2a2a2a2a2a2_a2a2a',  # noqa
+            'meta': {
+                'original': {
+                    'width': 1109,
+                    'height': 1478,
+                    'size': '1109x1478',
+                    'aspect': 0.7503382949932341,
+                },
+                'small': {
+                    'width': 346,
+                    'height': 461,
+                    'size': '346x461',
+                    'aspect': 0.7505422993492408,
+                },
+            },
+            'description': None,
+        }
+    ],
     'mentions': [],
     'tags': [
-        {'name': 'testtag',
-         'url': 'https://mastodon.social/tags/testtag'}
+        {'name': 'testtag', 'url': 'https://mastodon.social/tags/testtag'}
     ],
     'emojis': [],
-    'card': None
+    'card': None,
 }
 
 formatted_toot2 = {
@@ -692,14 +670,14 @@ formatted_toot2 = {
     'created_at': datetime.datetime(2018, 10, 25, 14, 16, 42, 11000),
     'url': 'https://mastodon.social/@UserD/111111111111111111',
     'htmltext': '<blockquote>'
-                '<div>'
-                '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
-                '<strong>User: </strong>'
-                '<p>This is a <a href="https://mastodon.social/tags/testtag" class="mention hashtag" rel="tag">#<span>TestTag</span></a></p>'  # noqa
-                '<i>Source: Twidere for Android</i><br>'
-                '<a href="https://files.mastodon.social/media_attachments/files/999/999/999/original/a2a2a2a2a2a2a2a2.jpg" target="_blank"><img src="https://files.mastodon.social/media_attachments/files/999/999/999/small/a2a2a2a2a2a2a2a2.jpg"></a>'  # noqa
-                '<br>♻ : 0, ✰ : 0</div></blockquote>',
-    'text': 'This is a ... '
+    '<div>'
+    '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
+    '<strong>User: </strong>'
+    '<p>This is a <a href="https://mastodon.social/tags/testtag" class="mention hashtag" rel="tag">#<span>TestTag</span></a></p>'  # noqa
+    '<i>Source: Twidere for Android</i><br>'
+    '<a href="https://files.mastodon.social/media_attachments/files/999/999/999/original/a2a2a2a2a2a2a2a2.jpg" target="_blank"><img src="https://files.mastodon.social/media_attachments/files/999/999/999/small/a2a2a2a2a2a2a2a2.jpg"></a>'  # noqa
+    '<br>♻ : 0, ✰ : 0</div></blockquote>',
+    'text': 'This is a ... ',
 }
 
 empty_toot_feed = (

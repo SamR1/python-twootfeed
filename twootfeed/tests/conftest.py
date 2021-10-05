@@ -49,6 +49,6 @@ def fake_tweepy_200_ok():
 
 @pytest.fixture()
 def fake_tweepy_220_ok():
-    return mock_api(tweets=[tweet_1] * 200 +
-                           [tweet_no_full_text] * 10 +
-                           [retweet] * 10)
+    return mock_api(
+        tweets=[tweet_1] * 200 + [tweet_no_full_text] * 10 + [retweet] * 10
+    )

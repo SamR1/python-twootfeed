@@ -31,7 +31,7 @@ def test_tweetfeed_empty(fake_tweepy_no_tweets):
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
-        val
+        val,
     )
     assert val == empty_feed
 
@@ -44,7 +44,7 @@ def test_tweetfeed_retweet(get_mock, fake_tweepy_retweet):
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
-        val
+        val,
     )
     assert val == empty_feed
 
@@ -57,7 +57,7 @@ def test_tweetfeed_ok(get_mock, fake_tweepy_ok):
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
-        val
+        val,
     )
     assert val == tweet_1_feed
 
@@ -70,7 +70,7 @@ def test_tweetfeed_limit_ok(get_mock, fake_tweepy_200_ok):
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
-        val
+        val,
     )
     assert val == tweet_100_feed
 
@@ -83,7 +83,7 @@ def test_tweetfeed_limit_with_retweet_ok(get_mock, fake_tweepy_220_ok):
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
-        val
+        val,
     )
     assert val == tweet_100_feed
 
@@ -96,7 +96,7 @@ def test_generate_xml_ok(get_mock, fake_tweepy_ok):
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
-        val
+        val,
     )
     assert val == tweet_1_feed
     assert code == 200

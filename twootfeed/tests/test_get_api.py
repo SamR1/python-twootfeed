@@ -32,8 +32,9 @@ def test_mastodon_invalid_param(caplog):
     assert mastodon_api is None
     assert len(caplog.records) == 1
     assert caplog.records[0].levelname == 'WARNING'
-    assert caplog.records[0].message == ('Mastodon API: no client_id_file or'
-                                         ' access_token_file.')
+    assert caplog.records[0].message == (
+        'Mastodon API: no client_id_file or' ' access_token_file.'
+    )
 
 
 def test_twitter_invalid_param(caplog):
@@ -41,8 +42,10 @@ def test_twitter_invalid_param(caplog):
     assert twitter_api is None
     assert len(caplog.records) == 1
     assert caplog.records[0].levelname == 'WARNING'
-    assert caplog.records[0].message == ('Twitter API: no consumer key and or'
-                                         ' consumer secret in config file.')
+    assert caplog.records[0].message == (
+        'Twitter API: no consumer key and or'
+        ' consumer secret in config file.'
+    )
 
 
 def test_mastodon_incomplete_param(caplog):
@@ -50,9 +53,11 @@ def test_mastodon_incomplete_param(caplog):
     assert mastodon_api is None
     assert len(caplog.records) == 1
     assert caplog.records[0].levelname == 'ERROR'
-    assert caplog.records[0].message == ('Mastodon API: invalid config file '
-                                         '(\'NoneType\' object is not '
-                                         'subscriptable)')
+    assert caplog.records[0].message == (
+        'Mastodon API: invalid config file '
+        '(\'NoneType\' object is not '
+        'subscriptable)'
+    )
 
 
 def test_twitter_incomplete_param(caplog):
@@ -60,6 +65,8 @@ def test_twitter_incomplete_param(caplog):
     assert twitter_api is None
     assert len(caplog.records) == 1
     assert caplog.records[0].levelname == 'ERROR'
-    assert caplog.records[0].message == ('Twitter API: invalid config file '
-                                         '(\'NoneType\' object is not '
-                                         'subscriptable)')
+    assert caplog.records[0].message == (
+        'Twitter API: invalid config file '
+        '(\'NoneType\' object is not '
+        'subscriptable)'
+    )

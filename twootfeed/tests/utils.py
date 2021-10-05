@@ -3,7 +3,6 @@ from datetime import datetime
 
 # source: https://stackoverflow.com/a/32107024
 class ToDotNotation(dict):
-
     def __init__(self, *args, **kwargs):
         super(ToDotNotation, self).__init__(*args, **kwargs)
         for arg in args:
@@ -34,7 +33,6 @@ class ToDotNotation(dict):
 
 
 class ToDotNotationTweepy(ToDotNotation):
-
     def __init__(self, *args, **kwargs):
         super(ToDotNotation, self).__init__(*args, **kwargs)
         for arg in args:
@@ -44,7 +42,9 @@ class ToDotNotationTweepy(ToDotNotation):
                         v = v[:19] + v[25:]
                         self[k] = datetime.strptime(v, '%a %b %d %H:%M:%S %Y')
                     else:
-                        self[k] = ToDotNotation(v) if isinstance(v, dict) else v  # noqa
+                        self[k] = (
+                            ToDotNotation(v) if isinstance(v, dict) else v
+                        )  # noqa
 
         if kwargs:
             for k, v in kwargs.items():
@@ -85,8 +85,8 @@ class MastodonApi:
         self.limit = limit - 1
 
     def return_result(self):
-        result = self.toots[:self.limit]
-        del self.toots[:self.limit]
+        result = self.toots[: self.limit]
+        del self.toots[: self.limit]
         return result
 
     def timeline_hashtag(self, query):

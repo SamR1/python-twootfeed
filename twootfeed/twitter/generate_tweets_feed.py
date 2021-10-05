@@ -6,17 +6,24 @@ from twootfeed.utils.feed_generation import generate_feed
 
 
 def format_tweet(tweet):
-    rss_tweet = {'text': tweet.full_text, 'user_name': tweet.user.name,
-                 'screen_name': tweet.user.screen_name,
-                 'created_at': tweet.created_at,
-                 'tweet_url': 'https://twitter.com/{}/status/{}'.format(
-                     tweet.user.screen_name, tweet.id_str
-                 ),
-                 'htmltext': ('<blockquote><div><img src="{}" alt="{}'.format(
-                     tweet.user.profile_image_url_https, tweet.user.screen_name
-                 ) + ' profile image"/> <strong>{}: </strong>{}<br><i>'.format(
-                     tweet.user.name, tweet.full_text
-                 ) + 'Source: {}</i>'.format(tweet.source))}
+    rss_tweet = {
+        'text': tweet.full_text,
+        'user_name': tweet.user.name,
+        'screen_name': tweet.user.screen_name,
+        'created_at': tweet.created_at,
+        'tweet_url': 'https://twitter.com/{}/status/{}'.format(
+            tweet.user.screen_name, tweet.id_str
+        ),
+        'htmltext': (
+            '<blockquote><div><img src="{}" alt="{}'.format(
+                tweet.user.profile_image_url_https, tweet.user.screen_name
+            )
+            + ' profile image"/> <strong>{}: </strong>{}<br><i>'.format(
+                tweet.user.name, tweet.full_text
+            )
+            + 'Source: {}</i>'.format(tweet.source)
+        ),
+    }
 
     user_mentionslist = tweet.entities.get('user_mentions')
     for user in user_mentionslist:
@@ -24,10 +31,12 @@ def format_tweet(tweet):
             screen_name = user.get('screen_name')
             rss_tweet['htmltext'] = re.sub(
                 '@' + user.get('screen_name'),
-                ('<a href="https://twitter.com/{}" target="_blank">@{}'.format(
-                    screen_name, screen_name
-                ) + '</a>'),
-                rss_tweet['htmltext'])
+                (
+                    f'<a href="https://twitter.com/{screen_name}" '
+                    f'target="_blank">@{screen_name}</a>'
+                ),
+                rss_tweet['htmltext'],
+            )
 
     hashtaglist = tweet.entities.get('hashtags')
     for hashtag in hashtaglist:
@@ -35,9 +44,11 @@ def format_tweet(tweet):
             tag = hashtag.get('text')
             rss_tweet['htmltext'] = re.sub(
                 '#' + hashtag.get('text'),
-                ('<a href="https://twitter.com/hashtag/{}'.format(tag) +
-                 '?src=hash" target="_blank">#{}</a>'.format(tag)),
-                rss_tweet['htmltext']
+                (
+                    '<a href="https://twitter.com/hashtag/{}'.format(tag)
+                    + '?src=hash" target="_blank">#{}</a>'.format(tag)
+                ),
+                rss_tweet['htmltext'],
             )
 
     urllist = tweet.entities.get('urls')
@@ -48,7 +59,8 @@ def format_tweet(tweet):
                 '<a href="{}" target="_blank">{}</a>'.format(
                     url.get('expanded_url'), url.get('display_url')
                 ),
-                rss_tweet['htmltext'])
+                rss_tweet['htmltext'],
+            )
     try:
         medialist = tweet.extended_entities.get('media')
     except AttributeError:
@@ -63,11 +75,11 @@ def format_tweet(tweet):
                         rss_tweet['htmltext'] = re.sub(
                             media.get('url'), '', rss_tweet['htmltext']
                         )
-                        rss_tweet['htmltext'] += ('<a href="{}" '.format(
-                            media_url
-                        ) + 'target="_blank"><img src="{}'.format(
-                            media_url
-                        ) + ':thumb"></a>')
+                        rss_tweet['htmltext'] += (
+                            '<a href="{}" '.format(media_url)
+                            + 'target="_blank"><img src="{}'.format(media_url)
+                            + ':thumb"></a>'
+                        )
 
     location = tweet.place
     if location is not None:
@@ -88,10 +100,12 @@ def generate_twitter_feed(api, query_feed, twitter_param):
     f = generate_feed(feed_title, feed_link, twitter_param)
 
     # https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html  # noqa
-    result = tweepy.Cursor(api,
-                           q=query_feed,
-                           tweet_mode='extended',  # to get tweet.full_text
-                           result_type='recent')  # default is 'mixed'
+    result = tweepy.Cursor(
+        api,
+        q=query_feed,
+        tweet_mode='extended',  # to get tweet.full_text
+        result_type='recent',
+    )  # default is 'mixed'
 
     max_tweets = twitter_param['feed']['max_items']
     tweet_index = 0
@@ -113,13 +127,17 @@ def generate_twitter_feed(api, query_feed, twitter_param):
                 f.add_item(
                     title=formatted_tweet['user_name']
                     + ' ('
-                    + formatted_tweet['screen_name'] + '): '
+                    + formatted_tweet['screen_name']
+                    + '): '
                     + formatted_tweet['text'],
                     link=formatted_tweet['tweet_url'],
                     pubdate=pytz.utc.localize(
-                        formatted_tweet['created_at']).astimezone(
-                        pytz.timezone(twitter_param['feed']['timezone'])),
-                    description=formatted_tweet['htmltext'])
+                        formatted_tweet['created_at']
+                    ).astimezone(
+                        pytz.timezone(twitter_param['feed']['timezone'])
+                    ),
+                    description=formatted_tweet['htmltext'],
+                )
 
     return f.writeString('UTF-8')
 

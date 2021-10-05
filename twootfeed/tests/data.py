@@ -1,5 +1,7 @@
-import datetime
 from copy import deepcopy
+from datetime import datetime
+
+import pytz
 
 init_param = {
     'twitter': {
@@ -40,7 +42,7 @@ invalid_param_api['mastodon'] = None
 
 # minimal structure
 tweet_1 = {
-    'created_at': 'Thu Apr 06 15:24:15 +0000 2017',
+    'created_at': datetime(2017, 4, 6, 15, 24, 15, tzinfo=pytz.UTC),
     'id': 850006245121695744,
     'id_str': '850006245121695744',
     'full_text': 'We are sharing our vision for the future of the Twitter API',
@@ -71,7 +73,7 @@ formatted_tweet_1 = {
     'text': 'We are sharing our vision for the future of the Twitter API',
     'user_name': 'Twitter Dev',
     'screen_name': 'TwitterDev',
-    'created_at': 'Thu Apr 06 15:24:15 +0000 2017',
+    'created_at': datetime(2017, 4, 6, 15, 24, 15, tzinfo=pytz.UTC),
     'tweet_url': 'https://twitter.com/TwitterDev/status/850006245121695744',
     'htmltext': '<blockquote><div><img src="" '
     'alt="TwitterDev profile image"/> '
@@ -138,7 +140,7 @@ tweet_100_feed = (
 
 # full tweet
 tweet_2 = {
-    'created_at': 'Fri Jan 18 08:00:25 +0000 2019',
+    'created_at': datetime(2019, 1, 18, 8, 0, 25, tzinfo=pytz.UTC),
     'id': 1111111111111111111,
     'id_str': '1111111111111111111',
     'full_text': 'tweet #test cc @userB @userC #opensource \n\n'
@@ -328,7 +330,7 @@ formatted_tweet_2 = {
     'text': 'tweet #test cc @userB @userC #opensource \n\nhttps://t.co/AAAAAAAAAA https://t.co/BBBBBBBBBB',  # noqa
     'user_name': 'User A',
     'screen_name': 'UserA',
-    'created_at': 'Fri Jan 18 08:00:25 +0000 2019',
+    'created_at': datetime(2019, 1, 18, 8, 0, 25, tzinfo=pytz.UTC),
     'tweet_url': 'https://twitter.com/UserA/status/1111111111111111111',
     'htmltext': '<blockquote>'
     '<div>'
@@ -361,7 +363,7 @@ empty_feed = (
 
 toot1 = {
     'id': 111111111111111111,
-    'created_at': datetime.datetime(2018, 10, 25, 14, 16, 42, 11000),
+    'created_at': datetime(2018, 10, 25, 14, 16, 42, 11000),
     'in_reply_to_id': None,
     'in_reply_to_account_id': None,
     'sensitive': False,
@@ -389,7 +391,7 @@ toot1 = {
         'display_name': 'User',
         'locked': False,
         'bot': False,
-        'created_at': datetime.datetime(2017, 4, 4, 9, 20, 43, 157000),
+        'created_at': datetime(2017, 4, 4, 9, 20, 43, 157000),
         'note': '',
         'url': 'https://mastodon.social/@UserD',
         'avatar': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
@@ -412,7 +414,7 @@ toot1 = {
 formatted_toot1 = {
     'display_name': 'User',
     'screen_name': 'UserD',
-    'created_at': datetime.datetime(2018, 10, 25, 14, 16, 42, 11000),
+    'created_at': datetime(2018, 10, 25, 14, 16, 42, 11000),
     'url': 'https://mastodon.social/@UserD/111111111111111111',
     'htmltext': '<blockquote>'
     '<div>'
@@ -583,7 +585,7 @@ toot_100_favorites_feed = (
 
 toot2 = {
     'id': 111111111111111111,
-    'created_at': datetime.datetime(2018, 10, 25, 14, 16, 42, 11000),
+    'created_at': datetime(2018, 10, 25, 14, 16, 42, 11000),
     'in_reply_to_id': None,
     'in_reply_to_account_id': None,
     'sensitive': False,
@@ -612,7 +614,7 @@ toot2 = {
         'display_name': 'User',
         'locked': False,
         'bot': False,
-        'created_at': datetime.datetime(2017, 4, 4, 9, 20, 43, 157000),
+        'created_at': datetime(2017, 4, 4, 9, 20, 43, 157000),
         'note': '',
         'url': 'https://mastodon.social/@UserD',
         'avatar': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
@@ -667,7 +669,7 @@ toot2 = {
 formatted_toot2 = {
     'display_name': 'User',
     'screen_name': 'UserD',
-    'created_at': datetime.datetime(2018, 10, 25, 14, 16, 42, 11000),
+    'created_at': datetime(2018, 10, 25, 14, 16, 42, 11000),
     'url': 'https://mastodon.social/@UserD/111111111111111111',
     'htmltext': '<blockquote>'
     '<div>'

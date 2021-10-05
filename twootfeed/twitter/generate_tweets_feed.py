@@ -131,9 +131,7 @@ def generate_twitter_feed(api, query_feed, twitter_param):
                     + '): '
                     + formatted_tweet['text'],
                     link=formatted_tweet['tweet_url'],
-                    pubdate=pytz.utc.localize(
-                        formatted_tweet['created_at']
-                    ).astimezone(
+                    pubdate=formatted_tweet['created_at'].astimezone(
                         pytz.timezone(twitter_param['feed']['timezone'])
                     ),
                     description=formatted_tweet['htmltext'],
@@ -144,7 +142,7 @@ def generate_twitter_feed(api, query_feed, twitter_param):
 
 def generate_xml(api, query_feed, param):
     if api:
-        xml = generate_twitter_feed(api.search, query_feed, param)
+        xml = generate_twitter_feed(api.search_tweets, query_feed, param)
         code = 200
     else:
         xml = 'error - Twitter parameters not defined'

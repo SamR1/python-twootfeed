@@ -1,12 +1,21 @@
 image: python:3.9
 
 stages:
+  - lint
   - tests
 
 .python:
   stage: tests
+  before_script:
+    - pip install -e .[test]
   script:
-    - python setup.py test
+    - pytest twootfeed
+
+lint:
+  stage: lint
+  extends: .python
+  script:
+    - pytest --flake8 --isort --black -m "flake8 or isort or black" twootfeed
 
 python-3.6:
   stage: tests
@@ -26,10 +35,11 @@ python-3.8:
 python-3.9:
   stage: tests
   before_script:
+    - pip install -e .[test]
     - pip install coveralls
     - echo "FAILED" > .job_status
   script:
-    - python setup.py test
+    - pytest twootfeed --cov twootfeed --cov-report term-missing
     - echo "SUCCESS" > .job_status
   after_script:
     - if [ "$(cat .job_status)" == "SUCCESS" ]; then GIT_BRANCH="${CI_COMMIT_REF_NAME}" coveralls; fi

@@ -1,6 +1,3 @@
-from datetime import datetime
-
-
 # source: https://stackoverflow.com/a/32107024
 class ToDotNotation(dict):
     def __init__(self, *args, **kwargs):
@@ -38,13 +35,7 @@ class ToDotNotationTweepy(ToDotNotation):
         for arg in args:
             if isinstance(arg, dict):
                 for k, v in arg.items():
-                    if k == 'created_at':
-                        v = v[:19] + v[25:]
-                        self[k] = datetime.strptime(v, '%a %b %d %H:%M:%S %Y')
-                    else:
-                        self[k] = (
-                            ToDotNotation(v) if isinstance(v, dict) else v
-                        )  # noqa
+                    self[k] = ToDotNotation(v) if isinstance(v, dict) else v
 
         if kwargs:
             for k, v in kwargs.items():
@@ -76,7 +67,7 @@ class Tweepy:
 
 class TwitterApi:
     def __init__(self):
-        self.search = True
+        self.search_tweets = True
 
 
 class MastodonApi:

@@ -2,13 +2,18 @@ include Makefile.config
 -include Makefile.custom.config
 .SILENT:
 
+check: lint test
+
 clean:
+	rm -rf .pytest_cache
+
+clean-all: clean
 	rm -fr $(VENV)
 	rm -fr *.egg-info
 	rm -fr .eggs
-	rm -rf .pytest_cache
 	rm -fr build
 	rm -rf dist
+	rm -rf *.log
 
 create-mastodon-cli:
 	$(PYTHON) $(FLASK_APP)/utils/create_mastodon_client.py

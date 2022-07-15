@@ -1,4 +1,7 @@
-def test_default_route(app):
+from flask import Flask
+
+
+def test_default_route(app: Flask) -> None:
     client = app.test_client()
     response = client.get('/')
     assert response.status_code == 200

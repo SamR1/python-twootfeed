@@ -1,5 +1,6 @@
 from copy import deepcopy
 from datetime import datetime
+from typing import Dict
 
 import pytz
 
@@ -32,11 +33,11 @@ init_param = {
     'app': {'host': '0.0.0.0', 'port': '8080'},
 }
 
-invalid_param = deepcopy(init_param)
+invalid_param: Dict = deepcopy(init_param)
 invalid_param['mastodon']['client_id_file'] = 'tootrss_clientcred_invalid.txt'
 invalid_param['mastodon']['access_token_file'] = 'tootrss_usercred_invalid.txt'
 
-invalid_param_api = deepcopy(invalid_param)
+invalid_param_api: Dict = deepcopy(invalid_param)
 invalid_param_api['twitter'] = None
 invalid_param_api['mastodon'] = None
 

@@ -6,7 +6,7 @@ from twootfeed.utils.config import default_directory, get_config
 
 
 @click.command()
-def cli():
+def cli() -> None:
     click.secho(
         '\nThis script helps you create a new mastodon client and ' 'log in.',
         bold=True,

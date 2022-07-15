@@ -1,11 +1,13 @@
 from html import unescape
+from typing import Dict, List, Optional, Tuple
 
 import pytz
 from bs4 import BeautifulSoup
+from mastodon import Mastodon
 from twootfeed.utils.feed_generation import generate_feed
 
 
-def format_toot(toot, text_length_limit):
+def format_toot(toot: Dict, text_length_limit: int) -> Dict:
     rss_toot = {
         'display_name': toot['account']['display_name'],
         'screen_name': toot['account']['username'],
@@ -25,7 +27,7 @@ def format_toot(toot, text_length_limit):
     if source:
         rss_toot['htmltext'] += '<i>Source: {}</i>'.format(source.get('name'))
 
-    medialist = toot.get('media_attachments')
+    medialist = toot.get('media_attachments', [])
     if len(medialist) > 0:
         rss_toot['htmltext'] += '<br>'
     for media in medialist:
@@ -53,8 +55,12 @@ def format_toot(toot, text_length_limit):
 
 
 def generate_mastodon_feed(
-    result, param, feed_title, feed_link, feed_desc=None
-):
+    result: List[Dict],
+    param: Dict,
+    feed_title: str,
+    feed_link: str,
+    feed_desc: Optional[str] = None,
+) -> str:
     text_length_limit = int(param['feed'].get('text_length_limit', 100))
     f = generate_feed(feed_title, feed_link, param, feed_desc)
 
@@ -86,7 +92,9 @@ def generate_mastodon_feed(
     return xml
 
 
-def get_next_toots(api, first_toots, max_items):
+def get_next_toots(
+    api: Mastodon, first_toots: List[Dict], max_items: int
+) -> List[Dict]:
     if len(first_toots) == 0:
         return first_toots
     result = first_toots
@@ -104,7 +112,12 @@ def get_next_toots(api, first_toots, max_items):
     return result
 
 
-def generate_xml(api, param, query_feed=None, favorites=False):
+def generate_xml(
+    api: Mastodon,
+    param: Dict,
+    query_feed: Optional[Dict] = None,
+    favorites: bool = False,
+) -> Tuple[str, int]:
     if api:
         max_items = param['feed']['max_items']
         if query_feed:

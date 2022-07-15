@@ -1,11 +1,12 @@
 import re
+from typing import Dict, Tuple
 
 import pytz
 import tweepy
 from twootfeed.utils.feed_generation import generate_feed
 
 
-def format_tweet(tweet):
+def format_tweet(tweet: tweepy.tweet.Tweet) -> Dict:
     rss_tweet = {
         'text': tweet.full_text,
         'user_name': tweet.user.name,
@@ -94,7 +95,9 @@ def format_tweet(tweet):
     return rss_tweet
 
 
-def generate_twitter_feed(api, query_feed, twitter_param):
+def generate_twitter_feed(
+    api: tweepy.API, query_feed: str, twitter_param: Dict
+) -> str:
     feed_title = twitter_param['twitter']['title'] + '"' + query_feed + '"'
     feed_link = twitter_param['twitter']['link'] + query_feed
     f = generate_feed(feed_title, feed_link, twitter_param)
@@ -140,7 +143,9 @@ def generate_twitter_feed(api, query_feed, twitter_param):
     return f.writeString('UTF-8')
 
 
-def generate_xml(api, query_feed, param):
+def generate_xml(
+    api: tweepy.API, query_feed: str, param: Dict
+) -> Tuple[str, int]:
     if api:
         xml = generate_twitter_feed(api.search_tweets, query_feed, param)
         code = 200

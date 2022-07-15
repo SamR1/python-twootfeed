@@ -1,7 +1,10 @@
+from logging import Logger
+from typing import Dict, Optional
+
 import tweepy
 
 
-def get_twitter_api(param, app_log):
+def get_twitter_api(param: Dict, app_log: Logger) -> Optional[tweepy.API]:
     twitter_api = None
 
     try:

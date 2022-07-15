@@ -157,6 +157,12 @@ def generate_xml(
             feed_title = param['mastodon']['title'] + ' Bookmarks'
             feed_link = param['mastodon']['url'] + '/web/bookmarks'
             feed_desc = param['feed']['author_name'] + ' bookmarks toots.'
+        elif target == 'home_timeline':
+            result = api.timeline_home()
+            result = get_next_toots(api, result, max_items)
+            feed_title = param['mastodon']['title'] + ' Home Timeline'
+            feed_link = param['mastodon']['url']
+            feed_desc = param['feed']['author_name'] + ' home timeline.'
         else:
             raise Exception('Invalid target')
         xml = generate_mastodon_feed(

@@ -92,6 +92,9 @@ class MastodonApi:
     def favourites(self) -> List[Dict]:
         return self.return_result()
 
+    def timeline_home(self) -> List[Dict]:
+        return self.return_result()
+
     def fetch_next(self, toots: List[Dict]) -> List[Dict]:
         return self.return_result()
 

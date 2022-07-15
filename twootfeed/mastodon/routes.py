@@ -32,3 +32,9 @@ def toot_favorites_feed() -> Tuple[str, int]:
 def toot_bookmarks_feed() -> Tuple[str, int]:
     """generate a rss feed authenticated user's bookmarks"""
     return generate_xml(mastodon_api, mastodon_param, target='bookmarks')
+
+
+@mastodon_bp.route('/home_timeline', methods=['GET'])
+def home_timeline() -> Tuple[str, int]:
+    """generate a rss feed authenticated user's bookmarks"""
+    return generate_xml(mastodon_api, mastodon_param, target='home_timeline')

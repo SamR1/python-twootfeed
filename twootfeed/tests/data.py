@@ -846,3 +846,57 @@ formatted_reblog = {
     '<br>♻ : 0, ✰ : 0</div></blockquote>',
     'text': 'Boosted by User A: What\'s New in #python today?',
 }
+
+toot_1_home_timeline_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Recherche Mastodon :  Home Timeline</title>'
+    '<link>https://mastodon.social</link><'
+    'description> home timeline.</description>'
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate>'
+    '<item>'
+    '<title>User (UserD): What\'s New in #python today?</title>'
+    '<link>https://mastodon.social/@UserD/111111111111111111</link>'
+    '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
+    'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
+    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User: &lt;/strong&gt'
+    ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
+    'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
+    '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
+    '&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote&gt;</description>'
+    '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
+    '</item>'
+    '</channel>'
+    '</rss>'
+)
+
+toot_100_home_timeline_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Recherche Mastodon :  Home Timeline</title>'
+    '<link>https://mastodon.social</link><'
+    'description> home timeline.</description>'
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate>'
+    + (
+        '<item>'
+        '<title>User (UserD): What\'s New in #python today?</title>'
+        '<link>https://mastodon.social/@UserD/111111111111111111</link>'
+        '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
+        'mastodon.social/accounts/avatars/000/000/000/original/'
+        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;'
+        'User: &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
+        'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow '
+        'noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&'
+        'gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote'
+        '&gt;</description>'
+        '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
+        '</item>'
+    )
+    * 100
+    + '</channel>'
+    '</rss>'
+)

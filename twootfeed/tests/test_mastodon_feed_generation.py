@@ -20,10 +20,12 @@ from .data import (
     toot_1_bookmarks_feed,
     toot_1_favorites_feed,
     toot_1_feed,
+    toot_1_home_timeline_feed,
     toot_1_search_feed,
     toot_100_bookmarks_feed,
     toot_100_favorites_feed,
     toot_100_feed,
+    toot_100_home_timeline_feed,
 )
 from .utils import MastodonApi
 
@@ -179,6 +181,30 @@ def test_generate_xml_bookmarks_limit_ok() -> None:
         val,
     )
     assert val == toot_100_bookmarks_feed
+    assert code == 200
+
+
+def test_generate_xml_home_timeline_ok() -> None:
+    api = MastodonApi([toot1])
+    val, code = generate_xml(api, param, target='home_timeline')
+    val = re.sub(
+        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
+        '<lastBuildDate></lastBuildDate>',
+        val,
+    )
+    assert val == toot_1_home_timeline_feed
+    assert code == 200
+
+
+def test_generate_xml_home_timeline_limit_ok() -> None:
+    api = MastodonApi([toot1] * 150)
+    val, code = generate_xml(api, param, target='home_timeline')
+    val = re.sub(
+        r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
+        '<lastBuildDate></lastBuildDate>',
+        val,
+    )
+    assert val == toot_100_home_timeline_feed
     assert code == 200
 
 

@@ -5,7 +5,7 @@ import sys
 from flask import Flask
 from twootfeed.mastodon.get_api import get_mastodon_api
 from twootfeed.twitter.get_api import get_twitter_api
-from twootfeed.utils.config import get_config
+from twootfeed.utils.config import check_token, get_config
 
 log_file = os.getenv('TWOOTFEED_LOG')
 logging.basicConfig(
@@ -18,6 +18,7 @@ app_log.debug('starting Python Twootfeed')
 
 try:
     param = get_config()
+    check_token(param['feed'])
 except Exception as e:
     app_log.error(e)
     sys.exit(1)

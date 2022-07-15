@@ -1,9 +1,11 @@
 import os
 from os.path import abspath, dirname
 from shutil import copyfile
-from typing import Any
+from typing import Any, Dict
 
 import yaml
+
+from .exceptions import InvalidTokenException, MissingTokenException
 
 DEFAULT_DIRECTORY = os.path.expanduser('~/.config/twootfeed/')
 TWOOTFEED_CONFIG_DIR = os.getenv('TWOOTFEED_CONFIG_DIR', '')
@@ -33,3 +35,12 @@ def get_config() -> Any:
 
 def init_config() -> bool:
     return get_config() is not None
+
+
+def check_token(feed_config: Dict) -> None:
+    token = feed_config.get('token')
+    if not token:
+        raise MissingTokenException("'token' key is missing in configuration")
+
+    if len(token) < 25:
+        raise InvalidTokenException("token is too short")

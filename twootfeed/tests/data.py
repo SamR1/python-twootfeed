@@ -29,6 +29,7 @@ init_param = {
         'timezone': 'Europe/Paris',
         'text_length_limit': 100,
         'max_items': max_items,
+        'token': '',
     },
     'app': {'host': '0.0.0.0', 'port': '8080'},
 }

@@ -21,15 +21,15 @@ Application parameters are stored in ``config.yml`` file:
     feed:
       language: 'fr'
       author_name: ''
-      feed_url: 'http://localhost:5000/'
+      feed_url: 'http://localhost:8080'
       timezone: 'Europe/Paris'
       text_length_limit: 100
       max_items: 20
       token: ''
     app:
-      host: '0.0.0.0'
+      host: 'localhost'
       port: '8080'
-    #  nb_workers: 4 # if not defined, the number is defined by the app
+      nb_workers: 2 # if not defined, the number is defined by the app
 
 
 Twitter
@@ -60,4 +60,4 @@ Feed
 App
 ~~~
 * **host** and **port**: host and port used by Gunicorn (WSGI HTTP Server)
-* **nb_workers**: number of workers used by Gunicorn (not mandatory, if not defined, the number is defined by the app)
+* **nb_workers**: number of workers used by Gunicorn (not mandatory, if not defined, the number is calculated by the app)

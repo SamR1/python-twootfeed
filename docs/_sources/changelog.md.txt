@@ -1,5 +1,17 @@
 # Change log
 
+## Version 0.7.0 (2022/07/15)
+
+#### New Features
+
+* [PR#29](https://github.com/SamR1/python-twootfeed/pull/29) - Add token to access feeds ⚠️ **breaking changes**
+* [PR#28](https://github.com/SamR1/python-twootfeed/pull/28) - Add Mastodon home timeline
+
+#### Misc
+* [PR#30](https://github.com/SamR1/python-twootfeed/pull/30) - URLs update ⚠️ **breaking changes**
+* dependencies update
+
+
 ## Version 0.6.8 (2021/10/05)
 
 #### Misc

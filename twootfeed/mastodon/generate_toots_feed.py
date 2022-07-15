@@ -8,13 +8,22 @@ from twootfeed.utils.feed_generation import generate_feed
 
 
 def format_toot(toot: Dict, text_length_limit: int) -> Dict:
+    created_at = toot['created_at']
+    boosted = ""
+
+    reblog = toot.get('reblog')
+    if reblog:
+        boosted = f"<div>Boosted by {toot['account']['display_name']}: </div>"
+        toot = reblog
+        toot['created_at'] = created_at
+
     rss_toot = {
         'display_name': toot['account']['display_name'],
         'screen_name': toot['account']['username'],
         'created_at': toot['created_at'],
         'url': toot['url'],
         'htmltext': (
-            "<blockquote><div><img src=\""
+            f"<blockquote>{boosted}<div><img src=\""
             f"{toot['account']['avatar_static']}\" "
             f"alt=\"{toot['account']['display_name']}\""
             f" width= 100px\"/> "
@@ -45,7 +54,7 @@ def format_toot(toot: Dict, text_length_limit: int) -> Dict:
     )
 
     rss_toot['text'] = BeautifulSoup(
-        unescape(toot['content']), "html.parser"
+        boosted + unescape(toot['content']), "html.parser"
     ).text
 
     if len(rss_toot['text']) > text_length_limit:

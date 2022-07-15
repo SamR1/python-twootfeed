@@ -735,3 +735,114 @@ toot_1_search_feed = (
     '</channel>'
     '</rss>'
 )
+
+reblog = {
+    'id': 222222222222222222,
+    'created_at': datetime(2018, 10, 25, 14, 17, 22, 00000),
+    'in_reply_to_id': None,
+    'in_reply_to_account_id': None,
+    'sensitive': False,
+    'spoiler_text': '',
+    'visibility': 'public',
+    'language': 'en',
+    'uri': "https://mastodon.social/users/userA/statuses/222222222222222222/activity",  # noqa
+    'content': '',
+    'url': "https://mastodon.social/users/userA/statuses/222222222222222222/activity",  # noqa
+    'replies_count': 0,
+    'reblogs_count': 0,
+    'favourites_count': 0,
+    'favourited': False,
+    'reblogged': False,
+    'muted': False,
+    'pinned': False,
+    'reblog': {
+        'id': 111111111111111111,
+        'created_at': datetime(2018, 10, 25, 14, 16, 42, 11000),
+        'in_reply_to_id': None,
+        'in_reply_to_account_id': None,
+        'sensitive': False,
+        'spoiler_text': '',
+        'visibility': 'public',
+        'language': 'en',
+        'uri': 'https://mastodon.social/users/UserD/statuses/111111111111111111',  # noqa
+        'content': '<p>What\'s New in <a href="https://linuxjobs.social/tags/'
+        'python" class="mention hashtag" rel="nofollow noopener" '
+        'target="_blank">#<span>python</span></a> today?</p>',
+        'url': 'https://mastodon.social/@UserD/111111111111111111',
+        'replies_count': 0,
+        'reblogs_count': 0,
+        'favourites_count': 0,
+        'favourited': False,
+        'reblogged': False,
+        'muted': False,
+        'pinned': False,
+        'reblog': None,
+        'application': {},
+        'account': {
+            'id': 00000,
+            'username': 'UserD',
+            'acct': 'UserD',
+            'display_name': 'User',
+            'locked': False,
+            'bot': False,
+            'created_at': datetime(2017, 4, 4, 9, 20, 43, 157000),
+            'note': '',
+            'url': 'https://mastodon.social/@UserD',
+            'avatar': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+            'avatar_static': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+            'header': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+            'header_static': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+            'followers_count': 10,
+            'following_count': 20,
+            'statuses_count': 300,
+            'emojis': [],
+            'fields': [],
+        },
+        'media_attachments': [],
+        'mentions': [],
+        'tags': [],
+        'emojis': [],
+        'card': None,
+    },
+    'application': {},
+    'account': {
+        'id': 11111,
+        'username': 'UserA',
+        'acct': 'UserA',
+        'display_name': 'User A',
+        'locked': False,
+        'bot': False,
+        'created_at': datetime(2019, 4, 1, 11, 21, 41, 77000),
+        'note': '',
+        'url': 'https://mastodon.social/@UserA',
+        'avatar': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+        'avatar_static': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+        'header': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+        'header_static': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+        'followers_count': 1,
+        'following_count': 2,
+        'statuses_count': 3,
+        'emojis': [],
+        'fields': [],
+    },
+    'media_attachments': [],
+    'mentions': [],
+    'tags': [],
+    'emojis': [],
+    'card': None,
+}
+
+formatted_reblog = {
+    'display_name': 'User',
+    'screen_name': 'UserD',
+    'created_at': datetime(2018, 10, 25, 14, 17, 22),
+    'url': 'https://mastodon.social/@UserD/111111111111111111',
+    'htmltext': '<blockquote>'
+    '<div>Boosted by User A: </div>'
+    '<div>'
+    '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
+    '<strong>User: </strong>'
+    '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
+    '<br>♻ : 0, ✰ : 0</div></blockquote>',
+    'text': 'Boosted by User A: What\'s New in #python today?',
+}

@@ -8,9 +8,11 @@ from ..mastodon.generate_toots_feed import (
 from .data import (
     empty_toot_feed,
     empty_toot_search_feed,
+    formatted_reblog,
     formatted_toot1,
     formatted_toot2,
     invalid_param as param,
+    reblog,
     toot1,
     toot2,
     toot_1_bookmarks_feed,
@@ -27,6 +29,7 @@ from .utils import MastodonApi
 def test_format_toot() -> None:
     assert format_toot(toot1, 100) == formatted_toot1
     assert format_toot(toot2, 10) == formatted_toot2
+    assert format_toot(reblog, 100) == formatted_reblog
 
 
 def test_generate_feed() -> None:

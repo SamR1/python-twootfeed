@@ -14,7 +14,7 @@ from .data import (
     tweet_1,
     tweet_1_feed,
     tweet_2,
-    tweet_100_feed,
+    tweet_20_feed,
 )
 from .utils import ToDotNotation, TwitterApi
 
@@ -72,7 +72,7 @@ def test_tweetfeed_limit_ok(get_mock: Mock, fake_tweepy_200_ok: Mock) -> None:
         '<lastBuildDate></lastBuildDate>',
         val,
     )
-    assert val == tweet_100_feed
+    assert val == tweet_20_feed
 
 
 @patch('tweepy.Cursor')
@@ -87,7 +87,7 @@ def test_tweetfeed_limit_with_retweet_ok(
         '<lastBuildDate></lastBuildDate>',
         val,
     )
-    assert val == tweet_100_feed
+    assert val == tweet_20_feed
 
 
 @patch('tweepy.Cursor')

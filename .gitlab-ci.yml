@@ -17,6 +17,12 @@ lint:
   script:
     - pytest --flake8 --isort --black -m "flake8 or isort or black" twootfeed
 
+type-check:
+  stage: lint
+  extends: .python
+  script:
+    - mypy twootfeed
+
 python-3.7:
   stage: tests
   extends: .python

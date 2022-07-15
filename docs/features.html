@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -81,10 +82,10 @@
            <div itemprop="articleBody">
              
   <section id="features">
-<h1>Features<a class="headerlink" href="#features" title="Permalink to this headline"></a></h1>
+<h1>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h1>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
-<p><strong>twootfeed</strong> generate an RSS feed from <strong>Twitter</strong> or <strong>Mastodon</strong> search and from <strong>Mastodon</strong> bookmarks/favorites.</p>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p><strong>twootfeed</strong> generate an RSS feed from <strong>Twitter</strong> or <strong>Mastodon</strong> search and from <strong>Mastodon</strong> bookmarks/favorites/home timeline.</p>
 <p>The feed displays only the original tweets (not the retweets) and toots, with:</p>
 <ul>
 <li><p>links to :</p>
@@ -102,14 +103,16 @@
 <li><p>location (only for Twitter)</p></li>
 <li><p>numbers of retweets and likes for tweets and boosts and favourites for toots</p></li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>twootfeed</strong> was originally developed for personal use.
-Mastodon bookmarks/favorites toots are displayed for user associated to API key.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<div class="line-block">
+<div class="line"><strong>twootfeed</strong> is developed for personal use.</div>
+<div class="line">Tweets and toots are displayed for the user associated to API keys, it may expose private items if feeds are publicly available.</div>
+</div>
 </div>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Search on Twitter</p></li>
 </ul>

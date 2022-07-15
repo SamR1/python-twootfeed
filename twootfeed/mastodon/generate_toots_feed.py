@@ -8,19 +8,31 @@ from twootfeed.utils.feed_generation import generate_feed
 
 
 def format_toot(toot: Dict, text_length_limit: int) -> Dict:
+    created_at = toot['created_at']
+    boosted = ""
+    html_boosted = ""
+
+    reblog = toot.get('reblog')
+    if reblog:
+        boosted = f"Boosted by {toot['account']['display_name']}: "
+        html_boosted = f"<div>{boosted}</div>"
+        toot = reblog
+        toot['created_at'] = created_at
+
     rss_toot = {
         'display_name': toot['account']['display_name'],
         'screen_name': toot['account']['username'],
         'created_at': toot['created_at'],
         'url': toot['url'],
         'htmltext': (
-            "<blockquote><div><img src=\""
+            f"<blockquote>{html_boosted}<div><img src=\""
             f"{toot['account']['avatar_static']}\" "
             f"alt=\"{toot['account']['display_name']}\""
             f" width= 100px\"/> "
-            f"<strong>{toot['account']['display_name']}: </strong>"
+            f"<strong>{toot['account']['display_name']} </strong>"
             f"{toot['content']}"
         ),
+        'boosted': boosted,
     }
 
     source = toot.get('application')
@@ -76,7 +88,8 @@ def generate_mastodon_feed(
             )
         f.add_item(
             title=(
-                formatted_toot['display_name']
+                formatted_toot['boosted']
+                + formatted_toot['display_name']
                 + ' ('
                 + formatted_toot['screen_name']
                 + '): '
@@ -116,7 +129,7 @@ def generate_xml(
     api: Mastodon,
     param: Dict,
     query_feed: Optional[Dict] = None,
-    favorites: bool = False,
+    target: Optional[str] = None,
 ) -> Tuple[str, int]:
     if api:
         max_items = param['feed']['max_items']
@@ -126,28 +139,40 @@ def generate_xml(
             if hashtag:
                 result = api.timeline_hashtag(hashtag)
                 result = get_next_toots(api, result, max_items)
-                feed_title = param['mastodon']['title'] + '"' + hashtag + '"'
+                feed_title = (
+                    param['mastodon']['title'] + ' search "' + hashtag + '"'
+                )
                 feed_link = (
                     param['mastodon']['url'] + '/web/timelines/tag/' + hashtag
                 )
             else:
                 search_result = api.search(query, resolve=True)
                 result = search_result['statuses'][: max_items - 1]
-                feed_title = param['mastodon']['title'] + '"' + query + '"'
+                feed_title = (
+                    param['mastodon']['title'] + ' search "' + query + '"'
+                )
                 feed_link = param['mastodon']['url'] + '/web/search/'
             feed_desc = param['mastodon']['description']
-        elif favorites:
+        elif target == 'favorites':
             result = api.favourites()
             result = get_next_toots(api, result, max_items)
             feed_title = param['mastodon']['title'] + ' Favourites'
             feed_link = param['mastodon']['url'] + '/web/favourites'
             feed_desc = param['feed']['author_name'] + ' favourites toots.'
-        else:
+        elif target == 'bookmarks':
             result = api.bookmarks()
             result = get_next_toots(api, result, max_items)
             feed_title = param['mastodon']['title'] + ' Bookmarks'
             feed_link = param['mastodon']['url'] + '/web/bookmarks'
             feed_desc = param['feed']['author_name'] + ' bookmarks toots.'
+        elif target == 'home_timeline':
+            result = api.timeline_home()
+            result = get_next_toots(api, result, max_items)
+            feed_title = param['mastodon']['title'] + ' Home Timeline'
+            feed_link = param['mastodon']['url']
+            feed_desc = param['feed']['author_name'] + ' home timeline.'
+        else:
+            raise Exception('Invalid target')
         xml = generate_mastodon_feed(
             result, param, feed_title, feed_link, feed_desc
         )

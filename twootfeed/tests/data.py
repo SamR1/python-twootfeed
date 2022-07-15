@@ -4,23 +4,23 @@ from typing import Dict
 
 import pytz
 
+max_items = 20
+
 init_param = {
     'twitter': {
         'consumerKey': '',
         'consumerSecret': '',
-        'title': 'Recherche Twitter : ',
+        'title': 'Twitter Search Feed:',
         'link': 'https://twitter.com/search?q=',
-        'description': 'Résultat d\'une recherche Twitter retournée dans'
-        ' un flux RSS via Tweepy.',
+        'description': 'Twitter search results.',
     },
     'mastodon': {
         'url': 'https://mastodon.social',
         'client_id_file': 'tootrss_clientcred.txt',
         'access_token_file': 'tootrss_usercred.txt',
         'app_name': 'tootrss',
-        'title': 'Recherche Mastodon : ',
-        'description': 'Résultat d\'une recherche Mastodon retournée dans'
-        ' un flux RSS.',
+        'title': 'Mastodon Feed:',
+        'description': 'Mastodon generated feed from search.',
     },
     'feed': {
         'language': 'fr',
@@ -28,7 +28,7 @@ init_param = {
         'feed_url': 'http://localhost:5000/',
         'timezone': 'Europe/Paris',
         'text_length_limit': 100,
-        'max_items': 100,
+        'max_items': max_items,
     },
     'app': {'host': '0.0.0.0', 'port': '8080'},
 }
@@ -78,7 +78,7 @@ formatted_tweet_1 = {
     'tweet_url': 'https://twitter.com/TwitterDev/status/850006245121695744',
     'htmltext': '<blockquote><div><img src="" '
     'alt="TwitterDev profile image"/> '
-    '<strong>Twitter Dev: </strong>We are sharing our vision for '
+    '<strong>Twitter Dev </strong>We are sharing our vision for '
     'the future of the Twitter API<br>'
     '<i>Source: </i><br><i>Location: None</i><br>'
     ' ♻ : 0, ♥ : 0</div></blockquote>',
@@ -87,10 +87,9 @@ tweet_1_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Twitter : "test"</title>'
+    '<title>Twitter Search Feed: "test"</title>'
     '<link>https://twitter.com/search?q=test</link>'
-    '<description>Résultat d\'une recherche Twitter retournée dans un flux RSS'
-    ' via Tweepy.</description>'
+    '<description>Twitter search results.</description>'
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate>'
     '<item>'
@@ -98,7 +97,7 @@ tweet_1_feed = (
     'future of the Twitter API</title>'
     '<link>https://twitter.com/TwitterDev/status/850006245121695744</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="" '
-    'alt="TwitterDev profile image"/&gt; &lt;strong&gt;Twitter Dev: '
+    'alt="TwitterDev profile image"/&gt; &lt;strong&gt;Twitter Dev '
     '&lt;/strong&gt;We are sharing our vision for the future of the Twitter '
     'API&lt;br&gt;&lt;i&gt;Source: &lt;/i&gt;&lt;br&gt;&lt;i&gt;Location: '
     'None&lt;/i&gt;&lt;br&gt; ♻ : 0, ♥ : 0&lt;/div&gt;&lt;/blockquote&gt;'
@@ -109,14 +108,13 @@ tweet_1_feed = (
     '</rss>'
 )
 
-tweet_100_feed = (
+tweet_20_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Twitter : "test"</title>'
+    '<title>Twitter Search Feed: "test"</title>'
     '<link>https://twitter.com/search?q=test</link>'
-    '<description>Résultat d\'une recherche Twitter retournée dans un flux RSS'
-    ' via Tweepy.</description>'
+    '<description>Twitter search results.</description>'
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate>'
     + (
@@ -125,7 +123,7 @@ tweet_100_feed = (
         'future of the Twitter API</title>'
         '<link>https://twitter.com/TwitterDev/status/850006245121695744</link>'
         '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="" '
-        'alt="TwitterDev profile image"/&gt; &lt;strong&gt;Twitter Dev: '
+        'alt="TwitterDev profile image"/&gt; &lt;strong&gt;Twitter Dev '
         '&lt;/strong&gt;We are sharing our vision for the future of the '
         'Twitter '
         'API&lt;br&gt;&lt;i&gt;Source: &lt;/i&gt;&lt;br&gt;&lt;i&gt;Location: '
@@ -134,7 +132,7 @@ tweet_100_feed = (
         '<pubDate>Thu, 06 Apr 2017 17:24:15 +0200</pubDate>'
         '</item>'
     )
-    * 100
+    * max_items
     + '</channel>'
     '</rss>'
 )
@@ -336,7 +334,7 @@ formatted_tweet_2 = {
     'htmltext': '<blockquote>'
     '<div>'
     '<img src="https://pbs.twimg.com/profile_images/xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg" alt="UserA profile image"/> '  # noqa
-    '<strong>User A: </strong>'
+    '<strong>User A </strong>'
     'tweet <a href="https://twitter.com/hashtag/test?src=hash" target="_blank">#test</a> '  # noqa
     'cc '
     '<a href="https://twitter.com/userB" target="_blank">@userB</a> '  # noqa
@@ -355,9 +353,9 @@ empty_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Twitter : "test"</title>'
+    '<title>Twitter Search Feed: "test"</title>'
     '<link>https://twitter.com/search?q=test</link>'
-    '<description>Résultat d\'une recherche Twitter retournée dans un flux RSS via Tweepy.</description>'  # noqa
+    '<description>Twitter search results.</description>'  # noqa
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate></channel></rss>'
 )
@@ -413,6 +411,7 @@ toot1 = {
 }
 
 formatted_toot1 = {
+    'boosted': '',
     'display_name': 'User',
     'screen_name': 'UserD',
     'created_at': datetime(2018, 10, 25, 14, 16, 42, 11000),
@@ -420,7 +419,7 @@ formatted_toot1 = {
     'htmltext': '<blockquote>'
     '<div>'
     '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
-    '<strong>User: </strong>'
+    '<strong>User </strong>'
     '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
     '<br>♻ : 0, ✰ : 0</div></blockquote>',
     'text': 'What\'s New in #python today?',
@@ -429,10 +428,9 @@ toot_1_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Mastodon : "test"</title>'
+    '<title>Mastodon Feed: search "test"</title>'
     '<link>https://mastodon.social/web/timelines/tag/test</link><'
-    'description>Résultat d\'une recherche Mastodon retournée dans un flux '
-    'RSS.</description>'
+    'description>Mastodon generated feed from search.</description>'
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate>'
     '<item>'
@@ -440,7 +438,7 @@ toot_1_feed = (
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
-    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User: &lt;/strong&gt'
+    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User &lt;/strong&gt'
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
@@ -450,14 +448,13 @@ toot_1_feed = (
     '</channel>'
     '</rss>'
 )
-toot_100_feed = (
+toot_20_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Mastodon : "test"</title>'
+    '<title>Mastodon Feed: search "test"</title>'
     '<link>https://mastodon.social/web/timelines/tag/test</link><'
-    'description>Résultat d\'une recherche Mastodon retournée dans un flux '
-    'RSS.</description>'
+    'description>Mastodon generated feed from search.</description>'
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate>'
     + (
@@ -467,7 +464,7 @@ toot_100_feed = (
         '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files'
         '.mastodon.social/accounts/avatars/000/000/000/original/'
         'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;'
-        'User: &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
+        'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow'
         ' noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a'
         '&gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/'
@@ -475,7 +472,7 @@ toot_100_feed = (
         '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
         '</item>'
     )
-    * 100
+    * max_items
     + '</channel>'
     '</rss>'
 )
@@ -483,7 +480,7 @@ toot_1_bookmarks_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Mastodon :  Bookmarks</title>'
+    '<title>Mastodon Feed: Bookmarks</title>'
     '<link>https://mastodon.social/web/bookmarks</link><'
     'description> bookmarks toots.</description>'
     '<language>fr</language>'
@@ -493,7 +490,7 @@ toot_1_bookmarks_feed = (
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
-    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User: &lt;/strong&gt'
+    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User &lt;/strong&gt'
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
@@ -503,11 +500,11 @@ toot_1_bookmarks_feed = (
     '</channel>'
     '</rss>'
 )
-toot_100_bookmarks_feed = (
+toot_20_bookmarks_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Mastodon :  Bookmarks</title>'
+    '<title>Mastodon Feed: Bookmarks</title>'
     '<link>https://mastodon.social/web/bookmarks</link><'
     'description> bookmarks toots.</description>'
     '<language>fr</language>'
@@ -519,7 +516,7 @@ toot_100_bookmarks_feed = (
         '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
         'mastodon.social/accounts/avatars/000/000/000/original/'
         'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;'
-        'User: &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
+        'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow '
         'noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&'
         'gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote'
@@ -527,7 +524,7 @@ toot_100_bookmarks_feed = (
         '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
         '</item>'
     )
-    * 100
+    * max_items
     + '</channel>'
     '</rss>'
 )
@@ -535,7 +532,7 @@ toot_1_favorites_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Mastodon :  Favourites</title>'
+    '<title>Mastodon Feed: Favourites</title>'
     '<link>https://mastodon.social/web/favourites</link><'
     'description> favourites toots.</description>'
     '<language>fr</language>'
@@ -545,7 +542,7 @@ toot_1_favorites_feed = (
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
-    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User: &lt;/strong&gt'
+    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User &lt;/strong&gt'
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
@@ -555,11 +552,11 @@ toot_1_favorites_feed = (
     '</channel>'
     '</rss>'
 )
-toot_100_favorites_feed = (
+toot_20_favorites_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Mastodon :  Favourites</title>'
+    '<title>Mastodon Feed: Favourites</title>'
     '<link>https://mastodon.social/web/favourites</link><'
     'description> favourites toots.</description>'
     '<language>fr</language>'
@@ -571,7 +568,7 @@ toot_100_favorites_feed = (
         '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
         'mastodon.social/accounts/avatars/000/000/000/original/'
         'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;'
-        'User: &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
+        'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow '
         'noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&'
         'gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote'
@@ -579,7 +576,7 @@ toot_100_favorites_feed = (
         '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
         '</item>'
     )
-    * 100
+    * max_items
     + '</channel>'
     '</rss>'
 )
@@ -668,6 +665,7 @@ toot2 = {
 }
 
 formatted_toot2 = {
+    'boosted': '',
     'display_name': 'User',
     'screen_name': 'UserD',
     'created_at': datetime(2018, 10, 25, 14, 16, 42, 11000),
@@ -675,7 +673,7 @@ formatted_toot2 = {
     'htmltext': '<blockquote>'
     '<div>'
     '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
-    '<strong>User: </strong>'
+    '<strong>User </strong>'
     '<p>This is a <a href="https://mastodon.social/tags/testtag" class="mention hashtag" rel="tag">#<span>TestTag</span></a></p>'  # noqa
     '<i>Source: Twidere for Android</i><br>'
     '<a href="https://files.mastodon.social/media_attachments/files/999/999/999/original/a2a2a2a2a2a2a2a2.jpg" target="_blank"><img src="https://files.mastodon.social/media_attachments/files/999/999/999/small/a2a2a2a2a2a2a2a2.jpg"></a>'  # noqa
@@ -687,10 +685,9 @@ empty_toot_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Mastodon : "test"</title>'
+    '<title>Mastodon Feed: search "test"</title>'
     '<link>https://mastodon.social/web/timelines/tag/test</link><'
-    'description>Résultat d\'une recherche Mastodon retournée dans un flux '
-    'RSS.</description>'
+    'description>Mastodon generated feed from search.</description>'
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate>'
     '</channel>'
@@ -701,10 +698,9 @@ empty_toot_search_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Mastodon : "test"</title>'
+    '<title>Mastodon Feed: search "test"</title>'
     '<link>https://mastodon.social/web/search/</link><'
-    'description>Résultat d\'une recherche Mastodon retournée dans un flux '
-    'RSS.</description>'
+    'description>Mastodon generated feed from search.</description>'
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate>'
     '</channel>'
@@ -714,10 +710,9 @@ toot_1_search_feed = (
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<rss version="2.0">'
     '<channel>'
-    '<title>Recherche Mastodon : "test"</title>'
+    '<title>Mastodon Feed: search "test"</title>'
     '<link>https://mastodon.social/web/search/</link><'
-    'description>Résultat d\'une recherche Mastodon retournée dans un flux '
-    'RSS.</description>'
+    'description>Mastodon generated feed from search.</description>'
     '<language>fr</language>'
     '<lastBuildDate></lastBuildDate>'
     '<item>'
@@ -725,7 +720,7 @@ toot_1_search_feed = (
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
-    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User: &lt;/strong&gt'
+    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User &lt;/strong&gt'
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
@@ -733,5 +728,171 @@ toot_1_search_feed = (
     '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
     '</item>'
     '</channel>'
+    '</rss>'
+)
+
+reblog = {
+    'id': 222222222222222222,
+    'created_at': datetime(2018, 10, 25, 14, 17, 22, 00000),
+    'in_reply_to_id': None,
+    'in_reply_to_account_id': None,
+    'sensitive': False,
+    'spoiler_text': '',
+    'visibility': 'public',
+    'language': 'en',
+    'uri': "https://mastodon.social/users/userA/statuses/222222222222222222/activity",  # noqa
+    'content': '',
+    'url': "https://mastodon.social/users/userA/statuses/222222222222222222/activity",  # noqa
+    'replies_count': 0,
+    'reblogs_count': 0,
+    'favourites_count': 0,
+    'favourited': False,
+    'reblogged': False,
+    'muted': False,
+    'pinned': False,
+    'reblog': {
+        'id': 111111111111111111,
+        'created_at': datetime(2018, 10, 25, 14, 16, 42, 11000),
+        'in_reply_to_id': None,
+        'in_reply_to_account_id': None,
+        'sensitive': False,
+        'spoiler_text': '',
+        'visibility': 'public',
+        'language': 'en',
+        'uri': 'https://mastodon.social/users/UserD/statuses/111111111111111111',  # noqa
+        'content': '<p>What\'s New in <a href="https://linuxjobs.social/tags/'
+        'python" class="mention hashtag" rel="nofollow noopener" '
+        'target="_blank">#<span>python</span></a> today?</p>',
+        'url': 'https://mastodon.social/@UserD/111111111111111111',
+        'replies_count': 0,
+        'reblogs_count': 0,
+        'favourites_count': 0,
+        'favourited': False,
+        'reblogged': False,
+        'muted': False,
+        'pinned': False,
+        'reblog': None,
+        'application': {},
+        'account': {
+            'id': 00000,
+            'username': 'UserD',
+            'acct': 'UserD',
+            'display_name': 'User',
+            'locked': False,
+            'bot': False,
+            'created_at': datetime(2017, 4, 4, 9, 20, 43, 157000),
+            'note': '',
+            'url': 'https://mastodon.social/@UserD',
+            'avatar': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+            'avatar_static': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+            'header': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+            'header_static': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+            'followers_count': 10,
+            'following_count': 20,
+            'statuses_count': 300,
+            'emojis': [],
+            'fields': [],
+        },
+        'media_attachments': [],
+        'mentions': [],
+        'tags': [],
+        'emojis': [],
+        'card': None,
+    },
+    'application': {},
+    'account': {
+        'id': 11111,
+        'username': 'UserA',
+        'acct': 'UserA',
+        'display_name': 'User A',
+        'locked': False,
+        'bot': False,
+        'created_at': datetime(2019, 4, 1, 11, 21, 41, 77000),
+        'note': '',
+        'url': 'https://mastodon.social/@UserA',
+        'avatar': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+        'avatar_static': 'https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg',  # noqa
+        'header': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+        'header_static': 'https://files.mastodon.social/accounts/headers/000/000/000/original/xDxDxDxDxDxDxDxD.jpg',  # noqa
+        'followers_count': 1,
+        'following_count': 2,
+        'statuses_count': 3,
+        'emojis': [],
+        'fields': [],
+    },
+    'media_attachments': [],
+    'mentions': [],
+    'tags': [],
+    'emojis': [],
+    'card': None,
+}
+
+formatted_reblog = {
+    'boosted': 'Boosted by User A: ',
+    'display_name': 'User',
+    'screen_name': 'UserD',
+    'created_at': datetime(2018, 10, 25, 14, 17, 22),
+    'url': 'https://mastodon.social/@UserD/111111111111111111',
+    'htmltext': '<blockquote>'
+    '<div>Boosted by User A: </div>'
+    '<div>'
+    '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
+    '<strong>User </strong>'
+    '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
+    '<br>♻ : 0, ✰ : 0</div></blockquote>',
+    'text': 'What\'s New in #python today?',
+}
+
+toot_1_home_timeline_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Mastodon Feed: Home Timeline</title>'
+    '<link>https://mastodon.social</link><'
+    'description> home timeline.</description>'
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate>'
+    '<item>'
+    '<title>User (UserD): What\'s New in #python today?</title>'
+    '<link>https://mastodon.social/@UserD/111111111111111111</link>'
+    '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
+    'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
+    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User &lt;/strong&gt'
+    ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
+    'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
+    '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
+    '&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote&gt;</description>'
+    '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
+    '</item>'
+    '</channel>'
+    '</rss>'
+)
+
+toot_20_home_timeline_feed = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<rss version="2.0">'
+    '<channel>'
+    '<title>Mastodon Feed: Home Timeline</title>'
+    '<link>https://mastodon.social</link><'
+    'description> home timeline.</description>'
+    '<language>fr</language>'
+    '<lastBuildDate></lastBuildDate>'
+    + (
+        '<item>'
+        '<title>User (UserD): What\'s New in #python today?</title>'
+        '<link>https://mastodon.social/@UserD/111111111111111111</link>'
+        '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
+        'mastodon.social/accounts/avatars/000/000/000/original/'
+        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;'
+        'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
+        'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow '
+        'noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&'
+        'gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote'
+        '&gt;</description>'
+        '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
+        '</item>'
+    )
+    * max_items
+    + '</channel>'
     '</rss>'
 )

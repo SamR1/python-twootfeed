@@ -23,11 +23,18 @@ def tootfeed(query_feed: str) -> Tuple[str, int]:
 @mastodon_bp.route('/toots/favorites', methods=['GET'])
 @mastodon_bp.route('/toot_favorites', methods=['GET'])
 def toot_favorites_feed() -> Tuple[str, int]:
-    """generate an rss feed authenticated user's favorites"""
-    return generate_xml(mastodon_api, mastodon_param, favorites=True)
+    """generate a rss feed authenticated user's favorites"""
+    return generate_xml(mastodon_api, mastodon_param, target='favorites')
 
 
 @mastodon_bp.route('/toots/bookmarks', methods=['GET'])
+@mastodon_bp.route('/toot_bookmarks', methods=['GET'])
 def toot_bookmarks_feed() -> Tuple[str, int]:
-    """generate an rss feed authenticated user's bookmarks"""
-    return generate_xml(mastodon_api, mastodon_param)
+    """generate a rss feed authenticated user's bookmarks"""
+    return generate_xml(mastodon_api, mastodon_param, target='bookmarks')
+
+
+@mastodon_bp.route('/home_timeline', methods=['GET'])
+def home_timeline() -> Tuple[str, int]:
+    """generate a rss feed authenticated user's bookmarks"""
+    return generate_xml(mastodon_api, mastodon_param, target='home_timeline')

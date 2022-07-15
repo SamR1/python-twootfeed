@@ -1,10 +1,10 @@
 import os
-import secrets
 
 from twootfeed import param
+from twootfeed.tests.data import TEST_TOKEN
 
 if os.getenv('TWOOTFEED_SETTINGS') == 'TestingConfig':
-    param['feed']['token'] = secrets.token_urlsafe()
+    param['feed']['token'] = TEST_TOKEN
 
 
 class BaseConfig:

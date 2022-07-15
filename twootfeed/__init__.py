@@ -28,7 +28,7 @@ mastodon_api = get_mastodon_api(param, app_log)
 
 def create_app() -> Flask:
     app = Flask(__name__)
-    app_config = os.getenv('TWOOTFEED_SETTINGS', 'DevelopmentConfig')
+    app_config = os.getenv('TWOOTFEED_SETTINGS', 'ProductionConfig')
     app.config.from_object(f'twootfeed.config.{app_config}')
     app_log.setLevel(logging.DEBUG if app.debug else logging.INFO)
 

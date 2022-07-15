@@ -40,7 +40,7 @@ def init_config() -> bool:
 def check_token(feed_config: Dict) -> None:
     token = feed_config.get('token')
     if not token:
-        raise MissingTokenException("'token' key is missing in configuration")
+        raise MissingTokenException("token is missing in configuration")
 
     if len(token) < 25:
         raise InvalidTokenException("token is too short")

@@ -24,7 +24,7 @@ class TestTwitterRoutesToken:
 
         assert response.status_code == 401
         data = response.data.decode()
-        assert data == 'missing token in parameters'
+        assert data == 'missing token'
 
     def test_it_returns_403_when_token_is_invalid(
         self, app_invalid_token: Flask
@@ -56,7 +56,7 @@ class TestMastodonHashtagRouteToken:
 
         assert response.status_code == 401
         data = response.data.decode()
-        assert data == 'missing token in parameters'
+        assert data == 'missing token'
 
     def test_it_returns_403_when_token_is_invalid(
         self, app_invalid_token: Flask
@@ -84,7 +84,7 @@ class TestMastodonSearchRouteToken:
 
         assert response.status_code == 401
         data = response.data.decode()
-        assert data == 'missing token in parameters'
+        assert data == 'missing token'
 
     def test_it_returns_403_when_token_is_invalid(
         self, app_invalid_token: Flask
@@ -115,7 +115,7 @@ class TestMastodonRoutesToken:
 
         assert response.status_code == 401
         data = response.data.decode()
-        assert data == 'missing token in parameters'
+        assert data == 'missing token'
 
     @pytest.mark.parametrize('input_endpoint', MASTODON_ENDPOINTS)
     def test_it_returns_403_when_token_is_invalid(

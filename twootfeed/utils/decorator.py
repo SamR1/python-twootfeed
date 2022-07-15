@@ -12,7 +12,7 @@ def require_token(f: Callable) -> Callable:
     ) -> Union[Callable, Tuple[str, int]]:
         token = request.args.get('token')
         if not token:
-            return 'missing token in parameters', 401
+            return 'missing token', 401
         if token != param['feed']['token']:
             return 'invalid token', 403
 

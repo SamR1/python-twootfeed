@@ -19,7 +19,7 @@ class TestCheckConfig:
     ) -> None:
         with pytest.raises(
             MissingTokenException,
-            match="'token' key is missing in configuration",
+            match="token is missing in configuration",
         ):
             check_token(feed_config=input_feed_config)
 

@@ -4,7 +4,7 @@ Installation and usage
 Requirements
 ~~~~~~~~~~~~
 
-- Python 3.6+
+- Python 3.7+
 - API keys Twitter and/or Mastodon
 
 
@@ -89,3 +89,6 @@ The RSS feeds are available on these urls:
 
     - http://localhost:8080/toots/bookmarks
 
+- for Mastodon connected user home timeline:
+
+    - http://localhost:8080/toots/home_timeline

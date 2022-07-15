@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Application and feeds parameters &mdash; twootfeed 0.6.8
+  <title>Application and feeds parameters &mdash; twootfeed 0.7.0
  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
@@ -33,7 +33,7 @@
             <a href="index.html" class="icon icon-home"> twootfeed
           </a>
               <div class="version">
-                0.6.8
+                0.7.0
 
               </div>
 <div role="search">
@@ -102,15 +102,15 @@
 <span class="nt">feed</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;fr&#39;</span><span class="w"></span>
 <span class="w">  </span><span class="nt">author_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">feed_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http://localhost:5000/&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">feed_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http://localhost:8080&#39;</span><span class="w"></span>
 <span class="w">  </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Europe/Paris&#39;</span><span class="w"></span>
 <span class="w">  </span><span class="nt">text_length_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span><span class="w"></span>
 <span class="w">  </span><span class="nt">max_items</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w"></span>
 <span class="w">  </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
 <span class="nt">app</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.0.0.0&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;localhost&#39;</span><span class="w"></span>
 <span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;8080&#39;</span><span class="w"></span>
-<span class="c1">#  nb_workers: 4 # if not defined, the number is defined by the app</span><span class="w"></span>
+<span class="w">  </span><span class="nt">nb_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># if not defined, the number is defined by the app</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="twitter">
@@ -148,7 +148,7 @@
 <h2>App<a class="headerlink" href="#app" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><strong>host</strong> and <strong>port</strong>: host and port used by Gunicorn (WSGI HTTP Server)</p></li>
-<li><p><strong>nb_workers</strong>: number of workers used by Gunicorn (not mandatory, if not defined, the number is defined by the app)</p></li>
+<li><p><strong>nb_workers</strong>: number of workers used by Gunicorn (not mandatory, if not defined, the number is calculated by the app)</p></li>
 </ul>
 </section>
 </section>

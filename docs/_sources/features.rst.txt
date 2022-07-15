@@ -23,4 +23,4 @@ The feed displays only the original tweets (not the retweets) and toots, with:
 .. warning::
 
    | **twootfeed** is developed for a personal use.
-   | Tweets and toots are displayed for the user associated to the API keys (feeds may contain items with **restricted visibility**).
+   | Tweets and toots are displayed with the user account associated to the API keys (feeds may contain items with **restricted visibility**).

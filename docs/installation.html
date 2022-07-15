@@ -143,7 +143,7 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 </div>
 </div></blockquote>
 </li>
-<li><p>The files location can be changed with the following environment variables:</p></li>
+<li><p>The files location and settings can be changed with the following environment variables:</p></li>
 </ul>
 <table class="docutils align-default">
 <colgroup>
@@ -185,61 +185,61 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0.</span></p>
+</div>
 <p>The following RSS feeds are available:</p>
 <ul>
 <li><p>for Twitter search:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="http://localhost:8080/tweets">http://localhost:8080/tweets</a>/&lt;keywords&gt;?token=XXX</p></li>
-<li><p><a class="reference external" href="http://localhost:8080">http://localhost:8080</a>/&lt;keywords&gt;?token=XXX  (<em>will be deprecated in a next version</em>)</p></li>
+<li><p><a class="reference external" href="http://localhost:8080/tweets">http://localhost:8080/tweets</a>?q=&lt;query&gt;&amp;token=&lt;token&gt;</p></li>
 </ul>
 </div></blockquote>
 </li>
 <li><p>for Mastodon search:</p>
 <blockquote>
 <div><ul>
-<li><p>keyword as a hashtag:</p>
+<li><p>hashtag:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="http://localhost:8080/toots">http://localhost:8080/toots</a>/&lt;hashtag&gt;?token=XXX (without the leading #)</p></li>
+<li><p><a class="reference external" href="http://localhost:8080/toots/tags">http://localhost:8080/toots/tags</a>/&lt;hashtag&gt;?token=&lt;token&gt; (without the leading #)</p></li>
 </ul>
 </div></blockquote>
 </li>
 <li><p>query:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="http://localhost:8080/toots/search">http://localhost:8080/toots/search</a>/&lt;query&gt;?token=XXX</p></li>
-<li><p><a class="reference external" href="http://localhost:8080/toot_search">http://localhost:8080/toot_search</a>/&lt;query&gt;?token=XXX (<em>will be deprecated in a next version</em>)</p></li>
+<li><p><a class="reference external" href="http://localhost:8080/toots/search">http://localhost:8080/toots/search</a>?q=&lt;query&gt;&amp;token=&lt;token&gt;</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>for Mastodon connected user favorites:</p>
+<li><p>for Mastodon user favorites:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="http://localhost:8080/toots/favorites?token=XXX">http://localhost:8080/toots/favorites?token=XXX</a></p></li>
-<li><p><a class="reference external" href="http://localhost:8080/toot_favorites?token=XXX">http://localhost:8080/toot_favorites?token=XXX</a> (<em>will be deprecated in a next version</em>)</p></li>
+<li><p><a class="reference external" href="http://localhost:8080/toots/favorites">http://localhost:8080/toots/favorites</a>?token=&lt;token&gt;</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>for Mastodon connected user bookmarks:</p>
+<li><p>for Mastodon user bookmarks:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="http://localhost:8080/toots/bookmarks?token=XXX">http://localhost:8080/toots/bookmarks?token=XXX</a></p></li>
+<li><p><a class="reference external" href="http://localhost:8080/toots/bookmarks">http://localhost:8080/toots/bookmarks</a>?token=&lt;token&gt;</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>for Mastodon connected user home timeline:</p>
+<li><p>for Mastodon user home timeline:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="http://localhost:8080/toots/home_timeline?token=XXX">http://localhost:8080/toots/home_timeline?token=XXX</a></p></li>
+<li><p><a class="reference external" href="http://localhost:8080/toots/home_timeline">http://localhost:8080/toots/home_timeline</a>?token=&lt;token&gt;</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
-<p>where XXX is the token set in configuration.</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code> is the token set in configuration.</p>
 </section>
 </section>
 

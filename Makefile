@@ -37,9 +37,11 @@ lint-fix:
 	$(BLACK) $(FLASK_APP)
 
 serve:
+	echo 'Running on http://$(HOST):$(PORT)'
 	$(FLASK) run --with-threads -h $(HOST) -p $(PORT)
 
 run:
+	echo 'Running on http://$(HOST):$(PORT)'
 	FLASK_ENV=production && $(GUNICORN) -b 127.0.0.1:5000 "$(FLASK_APP):create_app()" --error-logfile $(GUNICORN_LOG)
 
 venv:

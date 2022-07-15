@@ -1,6 +1,13 @@
+from unittest.mock import patch
+
 from flask import Flask
 
+from .utils import MastodonApi, Tweepy, TwitterApi
 
+
+@patch('twootfeed.twitter.generate_tweets_feed.tweepy', Tweepy([]))
+@patch('twootfeed.twitter.routes.twitter_api', TwitterApi())
+@patch('twootfeed.mastodon.routes.mastodon_api', MastodonApi([]))
 def test_default_route(app: Flask) -> None:
     client = app.test_client()
     response = client.get('/')

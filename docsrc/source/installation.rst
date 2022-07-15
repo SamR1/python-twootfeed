@@ -70,7 +70,7 @@ Installation
 
 
 
-- The files location can be changed with the following environment variables:
+- The files location and settings can be changed with the following environment variables:
 
 =========================== =============================================== ===========================================================================================
  variable                   description                                     app default value
@@ -91,35 +91,34 @@ Installation
 Usage
 ~~~~~
 
+.. versionchanged:: 0.7.0
+
 The following RSS feeds are available:
 
 - for Twitter search:
 
-    - http://localhost:8080/tweets/<keywords>?token=XXX
-    - http://localhost:8080/<keywords>?token=XXX  (*will be deprecated in a next version*)
+    - http://localhost:8080/tweets?q=<query>&token=<token>
 
 - for Mastodon search:
 
-    - keyword as a hashtag:
+    - hashtag:
 
-        - http://localhost:8080/toots/<hashtag>?token=XXX (without the leading #)
+        - http://localhost:8080/toots/tags/<hashtag>?token=<token> (without the leading #)
 
     - query:
 
-        - http://localhost:8080/toots/search/<query>?token=XXX
-        - http://localhost:8080/toot_search/<query>?token=XXX (*will be deprecated in a next version*)
+        - http://localhost:8080/toots/search?q=<query>&token=<token>
 
-- for Mastodon connected user favorites:
+- for Mastodon user favorites:
 
-    - http://localhost:8080/toots/favorites?token=XXX
-    - http://localhost:8080/toot_favorites?token=XXX (*will be deprecated in a next version*)
+    - http://localhost:8080/toots/favorites?token=<token>
 
-- for Mastodon connected user bookmarks:
+- for Mastodon user bookmarks:
 
-    - http://localhost:8080/toots/bookmarks?token=XXX
+    - http://localhost:8080/toots/bookmarks?token=<token>
 
-- for Mastodon connected user home timeline:
+- for Mastodon user home timeline:
 
-    - http://localhost:8080/toots/home_timeline?token=XXX
+    - http://localhost:8080/toots/home_timeline?token=<token>
 
-where XXX is the token set in configuration.
+where ``<token>`` is the token set in configuration.

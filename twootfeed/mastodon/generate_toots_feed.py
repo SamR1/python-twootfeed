@@ -10,10 +10,12 @@ from twootfeed.utils.feed_generation import generate_feed
 def format_toot(toot: Dict, text_length_limit: int) -> Dict:
     created_at = toot['created_at']
     boosted = ""
+    html_boosted = ""
 
     reblog = toot.get('reblog')
     if reblog:
-        boosted = f"<div>Boosted by {toot['account']['display_name']}: </div>"
+        boosted = f"Boosted by {toot['account']['display_name']}: "
+        html_boosted = f"<div>{boosted}</div>"
         toot = reblog
         toot['created_at'] = created_at
 
@@ -23,13 +25,14 @@ def format_toot(toot: Dict, text_length_limit: int) -> Dict:
         'created_at': toot['created_at'],
         'url': toot['url'],
         'htmltext': (
-            f"<blockquote>{boosted}<div><img src=\""
+            f"<blockquote>{html_boosted}<div><img src=\""
             f"{toot['account']['avatar_static']}\" "
             f"alt=\"{toot['account']['display_name']}\""
             f" width= 100px\"/> "
             f"<strong>{toot['account']['display_name']} </strong>"
             f"{toot['content']}"
         ),
+        'boosted': boosted,
     }
 
     source = toot.get('application')
@@ -54,7 +57,7 @@ def format_toot(toot: Dict, text_length_limit: int) -> Dict:
     )
 
     rss_toot['text'] = BeautifulSoup(
-        boosted + unescape(toot['content']), "html.parser"
+        unescape(toot['content']), "html.parser"
     ).text
 
     if len(rss_toot['text']) > text_length_limit:
@@ -85,7 +88,8 @@ def generate_mastodon_feed(
             )
         f.add_item(
             title=(
-                formatted_toot['display_name']
+                formatted_toot['boosted']
+                + formatted_toot['display_name']
                 + ' ('
                 + formatted_toot['screen_name']
                 + '): '

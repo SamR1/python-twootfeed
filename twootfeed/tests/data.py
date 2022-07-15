@@ -411,6 +411,7 @@ toot1 = {
 }
 
 formatted_toot1 = {
+    'boosted': '',
     'display_name': 'User',
     'screen_name': 'UserD',
     'created_at': datetime(2018, 10, 25, 14, 16, 42, 11000),
@@ -664,6 +665,7 @@ toot2 = {
 }
 
 formatted_toot2 = {
+    'boosted': '',
     'display_name': 'User',
     'screen_name': 'UserD',
     'created_at': datetime(2018, 10, 25, 14, 16, 42, 11000),
@@ -826,6 +828,7 @@ reblog = {
 }
 
 formatted_reblog = {
+    'boosted': 'Boosted by User A: ',
     'display_name': 'User',
     'screen_name': 'UserD',
     'created_at': datetime(2018, 10, 25, 14, 17, 22),
@@ -837,7 +840,7 @@ formatted_reblog = {
     '<strong>User </strong>'
     '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
     '<br>♻ : 0, ✰ : 0</div></blockquote>',
-    'text': 'Boosted by User A: What\'s New in #python today?',
+    'text': 'What\'s New in #python today?',
 }
 
 toot_1_home_timeline_feed = (

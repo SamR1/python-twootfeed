@@ -18,7 +18,6 @@ app_log.debug('starting Python Twootfeed')
 
 try:
     param = get_config()
-    check_token(param['feed'])
 except Exception as e:
     app_log.error(e)
     sys.exit(1)
@@ -29,8 +28,11 @@ mastodon_api = get_mastodon_api(param, app_log)
 
 def create_app() -> Flask:
     app = Flask(__name__)
-    app.config['PARAMS'] = param
+    app_config = os.getenv('TWOOTFEED_SETTINGS', 'DevelopmentConfig')
+    app.config.from_object(f'twootfeed.config.{app_config}')
     app_log.setLevel(logging.DEBUG if app.debug else logging.INFO)
+
+    check_token(app.config['FEED_CONFIG'])
 
     from .mastodon.routes import mastodon_bp
     from .twitter.routes import twitter_bp

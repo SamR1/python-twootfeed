@@ -24,12 +24,12 @@ from .data import (
 from .utils import MastodonApi
 
 
-def test_format_toot():
+def test_format_toot() -> None:
     assert format_toot(toot1, 100) == formatted_toot1
     assert format_toot(toot2, 10) == formatted_toot2
 
 
-def test_generate_feed():
+def test_generate_feed() -> None:
     val = generate_mastodon_feed(
         [toot1],
         param,
@@ -46,7 +46,7 @@ def test_generate_feed():
     assert val == toot_1_feed
 
 
-def test_generate_feed_200_toots():
+def test_generate_feed_200_toots() -> None:
     val = generate_mastodon_feed(
         [toot1] * 200,
         param,
@@ -63,13 +63,13 @@ def test_generate_feed_200_toots():
     assert val == toot_100_feed
 
 
-def test_generate_xml_no_api():
+def test_generate_xml_no_api() -> None:
     val, code = generate_xml(None, param, {'hashtag': 'test'})
     assert val == 'error - Mastodon parameters not defined'
     assert code == 401
 
 
-def test_generate_xml_no_toots():
+def test_generate_xml_no_toots() -> None:
     api = MastodonApi([])
     val, code = generate_xml(api, param, {'hashtag': 'test'})
     val = re.sub(
@@ -81,7 +81,7 @@ def test_generate_xml_no_toots():
     assert code == 200
 
 
-def test_generate_xml_query_ok():
+def test_generate_xml_query_ok() -> None:
     api = MastodonApi([toot1])
     val, code = generate_xml(api, param, {'hashtag': 'test'})
     val = re.sub(
@@ -93,7 +93,7 @@ def test_generate_xml_query_ok():
     assert code == 200
 
 
-def test_generate_xml_query_limit_ok():
+def test_generate_xml_query_limit_ok() -> None:
     api = MastodonApi([toot1] * 200)
     val, code = generate_xml(api, param, {'hashtag': 'test'})
     val = re.sub(
@@ -105,7 +105,7 @@ def test_generate_xml_query_limit_ok():
     assert code == 200
 
 
-def test_generate_xml_search_no_toots():
+def test_generate_xml_search_no_toots() -> None:
     api = MastodonApi([])
     val, code = generate_xml(api, param, {'query': 'test'})
     val = re.sub(
@@ -117,7 +117,7 @@ def test_generate_xml_search_no_toots():
     assert code == 200
 
 
-def test_generate_xml_search_ok():
+def test_generate_xml_search_ok() -> None:
     api = MastodonApi([toot1])
     val, code = generate_xml(api, param, {'query': 'test'})
     val = re.sub(
@@ -129,7 +129,7 @@ def test_generate_xml_search_ok():
     assert code == 200
 
 
-def test_generate_xml_favorites_ok():
+def test_generate_xml_favorites_ok() -> None:
     api = MastodonApi([toot1])
     val, code = generate_xml(api, param, favorites=True)
     val = re.sub(
@@ -141,7 +141,7 @@ def test_generate_xml_favorites_ok():
     assert code == 200
 
 
-def test_generate_xml_favorites_limit_ok():
+def test_generate_xml_favorites_limit_ok() -> None:
     api = MastodonApi([toot1] * 150)
     val, code = generate_xml(api, param, favorites=True)
     val = re.sub(
@@ -153,7 +153,7 @@ def test_generate_xml_favorites_limit_ok():
     assert code == 200
 
 
-def test_generate_xml_bookmarks_ok():
+def test_generate_xml_bookmarks_ok() -> None:
     api = MastodonApi([toot1])
     val, code = generate_xml(api, param)
     val = re.sub(
@@ -165,7 +165,7 @@ def test_generate_xml_bookmarks_ok():
     assert code == 200
 
 
-def test_generate_xml_bookmarks_limit_ok():
+def test_generate_xml_bookmarks_limit_ok() -> None:
     api = MastodonApi([toot1] * 150)
     val, code = generate_xml(api, param)
     val = re.sub(

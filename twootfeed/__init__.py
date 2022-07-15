@@ -26,7 +26,7 @@ twitter_api = get_twitter_api(param, app_log)
 mastodon_api = get_mastodon_api(param, app_log)
 
 
-def create_app():
+def create_app() -> Flask:
     app = Flask(__name__)
     app_log.setLevel(logging.DEBUG if app.debug else logging.INFO)
 
@@ -37,7 +37,7 @@ def create_app():
     app.register_blueprint(twitter_bp)
 
     @app.route('/')
-    def index_page():
+    def index_page() -> str:
         message = (
             'The RSS feeds are available on these urls : \r\n'
             'for Twitter : http://localhost:5000/_keywords_ or '

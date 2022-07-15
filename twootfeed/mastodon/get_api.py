@@ -1,10 +1,12 @@
 import os
+from logging import Logger
+from typing import Dict
 
 from mastodon import Mastodon
 from twootfeed.utils.config import default_directory
 
 
-def get_mastodon_api(param, app_log):
+def get_mastodon_api(param: Dict, app_log: Logger) -> Mastodon:
     mastodon_api = None
 
     try:

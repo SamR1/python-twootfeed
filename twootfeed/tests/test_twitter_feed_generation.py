@@ -1,5 +1,5 @@
 import re
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from ..twitter.generate_tweets_feed import (
     format_tweet,
@@ -19,13 +19,13 @@ from .data import (
 from .utils import ToDotNotation, TwitterApi
 
 
-def test_format_tweet():
+def test_format_tweet() -> None:
     assert format_tweet(ToDotNotation(tweet_1)) == formatted_tweet_1
     assert format_tweet(ToDotNotation(tweet_2)) == formatted_tweet_2
 
 
 @patch('tweepy.Cursor')
-def test_tweetfeed_empty(fake_tweepy_no_tweets):
+def test_tweetfeed_empty(fake_tweepy_no_tweets: Mock) -> None:
     val = generate_twitter_feed(None, 'test', param)
     # remove date
     val = re.sub(
@@ -37,7 +37,7 @@ def test_tweetfeed_empty(fake_tweepy_no_tweets):
 
 
 @patch('tweepy.Cursor')
-def test_tweetfeed_retweet(get_mock, fake_tweepy_retweet):
+def test_tweetfeed_retweet(get_mock: Mock, fake_tweepy_retweet: Mock) -> None:
     get_mock.return_value = fake_tweepy_retweet.return_value
     val = generate_twitter_feed(None, 'test', param)
     # remove date
@@ -50,7 +50,7 @@ def test_tweetfeed_retweet(get_mock, fake_tweepy_retweet):
 
 
 @patch('tweepy.Cursor')
-def test_tweetfeed_ok(get_mock, fake_tweepy_ok):
+def test_tweetfeed_ok(get_mock: Mock, fake_tweepy_ok: Mock) -> None:
     get_mock.return_value = fake_tweepy_ok.return_value
     val = generate_twitter_feed(None, 'test', param)
     # remove date
@@ -63,7 +63,7 @@ def test_tweetfeed_ok(get_mock, fake_tweepy_ok):
 
 
 @patch('tweepy.Cursor')
-def test_tweetfeed_limit_ok(get_mock, fake_tweepy_200_ok):
+def test_tweetfeed_limit_ok(get_mock: Mock, fake_tweepy_200_ok: Mock) -> None:
     get_mock.return_value = fake_tweepy_200_ok.return_value
     val = generate_twitter_feed(None, 'test', param)
     # remove date
@@ -76,7 +76,9 @@ def test_tweetfeed_limit_ok(get_mock, fake_tweepy_200_ok):
 
 
 @patch('tweepy.Cursor')
-def test_tweetfeed_limit_with_retweet_ok(get_mock, fake_tweepy_220_ok):
+def test_tweetfeed_limit_with_retweet_ok(
+    get_mock: Mock, fake_tweepy_220_ok: Mock
+) -> None:
     get_mock.return_value = fake_tweepy_220_ok.return_value
     val = generate_twitter_feed(None, 'test', param)
     # remove date
@@ -89,7 +91,7 @@ def test_tweetfeed_limit_with_retweet_ok(get_mock, fake_tweepy_220_ok):
 
 
 @patch('tweepy.Cursor')
-def test_generate_xml_ok(get_mock, fake_tweepy_ok):
+def test_generate_xml_ok(get_mock: Mock, fake_tweepy_ok: Mock) -> None:
     get_mock.return_value = fake_tweepy_ok.return_value
     val, code = generate_xml(TwitterApi(), 'test', param)
     # remove date
@@ -102,7 +104,7 @@ def test_generate_xml_ok(get_mock, fake_tweepy_ok):
     assert code == 200
 
 
-def test_generate_xml_no_api():
+def test_generate_xml_no_api() -> None:
     val, code = generate_xml(None, 'test', param)
     assert val == 'error - Twitter parameters not defined'
     assert code == 401

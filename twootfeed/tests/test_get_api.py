@@ -1,5 +1,7 @@
 from os.path import isfile
 
+import pytest
+
 from .. import app_log
 from ..mastodon.get_api import get_mastodon_api
 from ..twitter.get_api import get_twitter_api
@@ -7,27 +9,33 @@ from ..utils.config import get_config, get_config_file, init_config
 from .data import init_param, invalid_param, invalid_param_api
 
 
-def test_config_file(monkeypatch, tmpdir):
+def test_config_file(
+    monkeypatch: pytest.MonkeyPatch, tmpdir: pytest.TempdirFactory
+) -> None:
     test_dir = str(tmpdir)
     monkeypatch.setenv('TWOOTFEED_CONFIG', test_dir)
     monkeypatch.setenv('TWOOTFEED_CONFIG_FILE', test_dir + '/config.yml')
     assert get_config() == init_param
 
 
-def test_config_no_config_file(monkeypatch, tmpdir):
+def test_config_no_config_file(
+    monkeypatch: pytest.MonkeyPatch, tmpdir: pytest.TempdirFactory
+) -> None:
     test_dir = str(tmpdir)
     monkeypatch.setenv('TWOOTFEED_CONFIG', test_dir)
-    assert isfile(get_config_file(None))
+    assert isfile(get_config_file(None))  # type: ignore
 
 
-def test_init_config(monkeypatch, tmpdir):
+def test_init_config(
+    monkeypatch: pytest.MonkeyPatch, tmpdir: pytest.TempdirFactory
+) -> None:
     test_dir = str(tmpdir)
     monkeypatch.setenv('TWOOTFEED_CONFIG', test_dir)
     monkeypatch.setenv('TWOOTFEED_CONFIG_FILE', test_dir + '/config.yml')
     assert init_config()
 
 
-def test_mastodon_invalid_param(caplog):
+def test_mastodon_invalid_param(caplog: pytest.LogCaptureFixture) -> None:
     mastodon_api = get_mastodon_api(invalid_param, app_log)
     assert mastodon_api is None
     assert len(caplog.records) == 1
@@ -37,7 +45,7 @@ def test_mastodon_invalid_param(caplog):
     )
 
 
-def test_twitter_invalid_param(caplog):
+def test_twitter_invalid_param(caplog: pytest.LogCaptureFixture) -> None:
     twitter_api = get_twitter_api(invalid_param, app_log)
     assert twitter_api is None
     assert len(caplog.records) == 1
@@ -48,7 +56,7 @@ def test_twitter_invalid_param(caplog):
     )
 
 
-def test_mastodon_incomplete_param(caplog):
+def test_mastodon_incomplete_param(caplog: pytest.LogCaptureFixture) -> None:
     mastodon_api = get_mastodon_api(invalid_param_api, app_log)
     assert mastodon_api is None
     assert len(caplog.records) == 1
@@ -60,7 +68,7 @@ def test_mastodon_incomplete_param(caplog):
     )
 
 
-def test_twitter_incomplete_param(caplog):
+def test_twitter_incomplete_param(caplog: pytest.LogCaptureFixture) -> None:
     twitter_api = get_twitter_api(invalid_param_api, app_log)
     assert twitter_api is None
     assert len(caplog.records) == 1

@@ -8,27 +8,28 @@ Application parameters are stored in ``config.yml`` file:
     twitter:
       consumerKey: ''
       consumerSecret: ''
-      title: 'Recherche Twitter : '
+      title: 'Twitter Search Feed:'
       link: 'https://twitter.com/search?q='
-      description: "Résultat d'une recherche Twitter retournée dans un flux RSS via Tweepy."
+      description: 'Twitter search results.'
     mastodon:
       url: 'https://mastodon.social'
       client_id_file: 'tootrss_clientcred.txt'
       access_token_file: 'tootrss_usercred.txt'
       app_name: 'tootrss'  # Used to identify authenticated apps
-      title: 'Recherche Mastodon : '
-      description: "Résultat d'une recherche Mastodon retournée dans un flux RSS."
+      title: 'Mastodon Feed:'
+      description: 'Mastodon generated feed from search.'
     feed:
       language: 'fr'
       author_name: ''
-      feed_url: 'http://localhost:5000/'
+      feed_url: 'http://localhost:8080'
       timezone: 'Europe/Paris'
       text_length_limit: 100
-      max_items: 100
+      max_items: 20
+      token: ''
     app:
-      host: '0.0.0.0'
+      host: 'localhost'
       port: '8080'
-    #  nb_workers: 4 # if not defined, the number is defined by the app
+      nb_workers: 2 # if not defined, the number is defined by the app
 
 
 Twitter
@@ -54,8 +55,9 @@ Feed
 * **timezone**: Feed timezone
 * **text_length_limit:** title length of a Feed item
 * **max_items**: maximum number of displayed items
+* **token**: token for feeds access
 
 App
 ~~~
 * **host** and **port**: host and port used by Gunicorn (WSGI HTTP Server)
-* **nb_workers**: number of workers used by Gunicorn (not mandatory, if not defined, the number is defined by the app)
+* **nb_workers**: number of workers used by Gunicorn (not mandatory, if not defined, the number is calculated by the app)

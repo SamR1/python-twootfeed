@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Features &mdash; twootfeed 0.6.8
+  <title>Features &mdash; twootfeed 0.7.0
  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -32,7 +33,7 @@
             <a href="index.html" class="icon icon-home"> twootfeed
           </a>
               <div class="version">
-                0.6.8
+                0.7.0
 
               </div>
 <div role="search">
@@ -47,7 +48,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Features</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and usage</a></li>
@@ -81,10 +81,10 @@
            <div itemprop="articleBody">
              
   <section id="features">
-<h1>Features<a class="headerlink" href="#features" title="Permalink to this headline"></a></h1>
+<h1>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h1>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
-<p><strong>twootfeed</strong> generate an RSS feed from <strong>Twitter</strong> or <strong>Mastodon</strong> search and from <strong>Mastodon</strong> bookmarks/favorites.</p>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p><strong>twootfeed</strong> generate an RSS feed from <strong>Twitter</strong> or <strong>Mastodon</strong> search and from <strong>Mastodon</strong> bookmarks/favorites/home timeline.</p>
 <p>The feed displays only the original tweets (not the retweets) and toots, with:</p>
 <ul>
 <li><p>links to :</p>
@@ -104,40 +104,11 @@
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>twootfeed</strong> was originally developed for personal use.
-Mastodon bookmarks/favorites toots are displayed for user associated to API key.</p>
+<div class="line-block">
+<div class="line"><strong>twootfeed</strong> is developed for a personal use.</div>
+<div class="line">Tweets and toots are displayed with the user account associated to the API keys (feeds may contain items with <strong>restricted visibility</strong>).</div>
 </div>
-</section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
-<ul class="simple">
-<li><p>Search on Twitter</p></li>
-</ul>
-<figure class="doc-img align-default">
-<img alt="Twitter search" src="_images/twitter.png" />
-</figure>
-<p>Results in RSS Feed:</p>
-<figure class="doc-img align-default">
-<img alt="RSS Feed" src="_images/RSSFeed.png" />
-</figure>
-<p>Display on FreshRSS, a great free self-hosted aggregator (<a class="reference external" href="https://github.com/FreshRSS/FreshRSS">https://github.com/FreshRSS/FreshRSS</a>):</p>
-<figure class="doc-img align-default">
-<img alt="FreshRSS" src="_images/FreshRSS.png" />
-</figure>
-<ul class="simple">
-<li><p>Search on Mastodon</p></li>
-</ul>
-<figure class="doc-img align-default">
-<img alt="Mastodon search" src="_images/mastodon.png" />
-</figure>
-<p>Results in RSS Feed:</p>
-<figure class="doc-img align-default">
-<img alt="Mastodon Feed" src="_images/MastodonRSSFeed.png" />
-</figure>
-<p>Display on FreshRSS:</p>
-<figure class="doc-img align-default">
-<img alt="Mastodon FreshRSS" src="_images/MastodonFreshRSS.png" />
-</figure>
+</div>
 </section>
 </section>
 

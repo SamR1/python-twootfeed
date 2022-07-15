@@ -1,7 +1,11 @@
+from typing import Dict, Optional
+
 import feedgenerator
 
 
-def generate_feed(title, link, param, description=None):
+def generate_feed(
+    title: str, link: str, param: Dict, description: Optional[str] = None
+) -> feedgenerator.Rss201rev2Feed:
 
     return feedgenerator.Rss201rev2Feed(
         title=title,

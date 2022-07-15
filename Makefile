@@ -2,13 +2,19 @@ include Makefile.config
 -include Makefile.custom.config
 .SILENT:
 
+check: type-check lint test
+
 clean:
+	rm -rf .mypy_cache
+	rm -rf .pytest_cache
+
+clean-all: clean
 	rm -fr $(VENV)
 	rm -fr *.egg-info
 	rm -fr .eggs
-	rm -rf .pytest_cache
 	rm -fr build
 	rm -rf dist
+	rm -rf *.log
 
 create-mastodon-cli:
 	$(PYTHON) $(FLASK_APP)/utils/create_mastodon_client.py
@@ -31,9 +37,11 @@ lint-fix:
 	$(BLACK) $(FLASK_APP)
 
 serve:
+	echo 'Running on http://$(HOST):$(PORT)'
 	$(FLASK) run --with-threads -h $(HOST) -p $(PORT)
 
 run:
+	echo 'Running on http://$(HOST):$(PORT)'
 	FLASK_ENV=production && $(GUNICORN) -b 127.0.0.1:5000 "$(FLASK_APP):create_app()" --error-logfile $(GUNICORN_LOG)
 
 venv:
@@ -42,3 +50,7 @@ venv:
 
 test:
 	$(PYTEST) $(FLASK_APP) --cov $(FLASK_APP) --cov-report term-missing $(PYTEST_ARGS)
+
+type-check:
+	echo 'Running mypy...'
+	$(MYPY) $(FLASK_APP)

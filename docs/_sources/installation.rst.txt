@@ -4,7 +4,7 @@ Installation and usage
 Requirements
 ~~~~~~~~~~~~
 
-- Python 3.6+
+- Python 3.7+
 - API keys Twitter and/or Mastodon
 
 
@@ -41,16 +41,45 @@ Installation
 
     Update the `feed and app parameters <parameters.html>`_.
 
+    .. versionadded:: 0.7.0
 
-- The files location can be changed with the following environment variables:
+    Since **twootfeed** is connected to the user account, feeds may display items with **restricted visibility**.
 
-========================= =============================================== ===========================================================================================
- variable                 description                                     app default value
-========================= =============================================== ===========================================================================================
- `TWOOTFEED_CONFIG_DIR`   configuration and credentials files directory   **'~/.config/twootfeed/'**
- `TWOOTFEED_CONFIG_FILE`  config file full path                           config dir + **'config.yml'** => with default value: **'~/.config/twootfeed/config.yml'**
- `TWOOTFEED_LOG`          application log file                            _no default value (log printed on the console)_
-========================= =============================================== ===========================================================================================
+    A token is now mandatory to start the application and access feeds (minimum length: 25 characters).
+
+    Some examples for token generation:
+
+    > with Python
+
+    .. code-block:: bash
+
+        $ python
+        Python 3.10.5 (main, Jun  6 2022, 18:49:26) [GCC 12.1.0] on linux
+        Type "help", "copyright", "credits" or "license" for more information.
+        >>> import secrets
+        >>> secrets.token_urlsafe()
+        'pgoeS3qOsLHxduzNY_gmn6p5vWZqSzqBgnb_VPupQ7o'
+        >>>
+
+    > with a linux command line
+
+    .. code-block:: bash
+
+        $ date | sha256sum | base64 | head -c 25; echo
+        NWU2MzE1ZGM0MmVlZDg5NDNhN
+
+
+
+- The files location and settings can be changed with the following environment variables:
+
+=========================== =============================================== ===========================================================================================
+ variable                   description                                     app default value
+=========================== =============================================== ===========================================================================================
+ ``TWOOTFEED_CONFIG_DIR``   configuration and credentials files directory   **'~/.config/twootfeed/'**
+ ``TWOOTFEED_CONFIG_FILE``  config file full path                           config dir + **'config.yml'** => with default value: **'~/.config/twootfeed/config.yml'**
+ ``TWOOTFEED_LOG``          application log file                            `no default value (log printed on the console)`
+ ``TWOOTFEED_SETTINGS``     application settings                            **'ProductionConfig'**
+=========================== =============================================== ===========================================================================================
 
 - Start the app
 
@@ -62,30 +91,34 @@ Installation
 Usage
 ~~~~~
 
-The RSS feeds are available on these urls:
+.. versionchanged:: 0.7.0
+
+The following RSS feeds are available:
 
 - for Twitter search:
 
-    - http://localhost:8080/tweets/<keywords>
-    - http://localhost:8080/<keywords>  (*will be deprecated in a next version*)
+    - http://localhost:8080/tweets?q=<query>&token=<token>
 
 - for Mastodon search:
 
-    - keyword as a hashtag:
+    - hashtag:
 
-        - http://localhost:8080/toots/<hashtag> (without the leading #)
+        - http://localhost:8080/toots/tags/<hashtag>?token=<token> (without the leading #)
 
     - query:
 
-        - http://localhost:8080/toots/search/<query>
-        - http://localhost:8080/toot_search/<query> (*will be deprecated in a next version*)
+        - http://localhost:8080/toots/search?q=<query>&token=<token>
 
-- for Mastodon connected user favorites:
+- for Mastodon user favorites:
 
-    - http://localhost:8080/toots/favorites
-    - http://localhost:8080/toot_favorites (*will be deprecated in a next version*)
+    - http://localhost:8080/toots/favorites?token=<token>
 
-- for Mastodon connected user bookmarks:
+- for Mastodon user bookmarks:
 
-    - http://localhost:8080/toots/bookmarks
+    - http://localhost:8080/toots/bookmarks?token=<token>
 
+- for Mastodon user home timeline:
+
+    - http://localhost:8080/toots/home_timeline?token=<token>
+
+where ``<token>`` is the token set in configuration.

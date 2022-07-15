@@ -1,4 +1,4 @@
-image: python:3.9
+image: python:3.10
 
 stages:
   - lint
@@ -17,10 +17,11 @@ lint:
   script:
     - pytest --flake8 --isort --black -m "flake8 or isort or black" twootfeed
 
-python-3.6:
-  stage: tests
+type-check:
+  stage: lint
   extends: .python
-  image: python:3.6
+  script:
+    - mypy twootfeed
 
 python-3.7:
   stage: tests
@@ -33,6 +34,11 @@ python-3.8:
   image: python:3.8
 
 python-3.9:
+  stage: tests
+  extends: .python
+  image: python:3.9
+
+python-3.10:
   stage: tests
   before_script:
     - pip install -e .[test]

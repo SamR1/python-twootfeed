@@ -50,6 +50,9 @@ class Tweepy:
         self.tweet_pages = self.items_in_pages(tweets)
         self.tweets = [ToDotNotationTweepy(tweet) for tweet in tweets]
 
+    def Cursor(self, *args: Any, **kwargs: Any) -> 'Tweepy':
+        return self
+
     def pages(self) -> List[List[ToDotNotationTweepy]]:
         return self.tweet_pages
 

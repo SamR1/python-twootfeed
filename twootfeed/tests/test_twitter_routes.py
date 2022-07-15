@@ -1,10 +1,14 @@
+from unittest.mock import patch
 from uuid import uuid4
 
 from flask import Flask
 
 from .data import TEST_TOKEN
+from .utils import Tweepy, TwitterApi
 
 
+@patch('twootfeed.twitter.generate_tweets_feed.tweepy', Tweepy([]))
+@patch('twootfeed.twitter.routes.twitter_api', TwitterApi())
 class TestTwitterRoutes:
     endpoint = '/tweets'
 
@@ -39,7 +43,7 @@ class TestTwitterRoutes:
         data = response.data.decode()
         assert data == 'missing query'
 
-    def test_it_returns_200_when_query_valid(self, app: Flask) -> None:
+    def test_it_returns_200_when_query_is_provided(self, app: Flask) -> None:
         client = app.test_client()
 
         response = client.get(

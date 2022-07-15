@@ -1,8 +1,7 @@
 from functools import wraps
 from typing import Any, Callable, Tuple, Union
 
-from flask import request
-from twootfeed import param
+from flask import current_app, request
 
 
 def require_token(f: Callable) -> Callable:
@@ -13,7 +12,7 @@ def require_token(f: Callable) -> Callable:
         token = request.args.get('token')
         if not token:
             return 'missing token', 401
-        if token != param['feed']['token']:
+        if token != current_app.config['FEED_CONFIG']['token']:
             return 'invalid token', 403
 
         return f(*args, **kwargs)

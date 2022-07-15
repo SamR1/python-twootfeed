@@ -43,7 +43,7 @@ Installation
 
     .. versionadded:: 0.7.0
 
-    Since **twootfeed** is connected to the user account, feeds may display private private items.
+    Since **twootfeed** is connected to the user account, feeds may display items with **restricted visibility**.
 
     A token is now mandatory to start the application and access feeds (minimum length: 25 characters).
 

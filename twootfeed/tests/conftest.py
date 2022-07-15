@@ -1,3 +1,4 @@
+import os
 from typing import Any, Dict, List
 from unittest.mock import Mock
 
@@ -8,6 +9,9 @@ from .. import create_app
 from .data import retweet, tweet_1, tweet_no_full_text
 from .utils import Tweepy
 
+os.environ['FLASK_ENV'] = 'testing'
+os.environ['TWOOTFEED_SETTINGS'] = 'TestingConfig'
+
 
 def mock_api(tweets: List[Dict]) -> Mock:
     mock_response = Mock()
@@ -15,12 +19,30 @@ def mock_api(tweets: List[Dict]) -> Mock:
     return mock_response
 
 
-@pytest.fixture
-def app(monkeypatch: pytest.MonkeyPatch, tmpdir: Any) -> Flask:
+def get_app(monkeypatch: pytest.MonkeyPatch, tmpdir: Any) -> Flask:
     test_dir = str(tmpdir)
     monkeypatch.setenv('TWOOTFEED_CONFIG', test_dir)
     monkeypatch.setenv('TWOOTFEED_CONFIG_FILE', test_dir + '/config.yml')
     app = create_app()
+    return app
+
+
+@pytest.fixture
+def app(monkeypatch: pytest.MonkeyPatch, tmpdir: Any) -> Flask:
+    return get_app(monkeypatch, tmpdir)
+
+
+@pytest.fixture
+def app_missing_token(monkeypatch: pytest.MonkeyPatch, tmpdir: Any) -> Flask:
+    app = get_app(monkeypatch, tmpdir)
+    app.config['TOKEN'] = ''
+    return app
+
+
+@pytest.fixture
+def app_invalid_token(monkeypatch: pytest.MonkeyPatch, tmpdir: Any) -> Flask:
+    app = get_app(monkeypatch, tmpdir)
+    app.config['TOKEN'] = 'invalid_token'
     return app
 
 

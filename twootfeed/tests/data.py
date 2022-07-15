@@ -1,12 +1,14 @@
+import secrets
 from copy import deepcopy
 from datetime import datetime
 from typing import Dict
 
 import pytz
 
+TEST_TOKEN = secrets.token_urlsafe()
 max_items = 20
 
-init_param = {
+init_param: Dict = {
     'twitter': {
         'consumerKey': '',
         'consumerSecret': '',
@@ -29,6 +31,7 @@ init_param = {
         'timezone': 'Europe/Paris',
         'text_length_limit': 100,
         'max_items': max_items,
+        'token': TEST_TOKEN,
     },
     'app': {'host': '0.0.0.0', 'port': '8080'},
 }

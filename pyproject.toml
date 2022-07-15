@@ -1,7 +1,7 @@
 [tool.black]
 line-length = 79
 skip-string-normalization = true
-target-version = ["py36", "py37", "py38", "py39"]
+target-version = ["py37", "py38", "py39", "py310"]
 include = ".py$"
 exclude = "migrations"
 

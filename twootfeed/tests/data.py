@@ -27,13 +27,13 @@ init_param: Dict = {
     'feed': {
         'language': 'fr',
         'author_name': '',
-        'feed_url': 'http://localhost:5000/',
+        'feed_url': 'http://localhost:8080',
         'timezone': 'Europe/Paris',
         'text_length_limit': 100,
         'max_items': max_items,
         'token': TEST_TOKEN,
     },
-    'app': {'host': '0.0.0.0', 'port': '8080'},
+    'app': {'host': 'localhost', 'port': '8080', 'nb_workers': 2},
 }
 
 invalid_param: Dict = deepcopy(init_param)

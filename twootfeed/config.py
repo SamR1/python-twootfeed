@@ -1,9 +1,10 @@
 import os
 
 from twootfeed import param
-from twootfeed.tests.data import TEST_TOKEN
 
 if os.getenv('TWOOTFEED_SETTINGS') == 'TestingConfig':
+    from twootfeed.tests.data import TEST_TOKEN
+
     param['feed']['token'] = TEST_TOKEN
 
 

@@ -1,23 +1,23 @@
 twitter:
   consumerKey: ''
   consumerSecret: ''
-  title: 'Recherche Twitter : '
+  title: 'Twitter Search Feed:'
   link: 'https://twitter.com/search?q='
-  description: "Résultat d'une recherche Twitter retournée dans un flux RSS via Tweepy."
+  description: 'Twitter search results.'
 mastodon:
   url: 'https://mastodon.social'
   client_id_file: 'tootrss_clientcred.txt'
   access_token_file: 'tootrss_usercred.txt'
   app_name: 'tootrss'  # Used to identify authenticated apps
-  title: 'Recherche Mastodon : '
-  description: "Résultat d'une recherche Mastodon retournée dans un flux RSS."
+  title: 'Mastodon Feed:'
+  description: 'Mastodon generated feed from search.'
 feed:
   language: 'fr'
   author_name: ''
   feed_url: 'http://localhost:5000/'
   timezone: 'Europe/Paris'
   text_length_limit: 100
-  max_items: 100
+  max_items: 20
 app:
   host: '0.0.0.0'
   port: '8080'

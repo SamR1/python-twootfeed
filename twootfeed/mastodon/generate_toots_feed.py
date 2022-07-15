@@ -27,7 +27,7 @@ def format_toot(toot: Dict, text_length_limit: int) -> Dict:
             f"{toot['account']['avatar_static']}\" "
             f"alt=\"{toot['account']['display_name']}\""
             f" width= 100px\"/> "
-            f"<strong>{toot['account']['display_name']}: </strong>"
+            f"<strong>{toot['account']['display_name']} </strong>"
             f"{toot['content']}"
         ),
     }
@@ -135,14 +135,18 @@ def generate_xml(
             if hashtag:
                 result = api.timeline_hashtag(hashtag)
                 result = get_next_toots(api, result, max_items)
-                feed_title = param['mastodon']['title'] + '"' + hashtag + '"'
+                feed_title = (
+                    param['mastodon']['title'] + ' search "' + hashtag + '"'
+                )
                 feed_link = (
                     param['mastodon']['url'] + '/web/timelines/tag/' + hashtag
                 )
             else:
                 search_result = api.search(query, resolve=True)
                 result = search_result['statuses'][: max_items - 1]
-                feed_title = param['mastodon']['title'] + '"' + query + '"'
+                feed_title = (
+                    param['mastodon']['title'] + ' search "' + query + '"'
+                )
                 feed_link = param['mastodon']['url'] + '/web/search/'
             feed_desc = param['mastodon']['description']
         elif target == 'favorites':

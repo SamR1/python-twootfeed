@@ -19,7 +19,7 @@ def format_tweet(tweet: tweepy.tweet.Tweet) -> Dict:
             '<blockquote><div><img src="{}" alt="{}'.format(
                 tweet.user.profile_image_url_https, tweet.user.screen_name
             )
-            + ' profile image"/> <strong>{}: </strong>{}<br><i>'.format(
+            + ' profile image"/> <strong>{} </strong>{}<br><i>'.format(
                 tweet.user.name, tweet.full_text
             )
             + 'Source: {}</i>'.format(tweet.source)
@@ -98,7 +98,7 @@ def format_tweet(tweet: tweepy.tweet.Tweet) -> Dict:
 def generate_twitter_feed(
     api: tweepy.API, query_feed: str, twitter_param: Dict
 ) -> str:
-    feed_title = twitter_param['twitter']['title'] + '"' + query_feed + '"'
+    feed_title = twitter_param['twitter']['title'] + ' "' + query_feed + '"'
     feed_link = twitter_param['twitter']['link'] + query_feed
     f = generate_feed(feed_title, feed_link, twitter_param)
 

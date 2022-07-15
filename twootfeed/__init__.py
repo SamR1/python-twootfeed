@@ -29,6 +29,7 @@ mastodon_api = get_mastodon_api(param, app_log)
 
 def create_app() -> Flask:
     app = Flask(__name__)
+    app.config['PARAMS'] = param
     app_log.setLevel(logging.DEBUG if app.debug else logging.INFO)
 
     from .mastodon.routes import mastodon_bp

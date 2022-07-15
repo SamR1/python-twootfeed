@@ -15,6 +15,7 @@ def test_config_file(
     test_dir = str(tmpdir)
     monkeypatch.setenv('TWOOTFEED_CONFIG', test_dir)
     monkeypatch.setenv('TWOOTFEED_CONFIG_FILE', test_dir + '/config.yml')
+    init_param['feed']['token'] = ''
     assert get_config() == init_param
 
 
@@ -23,7 +24,7 @@ def test_config_no_config_file(
 ) -> None:
     test_dir = str(tmpdir)
     monkeypatch.setenv('TWOOTFEED_CONFIG', test_dir)
-    assert isfile(get_config_file(None))  # type: ignore
+    assert isfile(get_config_file(''))
 
 
 def test_init_config(

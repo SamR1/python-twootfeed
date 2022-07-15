@@ -25,6 +25,7 @@ Application parameters are stored in ``config.yml`` file:
       timezone: 'Europe/Paris'
       text_length_limit: 100
       max_items: 20
+      token: ''
     app:
       host: '0.0.0.0'
       port: '8080'
@@ -54,6 +55,7 @@ Feed
 * **timezone**: Feed timezone
 * **text_length_limit:** title length of a Feed item
 * **max_items**: maximum number of displayed items
+* **token**: token for feeds access
 
 App
 ~~~

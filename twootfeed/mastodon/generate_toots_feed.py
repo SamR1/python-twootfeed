@@ -125,7 +125,7 @@ def generate_xml(
     api: Mastodon,
     param: Dict,
     query_feed: Optional[Dict] = None,
-    favorites: bool = False,
+    target: Optional[str] = None,
 ) -> Tuple[str, int]:
     if api:
         max_items = param['feed']['max_items']
@@ -145,18 +145,20 @@ def generate_xml(
                 feed_title = param['mastodon']['title'] + '"' + query + '"'
                 feed_link = param['mastodon']['url'] + '/web/search/'
             feed_desc = param['mastodon']['description']
-        elif favorites:
+        elif target == 'favorites':
             result = api.favourites()
             result = get_next_toots(api, result, max_items)
             feed_title = param['mastodon']['title'] + ' Favourites'
             feed_link = param['mastodon']['url'] + '/web/favourites'
             feed_desc = param['feed']['author_name'] + ' favourites toots.'
-        else:
+        elif target == 'bookmarks':
             result = api.bookmarks()
             result = get_next_toots(api, result, max_items)
             feed_title = param['mastodon']['title'] + ' Bookmarks'
             feed_link = param['mastodon']['url'] + '/web/bookmarks'
             feed_desc = param['feed']['author_name'] + ' bookmarks toots.'
+        else:
+            raise Exception('Invalid target')
         xml = generate_mastodon_feed(
             result, param, feed_title, feed_link, feed_desc
         )

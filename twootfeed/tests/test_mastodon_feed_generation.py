@@ -1,5 +1,7 @@
 import re
 
+import pytest
+
 from ..mastodon.generate_toots_feed import (
     format_toot,
     generate_mastodon_feed,
@@ -134,7 +136,7 @@ def test_generate_xml_search_ok() -> None:
 
 def test_generate_xml_favorites_ok() -> None:
     api = MastodonApi([toot1])
-    val, code = generate_xml(api, param, favorites=True)
+    val, code = generate_xml(api, param, target='favorites')
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
@@ -146,7 +148,7 @@ def test_generate_xml_favorites_ok() -> None:
 
 def test_generate_xml_favorites_limit_ok() -> None:
     api = MastodonApi([toot1] * 150)
-    val, code = generate_xml(api, param, favorites=True)
+    val, code = generate_xml(api, param, target='favorites')
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
@@ -158,7 +160,7 @@ def test_generate_xml_favorites_limit_ok() -> None:
 
 def test_generate_xml_bookmarks_ok() -> None:
     api = MastodonApi([toot1])
-    val, code = generate_xml(api, param)
+    val, code = generate_xml(api, param, target='bookmarks')
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
@@ -170,7 +172,7 @@ def test_generate_xml_bookmarks_ok() -> None:
 
 def test_generate_xml_bookmarks_limit_ok() -> None:
     api = MastodonApi([toot1] * 150)
-    val, code = generate_xml(api, param)
+    val, code = generate_xml(api, param, target='bookmarks')
     val = re.sub(
         r'(<lastBuildDate>)(.*)(</lastBuildDate>)',
         '<lastBuildDate></lastBuildDate>',
@@ -178,3 +180,9 @@ def test_generate_xml_bookmarks_limit_ok() -> None:
     )
     assert val == toot_100_bookmarks_feed
     assert code == 200
+
+
+def test_it_raises_exception_when_target_is_invalid() -> None:
+    api = MastodonApi([])
+    with pytest.raises(Exception, match='Invalid target'):
+        generate_xml(api, param, target='invalid')

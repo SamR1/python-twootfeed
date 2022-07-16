@@ -4,7 +4,7 @@ from typing import Dict, List, Optional, Tuple
 import pytz
 from bs4 import BeautifulSoup
 from mastodon import Mastodon
-from twootfeed.utils.feed_generation import generate_feed
+from twootfeed.utils.feed_generation import add_noindex, generate_feed
 
 TOOT_VISIBILITY = {
     'public': '🌐',  # Visible to everyone, shown in public timelines.
@@ -185,8 +185,10 @@ def generate_xml(
             feed_desc = param['feed']['author_name'] + ' home timeline.'
         else:
             raise Exception('Invalid target')
-        xml = generate_mastodon_feed(
-            result, param, feed_title, feed_link, feed_desc
+        xml = add_noindex(
+            generate_mastodon_feed(
+                result, param, feed_title, feed_link, feed_desc
+            )
         )
         code = 200
     else:

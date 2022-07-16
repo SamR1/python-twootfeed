@@ -3,7 +3,7 @@ from typing import Dict, Tuple
 
 import pytz
 import tweepy
-from twootfeed.utils.feed_generation import generate_feed
+from twootfeed.utils.feed_generation import add_noindex, generate_feed
 
 
 def format_tweet(tweet: tweepy.tweet.Tweet) -> Dict:
@@ -148,7 +148,9 @@ def generate_xml(
     api: tweepy.API, query_feed: str, param: Dict
 ) -> Tuple[str, int]:
     if api:
-        xml = generate_twitter_feed(api.search_tweets, query_feed, param)
+        xml = add_noindex(
+            generate_twitter_feed(api.search_tweets, query_feed, param)
+        )
         code = 200
     else:
         xml = 'error - Twitter parameters not defined'

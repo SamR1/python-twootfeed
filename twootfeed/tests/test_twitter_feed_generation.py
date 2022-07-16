@@ -1,6 +1,8 @@
 import re
 from unittest.mock import Mock, patch
 
+from twootfeed.utils.feed_generation import add_noindex
+
 from ..twitter.generate_tweets_feed import (
     format_tweet,
     generate_twitter_feed,
@@ -100,7 +102,7 @@ def test_generate_xml_ok(get_mock: Mock, fake_tweepy_ok: Mock) -> None:
         '<lastBuildDate></lastBuildDate>',
         val,
     )
-    assert val == tweet_1_feed
+    assert val == add_noindex(tweet_1_feed)
     assert code == 200
 
 

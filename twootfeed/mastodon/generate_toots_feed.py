@@ -28,7 +28,7 @@ def format_toot(toot: Dict, text_length_limit: int) -> Dict:
             f"<blockquote>{html_boosted}<div><img src=\""
             f"{toot['account']['avatar_static']}\" "
             f"alt=\"{toot['account']['display_name']}\""
-            f" width= 100px\"/> "
+            f" width= 100px\" style=\"border-radius: 50%;\"/> "
             f"<strong>{toot['account']['display_name']} </strong>"
             f"{toot['content']}"
         ),

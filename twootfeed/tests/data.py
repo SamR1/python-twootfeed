@@ -80,7 +80,7 @@ formatted_tweet_1 = {
     'created_at': datetime(2017, 4, 6, 15, 24, 15, tzinfo=pytz.UTC),
     'tweet_url': 'https://twitter.com/TwitterDev/status/850006245121695744',
     'htmltext': '<blockquote><div><img src="" '
-    'alt="TwitterDev profile image"/> '
+    'alt="TwitterDev profile image" style="border-radius: 50%;"/> '
     '<strong>Twitter Dev </strong>We are sharing our vision for '
     'the future of the Twitter API<br>'
     '<i>Source: </i><br><i>Location: None</i><br>'
@@ -100,7 +100,8 @@ tweet_1_feed = (
     'future of the Twitter API</title>'
     '<link>https://twitter.com/TwitterDev/status/850006245121695744</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="" '
-    'alt="TwitterDev profile image"/&gt; &lt;strong&gt;Twitter Dev '
+    'alt="TwitterDev profile image" style="border-radius: 50%;"/&gt; '
+    '&lt;strong&gt;Twitter Dev '
     '&lt;/strong&gt;We are sharing our vision for the future of the Twitter '
     'API&lt;br&gt;&lt;i&gt;Source: &lt;/i&gt;&lt;br&gt;&lt;i&gt;Location: '
     'None&lt;/i&gt;&lt;br&gt; ♻ : 0, ♥ : 0&lt;/div&gt;&lt;/blockquote&gt;'
@@ -126,7 +127,8 @@ tweet_20_feed = (
         'future of the Twitter API</title>'
         '<link>https://twitter.com/TwitterDev/status/850006245121695744</link>'
         '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="" '
-        'alt="TwitterDev profile image"/&gt; &lt;strong&gt;Twitter Dev '
+        'alt="TwitterDev profile image" style="border-radius: 50%;"/&gt; '
+        '&lt;strong&gt;Twitter Dev '
         '&lt;/strong&gt;We are sharing our vision for the future of the '
         'Twitter '
         'API&lt;br&gt;&lt;i&gt;Source: &lt;/i&gt;&lt;br&gt;&lt;i&gt;Location: '
@@ -336,7 +338,7 @@ formatted_tweet_2 = {
     'tweet_url': 'https://twitter.com/UserA/status/1111111111111111111',
     'htmltext': '<blockquote>'
     '<div>'
-    '<img src="https://pbs.twimg.com/profile_images/xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg" alt="UserA profile image"/> '  # noqa
+    '<img src="https://pbs.twimg.com/profile_images/xxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpg" alt="UserA profile image" style="border-radius: 50%;"/> '  # noqa
     '<strong>User A </strong>'
     'tweet <a href="https://twitter.com/hashtag/test?src=hash" target="_blank">#test</a> '  # noqa
     'cc '
@@ -421,7 +423,7 @@ formatted_toot1 = {
     'url': 'https://mastodon.social/@UserD/111111111111111111',
     'htmltext': '<blockquote>'
     '<div>'
-    '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
+    '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px" style="border-radius: 50%;"/> '  # noqa
     '<strong>User </strong>'
     '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
     '<br>♻ : 0, ✰ : 0</div></blockquote>',
@@ -441,7 +443,8 @@ toot_1_feed = (
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
-    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User &lt;/strong&gt'
+    '.jpg" alt="User" width= 100px" style="border-radius: 50%;"/&gt; '
+    '&lt;strong&gt;User &lt;/strong&gt'
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
@@ -466,7 +469,8 @@ toot_20_feed = (
         '<link>https://mastodon.social/@UserD/111111111111111111</link>'
         '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files'
         '.mastodon.social/accounts/avatars/000/000/000/original/'
-        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;'
+        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px" style="border-radius: '
+        '50%;"/&gt; &lt;strong&gt;'
         'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow'
         ' noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a'
@@ -493,7 +497,8 @@ toot_1_bookmarks_feed = (
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
-    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User &lt;/strong&gt'
+    '.jpg" alt="User" width= 100px" style="border-radius: 50%;"/&gt; '
+    '&lt;strong&gt;User &lt;/strong&gt'
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
@@ -518,7 +523,8 @@ toot_20_bookmarks_feed = (
         '<link>https://mastodon.social/@UserD/111111111111111111</link>'
         '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
         'mastodon.social/accounts/avatars/000/000/000/original/'
-        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;'
+        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px" style="border-radius: '
+        '50%;"/&gt; &lt;strong&gt;'
         'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow '
         'noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&'
@@ -545,7 +551,8 @@ toot_1_favorites_feed = (
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
-    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User &lt;/strong&gt'
+    '.jpg" alt="User" width= 100px" style="border-radius: 50%;"/&gt; '
+    '&lt;strong&gt;User &lt;/strong&gt'
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
@@ -570,7 +577,8 @@ toot_20_favorites_feed = (
         '<link>https://mastodon.social/@UserD/111111111111111111</link>'
         '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
         'mastodon.social/accounts/avatars/000/000/000/original/'
-        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;'
+        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px" style="border-radius: '
+        '50%;"/&gt; &lt;strong&gt;'
         'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow '
         'noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&'
@@ -675,7 +683,7 @@ formatted_toot2 = {
     'url': 'https://mastodon.social/@UserD/111111111111111111',
     'htmltext': '<blockquote>'
     '<div>'
-    '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
+    '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px" style="border-radius: 50%;"/> '  # noqa
     '<strong>User </strong>'
     '<p>This is a <a href="https://mastodon.social/tags/testtag" class="mention hashtag" rel="tag">#<span>TestTag</span></a></p>'  # noqa
     '<i>Source: Twidere for Android</i><br>'
@@ -723,7 +731,8 @@ toot_1_search_feed = (
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
-    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User &lt;/strong&gt'
+    '.jpg" alt="User" width= 100px" style="border-radius: 50%;"/&gt; '
+    '&lt;strong&gt;User &lt;/strong&gt'
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
@@ -839,7 +848,7 @@ formatted_reblog = {
     'htmltext': '<blockquote>'
     '<div>Boosted by User A: </div>'
     '<div>'
-    '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/> '  # noqa
+    '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px" style="border-radius: 50%;"/> '  # noqa
     '<strong>User </strong>'
     '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
     '<br>♻ : 0, ✰ : 0</div></blockquote>',
@@ -860,7 +869,8 @@ toot_1_home_timeline_feed = (
     '<link>https://mastodon.social/@UserD/111111111111111111</link>'
     '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
     'mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx'
-    '.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;User &lt;/strong&gt'
+    '.jpg" alt="User" width= 100px" style="border-radius: 50%;"/&gt; '
+    '&lt;strong&gt;User &lt;/strong&gt'
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
@@ -886,7 +896,8 @@ toot_20_home_timeline_feed = (
         '<link>https://mastodon.social/@UserD/111111111111111111</link>'
         '<description>&lt;blockquote&gt;&lt;div&gt;&lt;img src="https://files.'
         'mastodon.social/accounts/avatars/000/000/000/original/'
-        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px"/&gt; &lt;strong&gt;'
+        'DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px" style="border-radius: '
+        '50%;"/&gt; &lt;strong&gt;'
         'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow '
         'noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&'

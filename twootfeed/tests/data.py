@@ -426,7 +426,7 @@ formatted_toot1 = {
     '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px" style="border-radius: 50%;"/> '  # noqa
     '<strong>User </strong>'
     '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
-    '<br>♻ : 0, ✰ : 0</div></blockquote>',
+    '<br>♻ : 0, ✰ : 0, 🌐</div></blockquote>',
     'text': 'What\'s New in #python today?',
 }
 toot_1_feed = (
@@ -448,7 +448,7 @@ toot_1_feed = (
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
-    '&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote&gt;</description>'
+    '&gt;♻ : 0, ✰ : 0, 🌐&lt;/div&gt;&lt;/blockquote&gt;</description>'
     '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
     '</item>'
     '</channel>'
@@ -474,7 +474,7 @@ toot_20_feed = (
         'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow'
         ' noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a'
-        '&gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/'
+        '&gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0, 🌐&lt;/div&gt;&lt;/'
         'blockquote&gt;</description>'
         '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
         '</item>'
@@ -502,7 +502,7 @@ toot_1_bookmarks_feed = (
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
-    '&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote&gt;</description>'
+    '&gt;♻ : 0, ✰ : 0, 🌐&lt;/div&gt;&lt;/blockquote&gt;</description>'
     '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
     '</item>'
     '</channel>'
@@ -528,8 +528,8 @@ toot_20_bookmarks_feed = (
         'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow '
         'noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&'
-        'gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote'
-        '&gt;</description>'
+        'gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0, 🌐&lt;/div&gt;&lt;/'
+        'blockquote&gt;</description>'
         '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
         '</item>'
     )
@@ -556,7 +556,7 @@ toot_1_favorites_feed = (
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
-    '&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote&gt;</description>'
+    '&gt;♻ : 0, ✰ : 0, 🌐&lt;/div&gt;&lt;/blockquote&gt;</description>'
     '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
     '</item>'
     '</channel>'
@@ -582,8 +582,8 @@ toot_20_favorites_feed = (
         'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow '
         'noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&'
-        'gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote'
-        '&gt;</description>'
+        'gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0, 🌐&lt;/div&gt;&lt;/'
+        'blockquote&gt;</description>'
         '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
         '</item>'
     )
@@ -688,7 +688,7 @@ formatted_toot2 = {
     '<p>This is a <a href="https://mastodon.social/tags/testtag" class="mention hashtag" rel="tag">#<span>TestTag</span></a></p>'  # noqa
     '<i>Source: Twidere for Android</i><br>'
     '<a href="https://files.mastodon.social/media_attachments/files/999/999/999/original/a2a2a2a2a2a2a2a2.jpg" target="_blank"><img src="https://files.mastodon.social/media_attachments/files/999/999/999/small/a2a2a2a2a2a2a2a2.jpg"></a>'  # noqa
-    '<br>♻ : 0, ✰ : 0</div></blockquote>',
+    '<br>♻ : 0, ✰ : 0, 🌐</div></blockquote>',
     'text': 'This is a ... ',
 }
 
@@ -736,7 +736,7 @@ toot_1_search_feed = (
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
-    '&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote&gt;</description>'
+    '&gt;♻ : 0, ✰ : 0, 🌐&lt;/div&gt;&lt;/blockquote&gt;</description>'
     '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
     '</item>'
     '</channel>'
@@ -851,7 +851,7 @@ formatted_reblog = {
     '<img src="https://files.mastodon.social/accounts/avatars/000/000/000/original/DxDxDxDxDxDxDxDx.jpg" alt="User" width= 100px" style="border-radius: 50%;"/> '  # noqa
     '<strong>User </strong>'
     '<p>What\'s New in <a href="https://linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow noopener" target="_blank">#<span>python</span></a> today?</p>'  # noqa
-    '<br>♻ : 0, ✰ : 0</div></blockquote>',
+    '<br>♻ : 0, ✰ : 0, 🌐</div></blockquote>',
     'text': 'What\'s New in #python today?',
 }
 
@@ -874,7 +874,7 @@ toot_1_home_timeline_feed = (
     ';&lt;p&gt;What\'s New in &lt;a href="https://linuxjobs.social/tags/'
     'python" class="mention hashtag" rel="nofollow noopener" target="_blank'
     '"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&gt; today?&lt;/p&gt;&lt;br'
-    '&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote&gt;</description>'
+    '&gt;♻ : 0, ✰ : 0, 🌐&lt;/div&gt;&lt;/blockquote&gt;</description>'
     '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
     '</item>'
     '</channel>'
@@ -901,8 +901,8 @@ toot_20_home_timeline_feed = (
         'User &lt;/strong&gt;&lt;p&gt;What\'s New in &lt;a href="https://'
         'linuxjobs.social/tags/python" class="mention hashtag" rel="nofollow '
         'noopener" target="_blank"&gt;#&lt;span&gt;python&lt;/span&gt;&lt;/a&'
-        'gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0&lt;/div&gt;&lt;/blockquote'
-        '&gt;</description>'
+        'gt; today?&lt;/p&gt;&lt;br&gt;♻ : 0, ✰ : 0, 🌐&lt;/div&gt;&lt;/'
+        'blockquote&gt;</description>'
         '<pubDate>Thu, 25 Oct 2018 16:16:42 +0200</pubDate>'
         '</item>'
     )

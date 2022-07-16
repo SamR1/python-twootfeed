@@ -6,6 +6,17 @@ from bs4 import BeautifulSoup
 from mastodon import Mastodon
 from twootfeed.utils.feed_generation import generate_feed
 
+TOOT_VISIBILITY = {
+    'public': '🌐',  # Visible to everyone, shown in public timelines.
+    'unlisted': '🔓',  # Visible to public, but not included in public timelines.  # noqa
+    'private': '🔒',  # Visible to followers only, and to any mentioned users.
+    'direct': '<strong>@</strong>',  # Visible only to mentioned users.
+}
+
+
+def get_visibility_icon(toot: Dict) -> str:
+    return f"{TOOT_VISIBILITY[toot['visibility']]}"
+
 
 def format_toot(toot: Dict, text_length_limit: int) -> Dict:
     created_at = toot['created_at']
@@ -50,10 +61,11 @@ def format_toot(toot: Dict, text_length_limit: int) -> Dict:
                 f"{media.get('preview_url')}\"></a>"
             )
 
+    visibility_icon = get_visibility_icon(toot)
     rss_toot['htmltext'] += (
         f"<br>♻ : {toot['reblogs_count']}, "
-        f"✰ : {toot['favourites_count']}"
-        f"</div></blockquote>"
+        f"✰ : {toot['favourites_count']}, "
+        f"{visibility_icon}</div></blockquote>"
     )
 
     rss_toot['text'] = BeautifulSoup(

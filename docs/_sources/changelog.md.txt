@@ -1,6 +1,6 @@
 # Change log
 
-## Version 0.7.0 (2022/07/16)
+## Version 0.7.1 (2022/07/16)
 
 #### Misc
 * [PR#31](https://github.com/SamR1/python-twootfeed/pull/31) - Minor improvements

@@ -25,3 +25,11 @@ The feed displays only the original tweets (not the retweets) and toots, with:
 
    | **twootfeed** is intended for personal use only.
    | Tweets and toots are displayed with the user account associated to the API keys (feeds may contain items with **restricted visibility**).
+
+----------
+
+.. figure:: _images/screenshot.png
+   :alt: Mastodon search screenshot
+   :figclass: doc-img
+
+   Example: Mastodon search for hashtag **#twootfeed** displayed in `FreshRSS <https://www.freshrss.org/>`__

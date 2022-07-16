@@ -1,6 +1,7 @@
 import re
 
 import pytest
+from twootfeed.utils.feed_generation import add_noindex
 
 from ..mastodon.generate_toots_feed import (
     format_toot,
@@ -96,7 +97,7 @@ def test_generate_xml_query_ok() -> None:
         '<lastBuildDate></lastBuildDate>',
         val,
     )
-    assert val == toot_1_feed
+    assert val == add_noindex(toot_1_feed)
     assert code == 200
 
 
@@ -108,7 +109,7 @@ def test_generate_xml_query_limit_ok() -> None:
         '<lastBuildDate></lastBuildDate>',
         val,
     )
-    assert val == toot_20_feed
+    assert val == add_noindex(toot_20_feed)
     assert code == 200
 
 

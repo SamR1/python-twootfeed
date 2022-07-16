@@ -4,7 +4,18 @@ from typing import Dict, List, Optional, Tuple
 import pytz
 from bs4 import BeautifulSoup
 from mastodon import Mastodon
-from twootfeed.utils.feed_generation import generate_feed
+from twootfeed.utils.feed_generation import add_noindex, generate_feed
+
+TOOT_VISIBILITY = {
+    'public': '🌐',  # Visible to everyone, shown in public timelines.
+    'unlisted': '🔓',  # Visible to public, but not included in public timelines.  # noqa
+    'private': '🔒',  # Visible to followers only, and to any mentioned users.
+    'direct': '<strong>@</strong>',  # Visible only to mentioned users.
+}
+
+
+def get_visibility_icon(toot: Dict) -> str:
+    return f"{TOOT_VISIBILITY[toot['visibility']]}"
 
 
 def format_toot(toot: Dict, text_length_limit: int) -> Dict:
@@ -28,7 +39,7 @@ def format_toot(toot: Dict, text_length_limit: int) -> Dict:
             f"<blockquote>{html_boosted}<div><img src=\""
             f"{toot['account']['avatar_static']}\" "
             f"alt=\"{toot['account']['display_name']}\""
-            f" width= 100px\"/> "
+            f" width= 100px\" style=\"border-radius: 50%;\"/> "
             f"<strong>{toot['account']['display_name']} </strong>"
             f"{toot['content']}"
         ),
@@ -50,10 +61,11 @@ def format_toot(toot: Dict, text_length_limit: int) -> Dict:
                 f"{media.get('preview_url')}\"></a>"
             )
 
+    visibility_icon = get_visibility_icon(toot)
     rss_toot['htmltext'] += (
         f"<br>♻ : {toot['reblogs_count']}, "
-        f"✰ : {toot['favourites_count']}"
-        f"</div></blockquote>"
+        f"✰ : {toot['favourites_count']}, "
+        f"{visibility_icon}</div></blockquote>"
     )
 
     rss_toot['text'] = BeautifulSoup(
@@ -173,8 +185,10 @@ def generate_xml(
             feed_desc = param['feed']['author_name'] + ' home timeline.'
         else:
             raise Exception('Invalid target')
-        xml = generate_mastodon_feed(
-            result, param, feed_title, feed_link, feed_desc
+        xml = add_noindex(
+            generate_mastodon_feed(
+                result, param, feed_title, feed_link, feed_desc
+            )
         )
         code = 200
     else:

@@ -36,6 +36,8 @@ Installation
 
 - Get API Keys (see `installation <installation.html#installation>`_)
 
+- Generate token to access feed (see `installation <installation.html#installation>`_)
+
 - Start the server
 
 .. code-block:: bash
@@ -44,7 +46,7 @@ Installation
 
 
 Tests
-~~~~~~~~~~~~
+~~~~~
 
 .. code-block:: bash
 

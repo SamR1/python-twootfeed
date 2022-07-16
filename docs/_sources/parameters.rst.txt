@@ -55,7 +55,7 @@ Feed
 * **timezone**: Feed timezone
 * **text_length_limit:** title length of a Feed item
 * **max_items**: maximum number of displayed items
-* **token**: token for feeds access
+* **token**: token for feeds access (minimal length: 25 characters)
 
 App
 ~~~

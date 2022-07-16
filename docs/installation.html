@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation and usage &mdash; twootfeed 0.7.0
+  <title>Installation and usage &mdash; twootfeed 0.7.1
  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
@@ -33,7 +33,7 @@
             <a href="index.html" class="icon icon-home"> twootfeed
           </a>
               <div class="version">
-                0.7.0
+                0.7.1
 
               </div>
 <div role="search">
@@ -50,6 +50,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation and usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upgrade">Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#systemd-service">Systemd service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
@@ -94,6 +96,7 @@
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
 <ul class="simple">
+<li><p>Create and activate a virtualenv</p></li>
 <li><p>Install from pip</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install twootfeed
@@ -106,26 +109,41 @@
 </pre></div>
 </div>
 <ul>
-<li><p>Fill in fields for the client(s) you will use in <strong>‘~/.config/twootfeed/config.yml’</strong> :</p>
+<li><p>Fill in fields for the client(s) you want to use in <strong>‘~/.config/twootfeed/config.yml’</strong> :</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>for <strong>Twitter</strong> : see <a class="reference external" href="https://apps.twitter.com">https://apps.twitter.com</a></p></li>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">Details on <a class="reference external" href="parameters.html">feed and app parameters</a>.</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>for <strong>Twitter</strong>: see <a class="reference external" href="https://apps.twitter.com">https://apps.twitter.com</a></p></li>
 </ul>
 <p>copy/paste the Twitter API key values in <strong>config.yml</strong> file (’<em>consumerKey</em>’ and ‘<em>consumerSecret</em>’)</p>
 <ul class="simple">
-<li><p>for <strong>Mastodon</strong> : see <a class="reference external" href="https://mastodonpy.readthedocs.io/">Python wrapper for the Mastodon API</a></p></li>
+<li><p>for <strong>Mastodon</strong>: see <a class="reference external" href="https://mastodonpy.readthedocs.io/">Python wrapper for the Mastodon API</a></p></li>
 </ul>
 <p>use the included script which will register your app and prompt you to log in, creating the credential files for you.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ twootfeed_create_mastodon_cli
 </pre></div>
 </div>
-<p>Update the <a class="reference external" href="parameters.html">feed and app parameters</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">It may be necessary to temporarily disable two-factor authentication in your Mastodon account, if enabled.</div>
+</div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Generate the token to access feeds</p></li>
+</ul>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.7.0.</span></p>
 </div>
-<p>Since <strong>twootfeed</strong> is connected to the user account, feeds may display items with <strong>restricted visibility</strong>.</p>
-<p>A token is now mandatory to start the application and access feeds (minimum length: 25 characters).</p>
-<p>Some examples for token generation:</p>
+<p>Since <strong>twootfeed</strong> is connected to the user account (personal API keys), feeds may display items with <strong>restricted visibility</strong> (like private toots or direct messages).</p>
+<p>A token is now mandatory to start the application and access feeds, to limit exposing private items (feeds should <strong>not</strong> be publicly available).</p>
+<p>Some examples for token generation (minimum length: 25 characters):</p>
 <p>&gt; with Python</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python
 Python <span class="m">3</span>.10.5 <span class="o">(</span>main, Jun  <span class="m">6</span> <span class="m">2022</span>, <span class="m">18</span>:49:26<span class="o">)</span> <span class="o">[</span>GCC <span class="m">12</span>.1.0<span class="o">]</span> on linux
@@ -141,8 +159,14 @@ Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&
 NWU2MzE1ZGM0MmVlZDg5NDNhN
 </pre></div>
 </div>
-</div></blockquote>
-</li>
+<p>After generation, copy the value into  <strong>‘config.yml’</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">If the token is missing or invalid, <strong>twootfeed</strong> will not start.</div>
+</div>
+</div>
+<ul class="simple">
 <li><p>The files location and settings can be changed with the following environment variables:</p></li>
 </ul>
 <table class="docutils align-default">
@@ -180,6 +204,62 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 <li><p>Start the app</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ twootfeed
+</pre></div>
+</div>
+</section>
+<section id="upgrade">
+<h2>Upgrade<a class="headerlink" href="#upgrade" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Activate the virtualenv</p></li>
+<li><p>Upgrade with pip</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install -U twootfeed
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Restart the application</p></li>
+</ul>
+</section>
+<section id="systemd-service">
+<h2>Systemd service<a class="headerlink" href="#systemd-service" title="Permalink to this heading"></a></h2>
+<p>To create a Linux service with systemd:</p>
+<ul class="simple">
+<li><p>create a service file:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/systemd/system/twootfeed.service
+</pre></div>
+</div>
+<p>Template (to update depending on your distribution and installation):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">twootfeed</span> <span class="n">service</span>
+<span class="n">After</span><span class="o">=</span><span class="n">network</span><span class="o">.</span><span class="n">target</span>
+<span class="n">StartLimitIntervalSec</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">Type</span><span class="o">=</span><span class="n">simple</span>
+<span class="n">Restart</span><span class="o">=</span><span class="n">always</span>
+<span class="n">RestartSec</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">User</span><span class="o">=&lt;</span><span class="n">USER</span><span class="o">&gt;</span>
+<span class="c1">#Environment=&quot;TWOOTFEED_CONFIG_DIR=&quot;</span>
+<span class="c1">#Environment=&quot;TWOOTFEED_CONFIG_FILE=&quot;</span>
+<span class="c1">#Environment=&quot;TWOOTFEED_LOG=&quot;</span>
+<span class="c1">#Environment=&quot;TWOOTFEED_SETTINGS=&quot;</span>
+<span class="n">ExecStart</span><span class="o">=&lt;</span><span class="n">TWOOTFEED_DIRECTORY</span><span class="o">&gt;/.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">twootfeed</span>
+
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>start the service:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl start twootfeed
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>to start on boot:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> twootfeed
 </pre></div>
 </div>
 </section>

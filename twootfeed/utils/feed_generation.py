@@ -17,3 +17,12 @@ def generate_feed(
         author_name=param['feed']['author_name'],
         feed_url=param['feed']['feed_url'],
     )
+
+
+def add_noindex(xml_str: str) -> str:
+    return xml_str.replace(
+        '<channel>',
+        '<channel>'
+        '<xhtml:meta xmlns:xhtml="http://www.w3.org/1999/xhtml" '
+        'name="robots" content="noindex" />',
+    )

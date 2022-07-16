@@ -18,9 +18,10 @@ The feed displays only the original tweets (not the retweets) and toots, with:
 - images
 - source
 - location (only for Twitter)
+- visibility (only for Mastodon)
 - numbers of retweets and likes for tweets and boosts and favourites for toots
 
 .. warning::
 
-   | **twootfeed** is developed for a personal use.
+   | **twootfeed** is intended for personal use only.
    | Tweets and toots are displayed with the user account associated to the API keys (feeds may contain items with **restricted visibility**).

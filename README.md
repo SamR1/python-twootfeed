@@ -3,7 +3,7 @@
   
 [![PyPI version](https://img.shields.io/pypi/v/twootfeed.svg)](https://pypi.org/project/twootfeed/)
 [![Downloads](https://pepy.tech/badge/twootfeed)](https://pepy.tech/project/twootfeed)
-[![Python Version](https://img.shields.io/badge/python-3.6+-brightgreen.svg)](https://python.org) 
+[![Python Version](https://img.shields.io/badge/python-3.7+-brightgreen.svg)](https://python.org) 
 [![Flask Version](https://img.shields.io/badge/flask-2.1-brightgreen.svg)](http://flask.pocoo.org/)
 [![code style: black](https://img.shields.io/badge/code%20style-black-black)](https://black.readthedocs.io/en/stable/) 
 [![type check: mypy](https://img.shields.io/badge/type%20check-mypy-blue)](http://mypy-lang.org/)  
@@ -22,6 +22,7 @@ The RSS feed displays only the original tweets (not the retweets) and toots, wit
 - images
 - source
 - location (only for Twitter)
+- visibility (only for Mastodon)
 - numbers of retweets and likes for tweets and boosts and favourites for toots   
 
 

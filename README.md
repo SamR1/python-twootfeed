@@ -4,7 +4,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/twootfeed.svg)](https://pypi.org/project/twootfeed/)
 [![Downloads](https://pepy.tech/badge/twootfeed)](https://pepy.tech/project/twootfeed)
 [![Python Version](https://img.shields.io/badge/python-3.7+-brightgreen.svg)](https://python.org) 
-[![Flask Version](https://img.shields.io/badge/flask-2.1-brightgreen.svg)](http://flask.pocoo.org/)
+[![Flask Version](https://img.shields.io/badge/flask-2.2-brightgreen.svg)](http://flask.pocoo.org/)
 [![code style: black](https://img.shields.io/badge/code%20style-black-black)](https://black.readthedocs.io/en/stable/) 
 [![type check: mypy](https://img.shields.io/badge/type%20check-mypy-blue)](http://mypy-lang.org/)  
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/14d1c00121c04cd2b81453c597639ca6)](https://www.codacy.com/app/SamR1/python-twootfeed) 

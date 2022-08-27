@@ -43,10 +43,9 @@ def create_app() -> Flask:
     @app.route('/')
     def index_page() -> str:
         message = (
-            'The RSS feeds are available on these urls : \r\n'
-            'for Twitter : http://localhost:5000/_keywords_ or '
-            'http://localhost:5000/tweets/_keywords_ ,\r\n'
-            'for Mastodon : http://localhost:5000/toots/_keywords_'
+            'The RSS feeds for search are available on these endpoints: '
+            '"tweets?q=QUERY&token=TOKEN" for Twitter or '
+            '"toots/search?q=QUERY&token=TOKEN" for Mastodon.'
         )
 
         return message

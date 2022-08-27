@@ -202,7 +202,48 @@ tweet_2 = {
                     'small': {'w': 680, 'h': 481, 'resize': 'fit'},
                     'medium': {'w': 1200, 'h': 848, 'resize': 'fit'},
                 },
-            }
+            },
+            {
+                "id": 8888888888888888888,
+                "id_str": "8888888888888888888",
+                "indices": [237, 260],
+                "media_url": "http://pbs.twimg.com/ext_tw_video_thumb/"
+                "1212121212121212121/pu/img/DxDxDxDxDxDxDxD.jpg",
+                "media_url_https": "https://pbs.twimg.com/ext_tw_video_thumb/"
+                "1212121212121212121/pu/img/"
+                "DxDxDxDxDxDxDxD.jpg",
+                "url": "https://t.co/AAAAAAAAAA",
+                "display_url": "pic.twitter.com/AAAAAAAAAA",
+                "expanded_url": "https://twitter.com/CROSHDF/status/"
+                "1212121212121212121/video/1",
+                "type": "video",
+                "sizes": {
+                    "thumb": {"w": 150, "h": 150, "resize": "crop"},
+                    "small": {"w": 383, "h": 680, "resize": "fit"},
+                    "medium": {"w": 675, "h": 1200, "resize": "fit"},
+                    "large": {"w": 1080, "h": 1920, "resize": "fit"},
+                },
+            },
+            {
+                "id": 7777777777777777777,
+                "id_str": "7777777777777777777",
+                "indices": [67, 90],
+                "media_url": "http://pbs.twimg.com/tweet_video_thumb/"
+                "DDDDDDDDDDDDDDD.jpg",
+                "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/"
+                "DDDDDDDDDDDDDDD.jpg",
+                "url": "https://t.co/CCCCCCCCCC",
+                "display_url": "pic.twitter.com/ETn6mEs0vP",
+                "expanded_url": "https://twitter.com/UserA/status/"
+                "7777777777777777777/photo/1",
+                "type": "animated_gif",
+                "sizes": {
+                    "small": {"w": 498, "h": 448, "resize": "fit"},
+                    "thumb": {"w": 150, "h": 150, "resize": "crop"},
+                    "large": {"w": 498, "h": 448, "resize": "fit"},
+                    "medium": {"w": 498, "h": 448, "resize": "fit"},
+                },
+            },
         ],
     },
     'extended_entities': {
@@ -245,6 +286,92 @@ tweet_2 = {
                     'medium': {'w': 1200, 'h': 848, 'resize': 'fit'},
                     'large': {'w': 2048, 'h': 1447, 'resize': 'fit'},
                     'small': {'w': 680, 'h': 481, 'resize': 'fit'},
+                },
+            },
+            {
+                "id": 8888888888888888888,
+                "id_str": "8888888888888888888",
+                "indices": [237, 260],
+                "media_url": "http://pbs.twimg.com/ext_tw_video_thumb/"
+                "1212121212121212121/pu/img/DxDxDxDxDxDxDxD.jpg",
+                "media_url_https": "https://pbs.twimg.com/ext_tw_video_thumb/"
+                "1212121212121212121/pu/img/"
+                "DxDxDxDxDxDxDxD.jpg",
+                "url": "https://t.co/AAAAAAAAAA",
+                "display_url": "pic.twitter.com/AAAAAAAAAA",
+                "expanded_url": "https://twitter.com/CROSHDF/status/"
+                "1212121212121212121/video/1",
+                "type": "video",
+                "sizes": {
+                    "thumb": {"w": 150, "h": 150, "resize": "crop"},
+                    "small": {"w": 383, "h": 680, "resize": "fit"},
+                    "medium": {"w": 675, "h": 1200, "resize": "fit"},
+                    "large": {"w": 1080, "h": 1920, "resize": "fit"},
+                },
+                "video_info": {
+                    "aspect_ratio": [9, 16],
+                    "duration_millis": 56704,
+                    "variants": [
+                        {
+                            "content_type": "application/x-mpegURL",
+                            "url": "https://video.twimg.com/ext_tw_video/"
+                            "1212121212121212121/pu/pl/ttEz4_ebdrQaB5EW"
+                            ".m3u8?tag=12&container=fmp4",
+                        },
+                        {
+                            "bitrate": 950000,
+                            "content_type": "video/mp4",
+                            "url": "https://video.twimg.com/ext_tw_video/"
+                            "1212121212121212121/pu/vid/480x852/"
+                            "eVydKjMo5pY7qWYj.mp4?tag=12",
+                        },
+                        {
+                            "bitrate": 632000,
+                            "content_type": "video/mp4",
+                            "url": "https://video.twimg.com/ext_tw_video/"
+                            "1212121212121212121/pu/vid/320x568/"
+                            "S5c9t3ytXZ5UJ9Ag.mp4?tag=12",
+                        },
+                        {
+                            "bitrate": 2176000,
+                            "content_type": "video/mp4",
+                            "url": "https://video.twimg.com/ext_tw_video/"
+                            "1212121212121212121/pu/vid/720x1280/"
+                            "NuzHqlk2lXf2AFFI.mp4?tag=12",
+                        },
+                    ],
+                },
+                "additional_media_info": {"monetizable": False},
+            },
+            {
+                "id": 7777777777777777777,
+                "id_str": "7777777777777777777",
+                "indices": [67, 90],
+                "media_url": "http://pbs.twimg.com/tweet_video_thumb/"
+                "DDDDDDDDDDDDDDD.jpg",
+                "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/"
+                "DDDDDDDDDDDDDDD.jpg",
+                "url": "https://t.co/CCCCCCCCCC",
+                "display_url": "pic.twitter.com/ETn6mEs0vP",
+                "expanded_url": "https://twitter.com/UserA/status/"
+                "7777777777777777777/photo/1",
+                "type": "animated_gif",
+                "sizes": {
+                    "small": {"w": 498, "h": 448, "resize": "fit"},
+                    "thumb": {"w": 150, "h": 150, "resize": "crop"},
+                    "large": {"w": 498, "h": 448, "resize": "fit"},
+                    "medium": {"w": 498, "h": 448, "resize": "fit"},
+                },
+                "video_info": {
+                    "aspect_ratio": [249, 224],
+                    "variants": [
+                        {
+                            "bitrate": 0,
+                            "content_type": "video/mp4",
+                            "url": "https://video.twimg.com/tweet_video/"
+                            "DDDDDDDDDDDDDDD.mp4",
+                        }
+                    ],
                 },
             },
         ]
@@ -348,7 +475,13 @@ formatted_tweet_2 = {
     '<a href="https://www.example.com/test/this-is-an-example" target="_blank">example.com/test/this-is-…</a> <br>'  # noqa
     '<i>Source: <a href="https://example.com/" rel="nofollow">Twitter for Android</a></i><br> '  # noqa
     '<a href="https://pbs.twimg.com/media/DxDxDxDxDxDxDxD.jpg" target="_blank"><img src="https://pbs.twimg.com/media/DxDxDxDxDxDxDxD.jpg:thumb"></a>'  # noqa
-    '<a href="https://pbs.twimg.com/media/xDxDxDxDxDxDxDx.jpg" target="_blank"><img src="https://pbs.twimg.com/media/xDxDxDxDxDxDxDx.jpg:thumb"></a><br>'  # noqa
+    '<a href="https://pbs.twimg.com/media/xDxDxDxDxDxDxDx.jpg" target="_blank"><img src="https://pbs.twimg.com/media/xDxDxDxDxDxDxDx.jpg:thumb"></a>'  # noqa
+    '<video controls><source src="https://video.twimg.com/ext_tw_video/1212121212121212121/pu/vid/320x568/S5c9t3ytXZ5UJ9Ag.mp4?tag=12" '  # noqa
+    'poster="https://pbs.twimg.com/ext_tw_video_thumb/1212121212121212121/pu/img/DxDxDxDxDxDxDxD.jpg">'  # noqa
+    'Your browser does not support the video tag.</video> '
+    '<video autoplay loop muted inline><source src="https://video.twimg.com/tweet_video/DDDDDDDDDDDDDDD.mp4" '  # noqa
+    'poster="https://pbs.twimg.com/tweet_video_thumb/DDDDDDDDDDDDDDD.jpg">'
+    'Your browser does not support the video tag.</video> <br>'
     ' ♻ : 4, ♥ : 8'
     '</div>'
     '</blockquote>',
@@ -686,7 +819,59 @@ toot2 = {
                 },
             },
             'description': None,
-        }
+        },
+        {
+            "id": 10872710422,
+            "type": "video",
+            "url": "https://files.mastodon.social/cache/media_attachments/files/888/888/888/888/888/888/original/b1b1b1b1b1b1b1b1.mp4",  # noqa
+            "preview_url": "https://files.mastodon.social/cache/media_attachments/files/108/778/808/662/710/422/small/b1b1b1b1b1b1b1b1.png",  # noqa
+            "remote_url": None,
+            "preview_remote_url": None,
+            "text_url": None,
+            "meta": {
+                "original": {
+                    "width": 360,
+                    "height": 450,
+                    "frame_rate": "10400/347",
+                    "duration": 19.109,
+                    "bitrate": 572691,
+                },
+                "small": {
+                    "width": 320,
+                    "height": 400,
+                    "size": "320x400",
+                    "aspect": 0.8,
+                },
+            },
+            "description": None,
+            "blurhash": "UcvWGoxGxZRv~qxuxuj[DioLt7oftRRjWVvB",
+        },
+        {
+            "id": 108806907390,
+            "type": "gifv",
+            "url": "https://files.mastodon.social/cache/media_attachments/files/777/777/777/777/777/777/original/d4d4d4d4d4d4d4d4.mp4",  # noqa
+            "preview_url": "https://files.mastodon.social/cache/media_attachments/files/777/777/777/777/777/777/small/d4d4d4d4d4d4d4d4.png",  # noqa
+            "remote_url": None,
+            "preview_remote_url": None,
+            "text_url": None,
+            "meta": {
+                "original": {
+                    "width": 1156,
+                    "height": 720,
+                    "frame_rate": "60/1",
+                    "duration": 18.517,
+                    "bitrate": 1660750,
+                },
+                "small": {
+                    "width": 400,
+                    "height": 249,
+                    "size": "400x249",
+                    "aspect": 1.606425702811245,
+                },
+            },
+            "description": None,
+            "blurhash": "UvEfv#tQk8%2~Wogozxavtt7s;%2Iot7smvz",
+        },
     ],
     'mentions': [],
     'tags': [
@@ -709,6 +894,14 @@ formatted_toot2 = {
     '<p>This is a <a href="https://mastodon.social/tags/testtag" class="mention hashtag" rel="tag">#<span>TestTag</span></a></p>'  # noqa
     '<i>Source: Twidere for Android</i><br>'
     '<a href="https://files.mastodon.social/media_attachments/files/999/999/999/original/a2a2a2a2a2a2a2a2.jpg" target="_blank"><img src="https://files.mastodon.social/media_attachments/files/999/999/999/small/a2a2a2a2a2a2a2a2.jpg"></a>'  # noqa
+    '<video width="320" height="400" controls>'
+    ' <source src="https://files.mastodon.social/cache/media_attachments/files/888/888/888/888/888/888/original/b1b1b1b1b1b1b1b1.mp4" '  # noqa
+    'poster="https://files.mastodon.social/cache/media_attachments/files/108/778/808/662/710/422/small/b1b1b1b1b1b1b1b1.png" '  # noqa
+    'type="video/mp4">Your browser does not support the video tag.</video> '
+    '<video width="400" height="249" autoplay loop muted inline>'
+    ' <source src="https://files.mastodon.social/cache/media_attachments/files/777/777/777/777/777/777/original/d4d4d4d4d4d4d4d4.mp4" '  # noqa
+    'poster="https://files.mastodon.social/cache/media_attachments/files/777/777/777/777/777/777/small/d4d4d4d4d4d4d4d4.png" '  # noqa
+    'type="video/mp4">Your browser does not support the video tag.</video> '
     '<br>♻ : 0, ✰ : 0, 🌐</div></blockquote>',
     'text': 'This is a ... ',
 }

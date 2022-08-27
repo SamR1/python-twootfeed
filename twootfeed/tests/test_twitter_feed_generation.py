@@ -18,12 +18,12 @@ from .data import (
     tweet_2,
     tweet_20_feed,
 )
-from .utils import ToDotNotation, TwitterApi
+from .utils import Tweet, TwitterApi
 
 
 def test_format_tweet() -> None:
-    assert format_tweet(ToDotNotation(tweet_1)) == formatted_tweet_1
-    assert format_tweet(ToDotNotation(tweet_2)) == formatted_tweet_2
+    assert format_tweet(Tweet(tweet_1)) == formatted_tweet_1
+    assert format_tweet(Tweet(tweet_2)) == formatted_tweet_2
 
 
 @patch('tweepy.Cursor')

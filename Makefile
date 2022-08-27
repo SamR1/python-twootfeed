@@ -41,8 +41,8 @@ serve:
 	$(FLASK) run --with-threads -h $(HOST) -p $(PORT)
 
 run:
-	echo 'Running on http://$(HOST):$(PORT)'
-	FLASK_ENV=production && $(GUNICORN) -b 127.0.0.1:5000 "$(FLASK_APP):create_app()" --error-logfile $(GUNICORN_LOG)
+	echo 'Running on http://localhost:$(PORT)'
+	FLASK_ENV=production && $(GUNICORN) -b 127.0.0.1:$(PORT) "$(FLASK_APP):create_app()" --error-logfile $(GUNICORN_LOG)
 
 venv:
 	test -d $(VENV) || $(PYTHON_VERSION) -m venv $(VENV)

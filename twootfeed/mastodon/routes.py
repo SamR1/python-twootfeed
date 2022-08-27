@@ -42,5 +42,5 @@ def toots_bookmarks_feed() -> Tuple[str, int]:
 @mastodon_bp.route('/toots/home_timeline', methods=['GET'])
 @require_token
 def toots_home_timeline() -> Tuple[str, int]:
-    """generate a rss feed authenticated user's bookmarks"""
+    """generate a rss feed authenticated user's home timeline"""
     return generate_xml(mastodon_api, mastodon_param, target='home_timeline')

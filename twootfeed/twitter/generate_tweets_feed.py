@@ -82,7 +82,38 @@ def format_tweet(tweet: tweepy.tweet.Tweet) -> Dict:
                             + 'target="_blank"><img src="{}'.format(media_url)
                             + ':thumb"></a>'
                         )
-
+                    if media.get('type') in ['animated_gif', 'video']:
+                        attrs = (
+                            'controls'
+                            if media['type'] == 'video'
+                            else 'autoplay loop muted inline'
+                        )
+                        video_info = media.get('video_info', {})
+                        variants = video_info.get('variants', [])
+                        preview_url = media.get('media_url_https')
+                        url = None
+                        bitrate = None
+                        for variant in variants:
+                            if variant.get('content_type') != 'video/mp4':
+                                continue
+                            if bitrate is None or bitrate > variant.get(
+                                'bitrate'
+                            ):
+                                bitrate = variant.get('bitrate')
+                                url = variant.get('url')
+                        if not url:
+                            rss_tweet['htmltext'] += '<a href="{}" '.format(
+                                preview_url
+                            ) + 'target="_blank"><img src="{}"></a>'.format(
+                                preview_url
+                            )
+                        else:
+                            rss_tweet['htmltext'] += (
+                                f"<video {attrs}><source src=\"{url}\" "
+                                f"poster=\"{preview_url}\">"
+                                "Your browser does not support the video tag."
+                                "</video> "
+                            )
     location = tweet.place
     if location is not None:
         rss_tweet['htmltext'] += '<br><i>Location: {}</i>'.format(

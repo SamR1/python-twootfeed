@@ -54,12 +54,36 @@ def format_toot(toot: Dict, text_length_limit: int) -> Dict:
     if len(medialist) > 0:
         rss_toot['htmltext'] += '<br>'
     for media in medialist:
+        url = media.get('url')
         if media['type'] == 'image':
             rss_toot['htmltext'] += (
-                f"<a href=\"{media.get('url')}\" target="
+                f"<a href=\"{url}\" target="
                 f"\"_blank\"><img src=\""
                 f"{media.get('preview_url')}\"></a>"
             )
+        if media['type'] in ['video', 'gifv']:
+            attrs = (
+                'controls'
+                if media['type'] == 'video'
+                else 'autoplay loop muted inline'
+            )
+            small = media.get('meta', {}).get('small', {})
+            width = small.get('width', 400)
+            height = small.get('height', 225)
+            preview_url = media.get('preview_url')
+            rss_toot['htmltext'] += (
+                f"<video width=\"{width}\" height=\"{height}\" {attrs}>"
+                f" <source src=\"{url}\" poster=\"{preview_url}\" "
+                f"type=\"video/mp4\">"
+                "Your browser does not support the video tag."
+                "</video> "
+            )
+
+        description = media.get('description')
+        if description:
+            rss_toot[
+                'htmltext'
+            ] += f"<pre style=\"white-space: normal;\">{description}</pre>"
 
     visibility_icon = get_visibility_icon(toot)
     rss_toot['htmltext'] += (

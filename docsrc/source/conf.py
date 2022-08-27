@@ -23,7 +23,7 @@ def setup(app):
 # -- Project information -----------------------------------------------------
 
 project = 'twootfeed'
-copyright = '2015 - 2021, SamR1'
+copyright = '2015 - 2022, SamR1'
 author = 'SamR1'
 
 # The full version, including alpha/beta/rc tags.

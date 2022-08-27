@@ -13,18 +13,23 @@ Installation
 
 - Create and activate a virtualenv
 
+.. code-block:: bash
+
+    $ python -m venv .venv
+    $ source .venv/bin/activate
+
 - Install from pip
 
 .. code-block:: bash
 
-    $ pip install twootfeed
+    (.venv) $ pip install twootfeed
 
 
 - Initialize the configuration file
 
 .. code-block:: bash
 
-    $ twootfeed_init
+    (.venv) $ twootfeed_init
 
 
 - Fill in fields for the client(s) you want to use in **'~/.config/twootfeed/config.yml'** :
@@ -82,7 +87,7 @@ After generation, copy the value into  **'config.yml'**.
 .. warning::
   | If the token is missing or invalid, **twootfeed** will not start.
 
-- The files location and settings can be changed with the following environment variables:
+- The files location and settings can be changed by exporting the following environment variables:
 
 =========================== =============================================== ===========================================================================================
  variable                   description                                     app default value
@@ -97,7 +102,7 @@ After generation, copy the value into  **'config.yml'**.
 
 .. code-block:: bash
 
-    $ twootfeed
+    (.venv) $ twootfeed
 
 
 Upgrade
@@ -105,11 +110,15 @@ Upgrade
 
 - Activate the virtualenv
 
+.. code-block:: bash
+
+    $ source .venv/bin/activate
+
 - Upgrade with pip
 
 .. code-block:: bash
 
-    $ pip install -U twootfeed
+    (.venv) $ pip install -U twootfeed
 
 - Restart the application
 

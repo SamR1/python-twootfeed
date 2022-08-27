@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation and usage &mdash; twootfeed 0.7.1
+  <title>Installation and usage &mdash; twootfeed 0.7.2
  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
@@ -33,7 +33,7 @@
             <a href="index.html" class="icon icon-home"> twootfeed
           </a>
               <div class="version">
-                0.7.1
+                0.7.2
 
               </div>
 <div role="search">
@@ -97,15 +97,21 @@
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Create and activate a virtualenv</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m venv .venv
+$ <span class="nb">source</span> .venv/bin/activate
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>Install from pip</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install twootfeed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span> $ pip install twootfeed
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Initialize the configuration file</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ twootfeed_init
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span> $ twootfeed_init
 </pre></div>
 </div>
 <ul>
@@ -167,7 +173,7 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 </div>
 </div>
 <ul class="simple">
-<li><p>The files location and settings can be changed with the following environment variables:</p></li>
+<li><p>The files location and settings can be changed by exporting the following environment variables:</p></li>
 </ul>
 <table class="docutils align-default">
 <colgroup>
@@ -203,7 +209,7 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 <ul class="simple">
 <li><p>Start the app</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ twootfeed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span> $ twootfeed
 </pre></div>
 </div>
 </section>
@@ -211,9 +217,14 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 <h2>Upgrade<a class="headerlink" href="#upgrade" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Activate the virtualenv</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> .venv/bin/activate
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>Upgrade with pip</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install -U twootfeed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span> $ pip install -U twootfeed
 </pre></div>
 </div>
 <ul class="simple">
@@ -334,7 +345,7 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2015 - 2021, SamR1.</p>
+    <p>&#169; Copyright 2015 - 2022, SamR1.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

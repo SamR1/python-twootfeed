@@ -4,7 +4,7 @@ Features
 Description
 ~~~~~~~~~~~
 
-**twootfeed** generate an RSS feed from **Twitter** or **Mastodon** search and from **Mastodon** bookmarks/favorites/home timeline.
+**twootfeed** generates an RSS feed from **Twitter** or **Mastodon** search and from **Mastodon** bookmarks/favorites/home timeline.
 
 The feed displays only the original tweets (not the retweets) and toots, with:
 
@@ -15,8 +15,9 @@ The feed displays only the original tweets (not the retweets) and toots, with:
     - usernames
 
 - URLs
-- images
-- source
+- images, video (mp4) and animated gif (as mp4 video)
+- image description (only for Mastodon)
+- source if available
 - location (only for Twitter)
 - visibility (only for Mastodon)
 - numbers of retweets and likes for tweets and boosts and favourites for toots

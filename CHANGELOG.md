@@ -1,5 +1,14 @@
 # Change log
 
+## Version 0.7.2 (2022/08/27)
+
+#### Bugs Fixed
+
+* [Issue 32](https://github.com/SamR1/python-twootfeed/issues/32) - GIFs not showing
+
+In this release 1 issue was closed.
+
+
 ## Version 0.7.1 (2022/07/16)
 
 #### Misc
@@ -34,7 +43,7 @@ Note: **twootfeed** still using **Twitter** API v1.1
 * [Issue 27](https://github.com/SamR1/python-twootfeed/issues/27) - generate documentation with sphinx
 * [Issue 26](https://github.com/SamR1/python-twootfeed/issues/26) - [Mastodon] add feed with user's bookmarks
 
-In this release 2 issue were closed.
+In this release 2 issues were closed.
 
 
 ## Version 0.6.6 (2019/10/20)

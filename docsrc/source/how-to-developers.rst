@@ -6,7 +6,7 @@ Dependencies
 
 - `Flask  <http://flask.pocoo.org/>`_
 - `Feedgenerator  <https://pypi.python.org/pypi/feedgenerator)>`_
-- `Tweepy  <https://github.com/tweepy/tweepy>`_ (only tested with the `Twitter Standard API <https://developer.twitter.com/en/docs/tweets/search/overview/standard.html>`_)
+- `Tweepy  <https://github.com/tweepy/tweepy>`_ (only tested with the `Twitter Standard v1.1 API <https://developer.twitter.com/en/docs/tweets/search/overview/standard.html>`_)
 - `Mastodon.py  <https://github.com/halcy/Mastodon.py>`_
 - `pytz  <https://pypi.python.org/pypi/pytz/>`_
 - `pyYAML  <https://github.com/yaml/pyyaml>`_

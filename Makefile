@@ -31,7 +31,9 @@ install: venv
 	test -e $(FLASK_APP)/config.yml || cp $(FLASK_APP)/config.example.yml $(FLASK_APP)/config.yml
 
 lint:
-	$(PYTEST) --flake8 --isort --black -m "flake8 or isort or black" $(FLASK_APP)
+	$(PYTEST) --isort --black -m "isort or black" $(FLASK_APP)
+	echo 'Running flake8...'
+	$(FLAKE8) $(FLASK_APP)
 
 lint-fix:
 	$(BLACK) $(FLASK_APP)

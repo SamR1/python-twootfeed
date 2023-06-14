@@ -4,7 +4,7 @@ Installation and usage
 Requirements
 ~~~~~~~~~~~~
 
-- Python 3.7+
+- Python 3.8+
 - API keys Twitter and/or Mastodon
 
 

@@ -66,7 +66,6 @@ def cli() -> None:
     try:
         mastodon.account_verify_credentials()
         click.secho("Credentials look good", fg='green')
-        click.echo("Client reports user\'s account name is: {res['acct']}")
         click.echo(
             f"Configuration complete, app should appear at: "
             f"{mast_cfg['url']}/oauth/authorized_applications"

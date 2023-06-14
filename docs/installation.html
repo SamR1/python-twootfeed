@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation and usage &mdash; twootfeed 0.7.2
+  <title>Installation and usage &mdash; twootfeed 0.7.3
  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
@@ -13,11 +13,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -30,15 +30,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> twootfeed
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            twootfeed
           </a>
               <div class="version">
-                0.7.2
+                0.7.3
 
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -73,8 +77,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Installation and usage</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation and usage</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -89,7 +93,7 @@
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
 <ul class="simple">
-<li><p>Python 3.7+</p></li>
+<li><p>Python 3.8+</p></li>
 <li><p>API keys Twitter and/or Mastodon</p></li>
 </ul>
 </section>
@@ -98,20 +102,20 @@
 <ul class="simple">
 <li><p>Create and activate a virtualenv</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m venv .venv
-$ <span class="nb">source</span> .venv/bin/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Install from pip</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span> $ pip install twootfeed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>twootfeed
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Initialize the configuration file</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span> $ twootfeed_init
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>twootfeed_init
 </pre></div>
 </div>
 <ul>
@@ -131,7 +135,7 @@ $ <span class="nb">source</span> .venv/bin/activate
 <li><p>for <strong>Mastodon</strong>: see <a class="reference external" href="https://mastodonpy.readthedocs.io/">Python wrapper for the Mastodon API</a></p></li>
 </ul>
 <p>use the included script which will register your app and prompt you to log in, creating the credential files for you.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ twootfeed_create_mastodon_cli
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>twootfeed_create_mastodon_cli
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -151,17 +155,17 @@ $ <span class="nb">source</span> .venv/bin/activate
 <p>A token is now mandatory to start the application and access feeds, to limit exposing private items (feeds should <strong>not</strong> be publicly available).</p>
 <p>Some examples for token generation (minimum length: 25 characters):</p>
 <p>&gt; with Python</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python
-Python <span class="m">3</span>.10.5 <span class="o">(</span>main, Jun  <span class="m">6</span> <span class="m">2022</span>, <span class="m">18</span>:49:26<span class="o">)</span> <span class="o">[</span>GCC <span class="m">12</span>.1.0<span class="o">]</span> on linux
-Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
-&gt;&gt;&gt; import secrets
-&gt;&gt;&gt; secrets.token_urlsafe<span class="o">()</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python
+Python<span class="w"> </span><span class="m">3</span>.10.5<span class="w"> </span><span class="o">(</span>main,<span class="w"> </span>Jun<span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">2022</span>,<span class="w"> </span><span class="m">18</span>:49:26<span class="o">)</span><span class="w"> </span><span class="o">[</span>GCC<span class="w"> </span><span class="m">12</span>.1.0<span class="o">]</span><span class="w"> </span>on<span class="w"> </span>linux
+Type<span class="w"> </span><span class="s2">&quot;help&quot;</span>,<span class="w"> </span><span class="s2">&quot;copyright&quot;</span>,<span class="w"> </span><span class="s2">&quot;credits&quot;</span><span class="w"> </span>or<span class="w"> </span><span class="s2">&quot;license&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information.
+&gt;&gt;&gt;<span class="w"> </span>import<span class="w"> </span>secrets
+&gt;&gt;&gt;<span class="w"> </span>secrets.token_urlsafe<span class="o">()</span>
 <span class="s1">&#39;pgoeS3qOsLHxduzNY_gmn6p5vWZqSzqBgnb_VPupQ7o&#39;</span>
 &gt;&gt;&gt;
 </pre></div>
 </div>
 <p>&gt; with a linux command line</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ date <span class="p">|</span> sha256sum <span class="p">|</span> base64 <span class="p">|</span> head -c <span class="m">25</span><span class="p">;</span> <span class="nb">echo</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sha256sum<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">25</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span>
 NWU2MzE1ZGM0MmVlZDg5NDNhN
 </pre></div>
 </div>
@@ -176,11 +180,6 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 <li><p>The files location and settings can be changed by exporting the following environment variables:</p></li>
 </ul>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 28%" />
-<col style="width: 55%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>variable</p></th>
 <th class="head"><p>description</p></th>
@@ -209,7 +208,7 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 <ul class="simple">
 <li><p>Start the app</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span> $ twootfeed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>twootfeed
 </pre></div>
 </div>
 </section>
@@ -218,13 +217,13 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 <ul class="simple">
 <li><p>Activate the virtualenv</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> .venv/bin/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Upgrade with pip</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span> $ pip install -U twootfeed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>.venv<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>twootfeed
 </pre></div>
 </div>
 <ul class="simple">
@@ -237,7 +236,7 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 <ul class="simple">
 <li><p>create a service file:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/systemd/system/twootfeed.service
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/twootfeed.service
 </pre></div>
 </div>
 <p>Template (to update depending on your distribution and installation):</p>
@@ -264,13 +263,13 @@ NWU2MzE1ZGM0MmVlZDg5NDNhN
 <ul class="simple">
 <li><p>start the service:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl start twootfeed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>twootfeed
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>to start on boot:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> twootfeed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>twootfeed
 </pre></div>
 </div>
 </section>

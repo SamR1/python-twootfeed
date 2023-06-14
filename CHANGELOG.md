@@ -1,5 +1,12 @@
 # Change log
 
+## Version 0.7.3 (2023/06/14)
+
+No new features, only dependencies update
+
+**Note**: Minimum version of Python is now 3.8.1.
+
+
 ## Version 0.7.2 (2022/08/27)
 
 #### Bugs Fixed

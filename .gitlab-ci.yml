@@ -15,7 +15,8 @@ lint:
   stage: lint
   extends: .python
   script:
-    - pytest --flake8 --isort --black -m "flake8 or isort or black" twootfeed
+    - pytest --isort --black -m "isort or black" twootfeed
+    - flake8 twootfeed
 
 type-check:
   stage: lint

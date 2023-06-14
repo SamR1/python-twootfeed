@@ -17,7 +17,6 @@ def get_mastodon_api(param: Dict, app_log: Logger) -> Mastodon:
         )
 
         if os.path.isfile(client_file) and os.path.isfile(access_token_file):
-
             mastodon_url = param['mastodon'].get(
                 'url', 'https://mastodon.social'
             )

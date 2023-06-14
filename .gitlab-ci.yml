@@ -1,4 +1,4 @@
-image: python:3.10
+image: python:3.11
 
 stages:
   - lint
@@ -24,11 +24,6 @@ type-check:
   script:
     - mypy twootfeed
 
-python-3.7:
-  stage: tests
-  extends: .python
-  image: python:3.7
-
 python-3.8:
   stage: tests
   extends: .python
@@ -40,6 +35,11 @@ python-3.9:
   image: python:3.9
 
 python-3.10:
+  stage: tests
+  extends: .python
+  image: python:3.10
+
+python-3.11:
   stage: tests
   before_script:
     - pip install -e .[test]

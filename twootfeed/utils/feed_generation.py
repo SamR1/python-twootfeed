@@ -6,7 +6,6 @@ import feedgenerator
 def generate_feed(
     title: str, link: str, param: Dict, description: Optional[str] = None
 ) -> feedgenerator.Rss201rev2Feed:
-
     return feedgenerator.Rss201rev2Feed(
         title=title,
         link=link,

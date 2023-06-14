@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Application and feeds parameters &mdash; twootfeed 0.7.2
+  <title>Application and feeds parameters &mdash; twootfeed 0.7.3
  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
@@ -13,11 +13,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -30,15 +30,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> twootfeed
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            twootfeed
           </a>
               <div class="version">
-                0.7.2
+                0.7.3
 
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,8 +76,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Application and feeds parameters</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Application and feeds parameters</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/parameters.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -86,31 +90,31 @@
   <section id="application-and-feeds-parameters">
 <h1>Application and feeds parameters<a class="headerlink" href="#application-and-feeds-parameters" title="Permalink to this heading"></a></h1>
 <p>Application parameters are stored in <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">twitter</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">consumerKey</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">consumerSecret</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Twitter</span><span class="nv"> </span><span class="s">Search</span><span class="nv"> </span><span class="s">Feed:&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://twitter.com/search?q=&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Twitter</span><span class="nv"> </span><span class="s">search</span><span class="nv"> </span><span class="s">results.&#39;</span><span class="w"></span>
-<span class="nt">mastodon</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://mastodon.social&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">client_id_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;tootrss_clientcred.txt&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">access_token_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;tootrss_usercred.txt&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">app_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;tootrss&#39;</span><span class="w">  </span><span class="c1"># Used to identify authenticated apps</span><span class="w"></span>
-<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Mastodon</span><span class="nv"> </span><span class="s">Feed:&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Mastodon</span><span class="nv"> </span><span class="s">generated</span><span class="nv"> </span><span class="s">feed</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">search.&#39;</span><span class="w"></span>
-<span class="nt">feed</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;fr&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">author_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">feed_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http://localhost:8080&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Europe/Paris&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">text_length_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span><span class="w"></span>
-<span class="w">  </span><span class="nt">max_items</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w"></span>
-<span class="w">  </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
-<span class="nt">app</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;localhost&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;8080&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">nb_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># if not defined, the number is defined by the app</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">twitter</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">consumerKey</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">  </span><span class="nt">consumerSecret</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Twitter</span><span class="nv"> </span><span class="s">Search</span><span class="nv"> </span><span class="s">Feed:&#39;</span>
+<span class="w">  </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://twitter.com/search?q=&#39;</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Twitter</span><span class="nv"> </span><span class="s">search</span><span class="nv"> </span><span class="s">results.&#39;</span>
+<span class="nt">mastodon</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://mastodon.social&#39;</span>
+<span class="w">  </span><span class="nt">client_id_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;tootrss_clientcred.txt&#39;</span>
+<span class="w">  </span><span class="nt">access_token_file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;tootrss_usercred.txt&#39;</span>
+<span class="w">  </span><span class="nt">app_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;tootrss&#39;</span><span class="w">  </span><span class="c1"># Used to identify authenticated apps</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Mastodon</span><span class="nv"> </span><span class="s">Feed:&#39;</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Mastodon</span><span class="nv"> </span><span class="s">generated</span><span class="nv"> </span><span class="s">feed</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">search.&#39;</span>
+<span class="nt">feed</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;fr&#39;</span>
+<span class="w">  </span><span class="nt">author_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">  </span><span class="nt">feed_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http://localhost:8080&#39;</span>
+<span class="w">  </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Europe/Paris&#39;</span>
+<span class="w">  </span><span class="nt">text_length_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">  </span><span class="nt">max_items</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">  </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="nt">app</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;localhost&#39;</span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;8080&#39;</span>
+<span class="w">  </span><span class="nt">nb_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># if not defined, the number is defined by the app</span>
 </pre></div>
 </div>
 <section id="twitter">

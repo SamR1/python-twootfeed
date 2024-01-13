@@ -8,6 +8,10 @@ Welcome to twootfeed's documentation!
 
 **twootfeed** generates an RSS feed from parsed Twitter or Mastodon search and from Mastodon bookmarks, favorites and home timeline.
 
+.. warning::
+
+   | ⚠️ **twootfeed** is no longer maintained.
+
 .. toctree::
    :maxdepth: 1
    :caption: Contents

@@ -1,6 +1,11 @@
 Features
 ########
 
+.. warning::
+
+   | **twootfeed** is no longer maintained.
+
+
 Description
 ~~~~~~~~~~~
 

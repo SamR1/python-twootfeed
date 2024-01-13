@@ -1,5 +1,12 @@
 # Change log
 
+## Version 0.7.4 (2024/01/13)
+
+**twootfeed** is no longer maintained. This is the latest version.
+
+No new features, only dependencies update
+
+
 ## Version 0.7.3 (2023/06/14)
 
 No new features, only dependencies update
